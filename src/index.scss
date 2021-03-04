@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 18px;
+
+  //color: green;
+  //background: black;
+}
+
+.container {
+  width:100%;
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+@mixin box-sizing($property) {
+  -webkit-box-sizing: $property;
+  -moz-box-sizing: $property;
+  box-sizing: $property;
+}
+
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
