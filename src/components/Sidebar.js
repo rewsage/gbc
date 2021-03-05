@@ -1,11 +1,26 @@
 import React, {Component} from 'react'
 import './assets/css/Sidebar.scss'
+import list from '../list.json'
+import Inside from "./Inside";
 
 class Sidebar extends Component {
+    state = {
+        id: 0,
+        isActive: false,
+    }
+
+    deep = () => {
+        this.setState((state) => ({ isActive: !state.isActive }))
+    }
+
     render() {
+        const inside = this.state.isActive && <Inside id={this.state.id} />
         return (
             <div className="sidebar">
-                <div className="container"></div>
+                <div className="container">
+                    <button className={"button__start"} onClick={this.deep}>{list[this.state.id].name}</button>
+                    <div>{inside}</div>
+                </div>
             </div>
         )
     }
