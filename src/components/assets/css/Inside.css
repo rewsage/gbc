@@ -1,0 +1,15 @@
+.buttons {
+    width: 94%;
+    float: right;
+}
+.button__dir {
+    font-size: 25px;
+    color: #fff;
+    margin-left: 2%;
+}
+
+.button__file {
+    font-size: 25px;
+    color: #fff;
+    margin-left: 2%;
+}
