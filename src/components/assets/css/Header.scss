@@ -1,9 +1,16 @@
 .header {
+  position: fixed;
+  width: 100%;
   height: 60px;
   background: #686868;
   display: flex;
   align-items: center;
   box-shadow: 0 4px 50px 9px rgba(0, 0, 0, 0.25);
+}
+
+.header_light {
+  background: #7997A8;
+  box-shadow: 0 4px 60px 2px rgba(0, 0, 0, 0.25);
 }
 
 .header__inner {
@@ -12,7 +19,50 @@
   justify-content: space-between;
 }
 
-.test {
-  background: aqua;
+@mixin appearance($property) {
+  -webkit-appearance: $property;
+  -moz-appearance: $property;
+  appearance: $property;
+}
+
+.header__toggle-btn {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 20px;
+  margin: 5px 0 0 0;
+  vertical-align: top;
+  background: none;
+  border: 2px solid #F8F8F8;
+  border-radius: 30px;
+  outline: none;
+  cursor: pointer;
+  @include appearance(none);
+
+  transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+
+  &:after {
+    content: url("../images/svg/moon.svg");
+
+    display: inline-block;
+    position: absolute;
+    left: -3px;
+    top: -4.5px;
+
+    width: 26px;
+    height: 26px;
+    background: #424242;
+    border-radius: 50%;
+
+    transform: translateX(0);
+    transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  }
+
+  &:checked {
+    &:after {
+      transform: translateX(calc(100% - 3px));
+      background: #fff;
+    }
+  }
 }
 
