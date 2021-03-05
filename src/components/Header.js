@@ -1,39 +1,27 @@
-import React, {Component} from 'react'
+import React from 'react'
 import './assets/css/Header.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCannabis } from "@fortawesome/free-solid-svg-icons"
 import ThemeSwitcher from "./ThemeSwitcher"
+import {ThemeContextConsumer} from "./ThemeContext"
 
-class Header extends Component {
-    constructor(props) {
-        super(props);
+function Header(props) {
+    const headerLogo = <FontAwesomeIcon color="white" icon={faCannabis} size="2x"/>
 
-        this.state = {
-            isWhite: false,
-        }
-    }
-
-    render() {
-        const headerLogo = <FontAwesomeIcon color="white" icon={faCannabis} size="2x"/>
-        let headerClassName = this.props.isWhite ? "header" : "test";
-
-        return (
-            <header className={headerClassName}>
-                <div className="container">
-                    <div className="header__inner">
-                        {headerLogo}
-                        <ThemeSwitcher action={this.action}/>
+    return (
+        <ThemeContextConsumer>
+            {context => (
+                <header className={`header header_${context.theme}`}>
+                    <div className="container">
+                        <div className="header__inner">
+                            {headerLogo}
+                            <ThemeSwitcher/>
+                        </div>
                     </div>
-                </div>
-            </header>
-        )
-    }
-
-    action = (value) => {
-        this.setState({
-            isWhite: !this.state.isWhite,
-        })
-    }
+                </header>
+            )}
+        </ThemeContextConsumer>
+    )
 }
 
 export default Header

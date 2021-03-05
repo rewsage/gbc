@@ -1,32 +1,24 @@
-import React, {Component} from 'react'
+import React from 'react'
+import { ThemeContextConsumer } from './ThemeContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faMoon} from '@fortawesome/free-solid-svg-icons'
 
-class ThemeSwitcher extends Component {
-    constructor(props) {
-        super(props);
+function ThemeSwitcher(props) {
+    const svgIcon = <FontAwesomeIcon color="white" icon={faMoon} size="2x"/>
 
-        this.state = {
-            active: false,
-        }
-    }
-
-    render() {
-        return (
-            <button className="header__btn"
-                    onClick={this.handleClick}>
-                <span>{this.isActive() ? 'to dark': 'to light'}</span>
-            </button>
-        )
-    }
-
-    isActive = () => this.state.active
-
-    handleClick = () => {
-        // this.setState({
-        //     active: !this.isActive(),
-        // })
-        console.log(this.state);
-        this.props.action();
-    }
+    return (
+        <ThemeContextConsumer>
+            {context => (
+                <div>
+                    <input type="checkbox"
+                       className="header__toggle-btn"
+                       onClick={context.toggleTheme}>
+                    </input>
+                </div>
+            )}
+        </ThemeContextConsumer>
+    );
 }
+
 
 export default ThemeSwitcher

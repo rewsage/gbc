@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './assets/css/Sidebar.scss'
 import list from '../list.json'
 import Inside from "./Inside";
+import { ThemeContextConsumer } from './ThemeContext'
 
 class Sidebar extends Component {
     state = {
@@ -16,14 +17,19 @@ class Sidebar extends Component {
     render() {
         const inside = this.state.isActive && <Inside id={this.state.id} />
         return (
-            <div className="sidebar">
-                <div className="container">
-                    <button className={"button__start"} onClick={this.deep}>{list[this.state.id].name}</button>
-                    <div>{inside}</div>
+            <ThemeContextConsumer>
+                {context => (
+                   <div className={`sidebar sidebar_${context.theme}`}>
+                    <div className="container">
+                      <button className={"button__start"} onClick={this.deep}>{list[this.state.id].name}</button>
+                        <div>{inside}</div>
+                    </div>
                 </div>
-            </div>
+                )}
+            </ThemeContextConsumer>
         )
     }
 }
+
 
 export default Sidebar
