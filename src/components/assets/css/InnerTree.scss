@@ -1,0 +1,14 @@
+.tree-element {
+    width: 94%;
+    float: right;
+}
+
+.tree-element__dir,
+.tree-element__file {
+    display: block;
+    margin-left: 2%;
+}
+
+.tree-element__dir_root {
+    margin: 0;
+}

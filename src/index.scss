@@ -1,10 +1,9 @@
 body {
   margin: 0;
   line-height: 1.6;
-  font-size: 18px;
+  font-size: 25px;
 
   font-family: 'Roboto', sans-serif;
-  color: white;
 }
 
 .container {
@@ -31,4 +30,7 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
+
+  color: inherit;
+  font-size: inherit;
 }

@@ -1,16 +1,18 @@
 .header {
-  position: fixed;
-  width: 100%;
+  position: fixed;width: 100%;
   height: 60px;
-  background: #686868;
+
   display: flex;
   align-items: center;
+
+  font-size: 18px;
+  background: #686868;
   box-shadow: 0 4px 50px 9px rgba(0, 0, 0, 0.25);
 }
 
 .header_light {
-  background: #7997A8;
-  box-shadow: 0 4px 60px 2px rgba(0, 0, 0, 0.25);
+  background: #CDCFCF;;
+  box-shadow: 0 4px 60px 2px rgba(0, 0, 0, 0.13);
 }
 
 .header__inner {
