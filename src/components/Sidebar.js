@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import './assets/css/Sidebar.scss'
 import list from '../list.json'
 import Inside from "./Inside";
@@ -7,7 +7,7 @@ import { ThemeContextConsumer } from './ThemeContext'
 class Sidebar extends Component {
     state = {
         id: 0,
-        isActive: false,
+        isActive: false
     }
 
     deep = () => {
@@ -15,7 +15,7 @@ class Sidebar extends Component {
     }
 
     render() {
-        const inside = this.state.isActive && <Inside id={this.state.id} />
+        const inside = this.state.isActive && <Inside id={this.state.id} func={this.props.setName} />
         return (
             <ThemeContextConsumer>
                 {context => (

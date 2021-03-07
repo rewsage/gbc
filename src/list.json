@@ -1,1 +1,1 @@
-[{"id": 1, "name": "src", "dirs": ["components"], "files": []}, {"id": 2, "name": "components", "dirs": ["ooo"], "files": ["a.js"], "path": "./src/components/a.js"}, {"id": 3, "name": "ooo", "dirs": [], "files": ["o.gbcoo.js"], "path": "./src/components/ooo/o.gbcoo.js"}]
+[{"name": "src", "dirs": ["components"], "files": [], "path": []}, {"name": "components", "dirs": [], "files": ["Test.js"], "path": ["./Test.js"]}]

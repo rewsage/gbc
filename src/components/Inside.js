@@ -16,7 +16,7 @@ class Inside extends Component {
     }
 
     render () {
-        const inside = this.state.isActive && <Inside id={this.state.id} />
+        const inside = this.state.isActive && <Inside id={this.state.id} func={this.props.func}/>
         return (
             <div className={"buttons"}>
                 <div>{list[this.props.id].dirs.map((dir, index) => (
@@ -24,7 +24,7 @@ class Inside extends Component {
                 ))}</div>
                 <div>{inside}</div>
                 <div>{list[this.props.id].files.map((file, index) => (
-                    <button className={"button__file"} key={index}>{file}</button>
+                    <button className={"button__file"} key={index} onClick={() => {this.props.func(file.slice(0, -3))}}>{file}</button>
                 ))}</div>
             </div>
         )
