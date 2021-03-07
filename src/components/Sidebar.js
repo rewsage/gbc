@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react'
 import './assets/css/Sidebar.scss'
 import list from '../list.json'
-import Inside from "./Inside";
 import { ThemeContextConsumer } from './ThemeContext'
+import { default as InnerTree, folderOpen, folderClose, arrowRight, arrowDown } from "./InnerTree";
 
 class Sidebar extends Component {
     state = {
@@ -10,24 +10,42 @@ class Sidebar extends Component {
         isActive: false
     }
 
-    deep = () => {
-        this.setState((state) => ({ isActive: !state.isActive }))
-    }
-
     render() {
-        const inside = this.state.isActive && <Inside id={this.state.id} func={this.props.setName} />
+        const arrowIcon = this.isActive() ? arrowDown : arrowRight;
+        const folderIcon = this.isActive() ? folderOpen : folderClose;
+        const innerTree = this.isActive() && <InnerTree id={this.state.id} func={this.props.setName}/>
+
         return (
             <ThemeContextConsumer>
                 {context => (
                    <div className={`sidebar sidebar_${context.theme}`}>
                         <div className="container">
-                        <button className={"button__start"} onClick={this.deep}>{list[this.state.id].name}</button>
-                            <div>{inside}</div>
+                            <div className={`sidebar__inner sidebar__inner_${context.theme}`}>
+                                <p className="sidebar__title">LIBRARY</p    >
+
+                                <div className="sidebar__wrapper">
+                                    <button className={"tree-element__dir tree-element__dir_root"} onClick={this.goDown}>
+                                        {arrowIcon}
+                                        {folderIcon}
+                                        {list[this.state.id].name}
+                                    </button>
+
+                                    {innerTree}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )}
             </ThemeContextConsumer>
         )
+    }
+
+    goDown = () => {
+        this.setState((state) => ({ isActive: !state.isActive }))
+    }
+
+    isActive = () => {
+        return this.state.isActive;
     }
 }
 

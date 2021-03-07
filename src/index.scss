@@ -1,10 +1,11 @@
+@import 'components/assets/css/mixins';
+
 body {
   margin: 0;
   line-height: 1.6;
-  font-size: 18px;
+  font-size: 22px;
 
   font-family: 'Roboto', sans-serif;
-  color: white;
 }
 
 .container {
@@ -14,12 +15,6 @@ body {
   margin: 0 auto;
 }
 
-@mixin box-sizing($property) {
-  -webkit-box-sizing: $property;
-  -moz-box-sizing: $property;
-  box-sizing: $property;
-}
-
 *,
 *:before,
 *:after {
@@ -27,8 +22,17 @@ body {
 }
 
 button {
+  padding: 0;
   background: none;
   border: none;
   outline: none;
   cursor: pointer;
+
+  color: inherit;
+  font-size: inherit;
+}
+
+p {
+  margin: 0;
+  color: inherit;
 }

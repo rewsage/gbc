@@ -1,30 +1,39 @@
+@import 'mixins';
+
 .header {
-  position: fixed;
-  width: 100%;
+  position: fixed;width: 100%;
   height: 60px;
-  background: #686868;
+
   display: flex;
   align-items: center;
+
+  font-size: 18px;
+  background: #686868;
   box-shadow: 0 4px 50px 9px rgba(0, 0, 0, 0.25);
 }
 
 .header_light {
-  background: #7997A8;
-  box-shadow: 0 4px 60px 2px rgba(0, 0, 0, 0.25);
+  background: #CDCFCF;
+  box-shadow: 23px 4px 60px 2px rgba(0, 0, 0, 0.13);
 }
 
 .header__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
-@mixin appearance($property) {
-  -webkit-appearance: $property;
-  -moz-appearance: $property;
-  appearance: $property;
+.header__title {
+  margin-left: 16px;
+  font-size: 28px;
+  font-weight: 500;
 }
 
+.header__switcher {
+  margin-left: auto;
+}
+
+
+/*----- Header__toggle-btn -----*/
 .header__toggle-btn {
   position: relative;
   display: inline-block;
