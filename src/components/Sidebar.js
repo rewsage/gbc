@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import './assets/css/Sidebar.scss'
 import list from '../list.json'
-import InnerTree from "./InnerTree";
 import { ThemeContextConsumer } from './ThemeContext'
+import { default as InnerTree, folderOpen, folderClose, arrowRight, arrowDown } from "./InnerTree";
 
 class Sidebar extends Component {
     state = {
@@ -11,15 +11,28 @@ class Sidebar extends Component {
     }
 
     render() {
-        const innerTree = this.state.isActive && <InnerTree id={this.state.id}/>
+        const arrowIcon = this.isActive() ? arrowDown : arrowRight;
+        const folderIcon = this.isActive() ? folderOpen : folderClose;
+        const innerTree = this.isActive() && <InnerTree id={this.state.id}/>
 
         return (
             <ThemeContextConsumer>
                 {context => (
                    <div className={`sidebar sidebar_${context.theme}`}>
                         <div className="container">
-                            <button className={"tree-element__dir tree-element__dir_root"} onClick={this.goDown}>{list[this.state.id].name}</button>
-                            {innerTree}
+                            <div className={`sidebar__inner sidebar__inner_${context.theme}`}>
+                                <p className="sidebar__title">LIBRARY</p    >
+
+                                <div className="sidebar__wrapper">
+                                    <button className={"tree-element__dir tree-element__dir_root"} onClick={this.goDown}>
+                                        {arrowIcon}
+                                        {folderIcon}
+                                        {list[this.state.id].name}
+                                    </button>
+
+                                    {innerTree}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )}
@@ -29,6 +42,10 @@ class Sidebar extends Component {
 
     goDown = () => {
         this.setState((state) => ({ isActive: !state.isActive }))
+    }
+
+    isActive = () => {
+        return this.state.isActive;
     }
 }
 

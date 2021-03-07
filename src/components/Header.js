@@ -1,12 +1,12 @@
 import React from 'react'
 import './assets/css/Header.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCannabis } from "@fortawesome/free-solid-svg-icons"
+import { faLightbulb } from "@fortawesome/free-solid-svg-icons"
 import ThemeSwitcher from "./ThemeSwitcher"
 import {ThemeContextConsumer} from "./ThemeContext"
 
 function Header(props) {
-    const headerLogo = <FontAwesomeIcon color="white" icon={faCannabis} size="2x"/>
+    const headerLogo = <FontAwesomeIcon color="white" icon={faLightbulb} size="2x"/>
 
     return (
         <ThemeContextConsumer>
@@ -15,7 +15,8 @@ function Header(props) {
                     <div className="container">
                         <div className="header__inner">
                             {headerLogo}
-                            <ThemeSwitcher/>
+                            <p className="header__title">GBC</p>
+                            <ThemeSwitcher className="header__switcher"/>
                         </div>
                     </div>
                 </header>
