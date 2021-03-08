@@ -9,21 +9,25 @@ class App extends React.Component {
     state = {
         nameComponent: ""
     }
-    setName = (name) => {
-        this.setState({nameComponent: name})
-    }
+
     render() {
         return (
             <ThemeContextConsumer>
                 {context => (
-                    <section className={`main main_${context.theme}`}>
-                        <Header/>
-                        <Sidebar setName={this.setName}/>
-                        <Workspace name={this.state.nameComponent}/>
-                    </section>
+                    <main className={`app app_${context.theme}`}>
+                        <section className="app__menu">
+                            <Header/>
+                            <Sidebar setName={this.setName}/>
+                        </section>
+                        <Workspace name={this.state.nameComponent} themeContext={context.theme}/>
+                    </main>
                 )}
             </ThemeContextConsumer>
         );
+    }
+
+    setName = (name) => {
+        this.setState({nameComponent: name})
     }
 }
 

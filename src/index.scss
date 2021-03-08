@@ -3,15 +3,16 @@
 body {
   margin: 0;
   line-height: 1.6;
-  font-size: 22px;
 
-  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 .container {
   width:100%;
   max-width: 1200px;
-  padding: 0 15px;
+  padding: 0 22px;
   margin: 0 auto;
 }
 
@@ -30,6 +31,7 @@ button {
 
   color: inherit;
   font-size: inherit;
+  font-weight: inherit;
 }
 
 p {

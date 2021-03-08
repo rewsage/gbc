@@ -9,7 +9,7 @@ const folderOpen = <FontAwesomeIcon className="tree-element__icon tree-element__
 const folderClose = <FontAwesomeIcon className="tree-element__icon tree-element__icon_folder" icon={faFolder}/>
 const arrowDown = <FontAwesomeIcon className="tree-element__icon" icon={faCaretDown}/>
 const arrowRight = <FontAwesomeIcon className="tree-element__icon" icon={faCaretRight}/>
-const fileIcon = <FontAwesomeIcon className="tree-element__icon" icon={faFileCode}/>
+const fileIcon = <FontAwesomeIcon className="tree-element__icon tree-element__icon_file" icon={faFileCode}/>
 
 
 class InnerTree extends Component {
