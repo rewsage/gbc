@@ -13,7 +13,7 @@ class Sidebar extends Component {
     render() {
         const arrowIcon = this.isActive() ? arrowDown : arrowRight;
         const folderIcon = this.isActive() ? folderOpen : folderClose;
-        const innerTree = this.isActive() && <InnerTree id={this.state.id} func={this.props.setName}/>
+        const innerTree = this.isActive() && <InnerTree id={this.state.id} bringComponent={this.props.bringComponent}/>
 
         return (
             <ThemeContextConsumer>

@@ -1,2 +1,1 @@
-import Test from  "./Test.js"
-export {Test}
+export { default as Test } from  "./Test.js"

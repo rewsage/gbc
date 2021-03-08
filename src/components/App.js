@@ -7,19 +7,30 @@ import Workspace from "./Workspace";
 
 class App extends React.Component {
     state = {
-        nameComponent: ""
+        userComponent: "",
+        visibility: false,
     }
-    setName = (name) => {
-        this.setState({nameComponent: name})
+
+    bringComponent = (name) => {
+        if (name === this.state.userComponent) {
+            this.setState((state) => ({visibility: !state.visibility}))
+        }
+        else {
+            this.setState({
+                userComponent: name,
+                visibility: true
+            })
+        }
     }
+
     render() {
         return (
             <ThemeContextConsumer>
                 {context => (
                     <section className={`main main_${context.theme}`}>
                         <Header/>
-                        <Sidebar setName={this.setName}/>
-                        <Workspace name={this.state.nameComponent}/>
+                        <Sidebar bringComponent={this.bringComponent}/>
+                        <Workspace name={this.state.userComponent} visibility={this.state.visibility}/>
                     </section>
                 )}
             </ThemeContextConsumer>
