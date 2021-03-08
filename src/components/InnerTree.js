@@ -25,7 +25,7 @@ class InnerTree extends Component {
         const arrowIcon = this.isActive() ? arrowDown : arrowRight;
         const folderIcon = this.isActive() ? folderOpen : folderClose;
         const listPosition = list[this.props.id];
-        const innerTree = this.isActive() && <InnerTree id={this.state.id} func={this.props.func}/>
+        const innerTree = this.isActive() && <InnerTree id={this.state.id} bringComponent={this.props.bringComponent}/>
 
         const dirElement = listPosition.dirs.map((dir, index) => (
             <button className={"tree-element__dir"}
@@ -40,7 +40,7 @@ class InnerTree extends Component {
         const fileElement = listPosition.files.map((file, index) => (
             <button className={"tree-element__file"}
                     key={index}
-                    onClick={() => {this.props.func(file.slice(0, -3))}}>
+                    onClick={() => {this.props.bringComponent(file.slice(0, -3))}}>
                 {fileIcon}
                 {file}
             </button>

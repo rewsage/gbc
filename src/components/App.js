@@ -7,7 +7,8 @@ import Workspace from "./Workspace";
 
 class App extends React.Component {
     state = {
-        nameComponent: ""
+        userComponent: "",
+        visibility: false,
     }
 
     render() {
@@ -17,9 +18,11 @@ class App extends React.Component {
                     <main className={`app app_${context.theme}`}>
                         <section className="app__menu">
                             <Header/>
-                            <Sidebar setName={this.setName}/>
+                            <Sidebar bringComponent={this.bringComponent}/>
                         </section>
-                        <Workspace name={this.state.nameComponent} themeContext={context.theme}/>
+                        <Workspace name={this.state.userComponent}
+                                   visibility={this.state.visibility}
+                                   themeContext={context.theme}/>
                     </main>
                 )}
             </ThemeContextConsumer>
@@ -28,6 +31,18 @@ class App extends React.Component {
 
     setName = (name) => {
         this.setState({nameComponent: name})
+    }
+
+    bringComponent = (name) => {
+        if (name === this.state.userComponent) {
+            this.setState((state) => ({visibility: !state.visibility}))
+        }
+        else {
+            this.setState({
+                userComponent: name,
+                visibility: true
+            })
+        }
     }
 }
 
