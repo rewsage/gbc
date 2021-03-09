@@ -1,2 +1,1 @@
-[{"name": "components", "dirs": ["TestDir"], "files": ["Test.js", "Test2.js"], "path": ["./Test.js", "./Test2.js"]},
- {"name": "TestDir", "dirs": [], "files": ["Test3.js"], "path": ["./TestDir/Test3.js"]}]
+[{"name": "components", "dirs": [], "files": [], "path": []}]

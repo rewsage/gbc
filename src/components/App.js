@@ -1,13 +1,13 @@
 import React from 'react'
-import './assets/css/App.scss'
-import Sidebar from "./Sidebar"
-import Header from "./Header";
-import {ThemeContextConsumer} from "./ThemeContext";
+import '../assets/css/App.scss'
+import Sidebar from "./AppMenu/Sidebar"
+import Header from "./AppMenu/Header";
+import {ThemeContextConsumer} from "./ThemeControl/ThemeContext";
 import Workspace from "./Workspace";
 
 class App extends React.Component {
     state = {
-        userComponent: "",
+        userComponentName: "",
         visibility: false,
     }
 
@@ -18,11 +18,10 @@ class App extends React.Component {
                     <main className={`app app_${context.theme}`}>
                         <section className="app__menu">
                             <Header />
-                            <Sidebar pickComponent={this.pickComponent}
-                                     visibility={this.state.visibility}
-                                     userComponent={this.state.userComponent}/>
+                            <Sidebar callComponent={this.callComponent}
+                                     userComponentName={this.state.userComponentName}/>
                         </section>
-                        <Workspace name={this.state.userComponent}
+                        <Workspace userComponentName={this.state.userComponentName}
                                    visibility={this.state.visibility}
                                    themeContext={context.theme}/>
                     </main>
@@ -31,17 +30,13 @@ class App extends React.Component {
         );
     }
 
-    setName = (name) => {
-        this.setState({nameComponent: name})
-    }
-
-    pickComponent = (name) => {
-        if (name === this.state.userComponent) {
+    callComponent = (name) => {
+        if (name === this.state.userComponentName) {
             this.setState((state) => ({visibility: !state.visibility}))
         }
         else {
             this.setState({
-                userComponent: name,
+                userComponentName: name,
                 visibility: true
             })
         }

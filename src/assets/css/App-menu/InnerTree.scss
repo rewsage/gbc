@@ -1,0 +1,45 @@
+.tree-element {
+    position: relative;
+    width: 100%;
+    padding-left: 25px;
+    box-sizing: initial;
+}
+
+.tree-element__dir,
+.tree-element__file {
+    display: flex;
+    align-items: center;
+    padding: 2px 0;
+    width: 100%;
+}
+
+.tree-element__icon {
+    font-size: 28px;
+    margin: 0 6px 3px 0;
+}
+
+.tree-element__icon_folder {
+    margin-right: 12px;
+    font-size: 23px;
+    color: #EC9360;
+}
+
+.tree-element__icon_file {
+    margin: 0 12px 4px 0;
+    font-size: 21px;
+    color: #EC9360;
+}
+
+.tree-element__highlighter  {
+    position: absolute;
+    right: 0;
+    width: calc(100% + 50px);
+    height: 33px;
+
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 0;
+}
+
+.disabled {
+    display: none;
+}
