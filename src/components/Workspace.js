@@ -1,6 +1,6 @@
 import React from 'react';
 import './assets/css/Workspace.scss'
-import * as components from "./Tie"
+import * as components from "../Hub"
 
 class Workspace extends React.Component {
     render() {
