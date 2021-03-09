@@ -12,7 +12,10 @@ class Sidebar extends Component {
     render() {
         const arrowIcon = this.isActive() ? arrowDown : arrowRight;
         const folderIcon = this.isActive() ? folderOpen : folderClose;
-        const innerTree = this.isActive() && <InnerTree id={this.state.id} bringComponent={this.props.bringComponent}/>
+        const innerTree = this.isActive() && <InnerTree id={this.state.id}
+                                                        pickComponent={this.props.pickComponent}
+                                                        visibility={this.props.visibility}
+                                                        userComponent={this.props.userComponent}/>
 
         return (
             <div className="sidebar">

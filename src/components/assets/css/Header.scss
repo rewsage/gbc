@@ -60,7 +60,7 @@
 
     width: 26px;
     height: 26px;
-    background: #424242;
+    background: white;
     border-radius: 50%;
 
     transform: translateX(0);
@@ -70,7 +70,7 @@
   &:checked {
     &:after {
       transform: translateX(calc(100% - 3px));
-      background: #fff;
+      background: #424242;
     }
   }
 }

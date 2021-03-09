@@ -1,13 +1,15 @@
 .tree-element {
-    width: calc(100% - 25px);
-    float: right;
+    position: relative;
+    width: 100%;
+    padding-left: 25px;
+    box-sizing: initial;
 }
 
 .tree-element__dir,
 .tree-element__file {
-    display: block;
-    margin-left: 25px;
-    margin-bottom: 2px;
+    display: flex;
+    padding-bottom: 4px;
+    width: 100%;
 }
 
 .tree-element__icon {
@@ -25,4 +27,22 @@
     margin: 7px 12px 0 0;
     font-size: 21px;
     color: #EC9360;
+}
+
+.tree-element__highlighter_true {
+    position: relative;
+    left: 0;
+    width: calc(100% + 50px);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.tree-element__highlighter {
+    height: 36px;
+}
+
+.tree-element__file_true {
+    position: absolute;
+    //width: calc(100% + 50px);
+    //background: rgba(0, 0, 0, 0.1);
 }

@@ -9,7 +9,7 @@ class Workspace extends React.Component {
         if (this.props.name !== "" && this.props.visibility) {
             const Component = components[this.props.name]
             return (
-                <div className={"workspace"}>
+                <div className={`workspace workspace_${themeContext}`   }>
                     <Component />
                 </div>
             )

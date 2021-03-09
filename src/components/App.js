@@ -17,8 +17,10 @@ class App extends React.Component {
                 {context => (
                     <main className={`app app_${context.theme}`}>
                         <section className="app__menu">
-                            <Header/>
-                            <Sidebar bringComponent={this.bringComponent}/>
+                            <Header />
+                            <Sidebar pickComponent={this.pickComponent}
+                                     visibility={this.state.visibility}
+                                     userComponent={this.state.userComponent}/>
                         </section>
                         <Workspace name={this.state.userComponent}
                                    visibility={this.state.visibility}
@@ -33,7 +35,7 @@ class App extends React.Component {
         this.setState({nameComponent: name})
     }
 
-    bringComponent = (name) => {
+    pickComponent = (name) => {
         if (name === this.state.userComponent) {
             this.setState((state) => ({visibility: !state.visibility}))
         }
