@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../assets/css/Test.scss'
+import '../../assets/css/Test.scss'
 
 class Test extends Component {
     render() {

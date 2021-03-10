@@ -3,7 +3,7 @@ import '../assets/css/App.scss'
 import Sidebar from "./AppMenu/Sidebar"
 import Header from "./AppMenu/Header";
 import {ThemeContextConsumer} from "./ThemeControl/ThemeContext";
-import Workspace from "./Workspace";
+import Workspace from "/home/lenix/gbc/src/components/Workspace";
 
 
 class App extends React.Component {

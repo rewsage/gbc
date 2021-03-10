@@ -20,7 +20,6 @@ class FileBtn extends Component {
 
         return (
             <button className="tree-element__file"
-                    key={this.props.index}
                     onClick={ this.displayComponent }>
                 <div className={`tree-element__highlighter ${condition}`}/>
                 {fileIcon}

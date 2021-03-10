@@ -42,8 +42,8 @@ class InnerTree extends Component {
         ));
 
         const fileBtn = listPosition.files.map((file, index) => (
-           <FileBtn file={file}
-                    index={index}
+           <FileBtn key = {index}
+                    file={file}
                     callComponent={this.props.callComponent}
                     userComponentName={this.props.userComponentName}/>
         ));
