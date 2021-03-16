@@ -1,4 +1,6 @@
-const pathComponents = ["./components/Test/Test"];
+const pathComponents = [
+    "./components/Test/Test",
+    "./components/Test/Test2"];
 const fs = require("fs");
 
 let tree = [];
@@ -16,7 +18,7 @@ for (let jsFile of pathComponents) {
             let jsObject = {"name": folder, "dirs": [],
                             "files": [], "path": []};
             if (currentIndex + 1 < isNextFile) {
-                jsObject["dirs"].push(pathPart[currentIndex+1]);
+                jsObject["dirs"].push(pathPart[currentIndex]);
             } else {
                 let fileName = pathPart[pathPart.length-1] + ".js";
                 jsObject["files"].push(fileName);
@@ -27,8 +29,8 @@ for (let jsFile of pathComponents) {
         } else {
             let jsObject = tree[folderDef.indexOf(currentPath)];
             if (currentIndex + 1 < isNextFile) {
-                if (!jsObject["dirs"].includes(pathPart[currentIndex+1])) {
-                    jsObject["dirs"].push(pathPart[currentIndex+1]);
+                if (!jsObject["dirs"].includes(pathPart[currentIndex])) {
+                    jsObject["dirs"].push(pathPart[currentIndex]);
                 }
             } else {
                 if (!jsObject["files"].includes(pathPart[pathPart.length-1])) {

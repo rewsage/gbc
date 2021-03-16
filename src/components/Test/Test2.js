@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import '../../assets/css/Test.scss'
 
-class Test extends Component {
+class Test2 extends Component {
     render() {
         return (
-            <button className="test-btn">Scooby Doo</button>
+            <button className="test-btn">Test 2</button>
         )
     }
 }
 
-export default Test;
+export default Test2;

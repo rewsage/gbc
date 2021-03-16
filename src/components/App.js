@@ -11,6 +11,7 @@ class App extends React.Component {
         userComponentName: "",
         visibility: false,
     }
+
     render() {
         return (
             <ThemeContextConsumer>
@@ -32,7 +33,10 @@ class App extends React.Component {
 
     callComponent = (name) => {
         if (name === this.state.userComponentName) {
-            this.setState((state) => ({visibility: !state.visibility}))
+            this.setState({
+                userComponentName: "",
+                visibility: false
+            })
         }
         else {
             this.setState({

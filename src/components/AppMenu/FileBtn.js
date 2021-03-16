@@ -16,6 +16,10 @@ class FileBtn extends Component {
             this.setState({
                 isCalled: false
             })
+        } else if (!this.isCalled() && isEqual) {
+            this.setState({
+                isCalled: true
+            })
         }
 
         return (
