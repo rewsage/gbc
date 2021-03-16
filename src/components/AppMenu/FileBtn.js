@@ -3,7 +3,7 @@ import { fileIcon } from './InnerTree'
 
 class FileBtn extends Component {
     state = {
-        isCalled: false
+        isCalled: false,
     }
 
     render() {
@@ -12,9 +12,10 @@ class FileBtn extends Component {
         const fileName = this.props.file.slice(0, -3);
         const isEqual = userComponentName === fileName;
 
+
         if (this.isCalled() && !isEqual) {
             this.setState({
-                isCalled: false
+                isCalled: false,
             })
         }
 
@@ -31,7 +32,6 @@ class FileBtn extends Component {
     displayComponent = () => {
         const { callComponent } = this.props;
         const fileName = this.props.file.slice(0, -3);
-
         callComponent(fileName)
 
         this.setState({

@@ -12,29 +12,10 @@ try {
     console.error(err)
 }
 
-let trueComponents = []
-for (let path of pathComponents) {
-    if (path[0] === ".") {
-        if (!fs.existsSync(path)) {
-            console.log(path + " file not found")
-        } else {
-            trueComponents.push(path)
-        }
-    } else {
-        if (!fs.existsSync(path)) {
-            console.log(path + " file not found")
-        } else {
-            let parts = path.split("/")
-            let relativePath = "./" + parts.slice(parts.indexOf("components")).join("/")
-            trueComponents.push(relativePath)
-        }
-    }
-}
-
 let tree = [];
-if (trueComponents) {
+if (pathComponents) {
     let folderDef = [];
-    for (let jsFile of trueComponents) {
+    for (let jsFile of pathComponents) {
         let pathPart = jsFile.split("/").slice(1);
         let currentIndex = 0;
         let isNextFile = pathPart.length;
@@ -49,7 +30,7 @@ if (trueComponents) {
                     "files": [], "path": []
                 };
                 if (currentIndex + 1 < isNextFile) {
-                    jsObject["dirs"].push(pathPart[currentIndex + 1]);
+                    jsObject["dirs"].push(pathPart[currentIndex]);
                 } else {
                     let fileName = pathPart[pathPart.length - 1];
                     jsObject["files"].push(fileName);
@@ -60,8 +41,8 @@ if (trueComponents) {
             } else {
                 let jsObject = tree[folderDef.indexOf(currentPath)];
                 if (currentIndex + 1 < isNextFile) {
-                    if (!jsObject["dirs"].includes(pathPart[currentIndex + 1])) {
-                        jsObject["dirs"].push(pathPart[currentIndex + 1]);
+                    if (!jsObject["dirs"].includes(pathPart[currentIndex])) {
+                        jsObject["dirs"].push(pathPart[currentIndex]);
                     }
                 } else {
                     if (!jsObject["files"].includes(pathPart[pathPart.length - 1])) {
@@ -81,5 +62,3 @@ try {
 } catch (err) {
     console.error(err);
 }
-
-
