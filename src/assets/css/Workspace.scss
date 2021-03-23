@@ -1,7 +1,6 @@
 .workspace {
   width: 73%;
   margin: 16px 18px 16px 0;
-  padding: 40px 0 0 70px;
 
   background: #424242;
   box-shadow: 0 4px 50px 9px rgba(0, 0, 0, 0.25);
@@ -12,4 +11,17 @@
 .workspace_light {
   background: #F0F0F0;
   box-shadow: 0 4px 50px 9px rgba(0, 0, 0, 0.13);
+}
+
+.workspace__inner {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.workspace__content {
+  padding: 40px 0 0 70px;
 }

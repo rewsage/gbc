@@ -9,7 +9,6 @@ import Workspace from "./Workspace";
 class App extends React.Component {
     state = {
         userComponentName: "",
-        visibility: false,
     }
 
     render() {
@@ -23,7 +22,6 @@ class App extends React.Component {
                                      userComponentName={this.state.userComponentName}/>
                         </section>
                         <Workspace userComponentName={this.state.userComponentName}
-                                   visibility={this.state.visibility}
                                    themeContext={context.theme}/>
                     </main>
                 )}
@@ -35,13 +33,10 @@ class App extends React.Component {
         if (name === this.state.userComponentName) {
             this.setState({
                 userComponentName: "",
-                visibility: false
             })
-        }
-        else {
+        } else {
             this.setState({
                 userComponentName: name,
-                visibility: true
             })
         }
     }
