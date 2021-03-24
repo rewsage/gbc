@@ -9,7 +9,7 @@ class Workspace extends React.Component {
         const {userComponentName} = this.props;
         const Component = components[userComponentName];
         const currentComponent = userComponentName &&
-                                 <Component className={""}>Button</Component>;
+                                 <Component className={"cl-#33333 sz-small bg-#676767"}>Button</Component>;
 
         return (
             <div className={`workspace workspace_${themeContext}`}>

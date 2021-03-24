@@ -8,6 +8,7 @@ class StyleMenu extends Component {
         fontSize: '',
         fontWeight: '',
         bgColor: '',
+        text: '',
     }
 
     render () {
@@ -24,6 +25,8 @@ class StyleMenu extends Component {
                               returnValue={this.getFontWeight}/>
                 <InputForm label={"Background Color"}
                            returnValue={this.getBgColor}/>
+                <InputForm label={"Text"}
+                           returnValue={this.getText}/>
             </div>
         )
     }
@@ -43,6 +46,12 @@ class StyleMenu extends Component {
     getBgColor = (value) => {
         this.setState({
             bgColor: value,
+        })
+    }
+
+    getText = (value) => {
+        this.setState({
+            text: value,
         })
     }
 }

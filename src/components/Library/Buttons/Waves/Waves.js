@@ -24,9 +24,9 @@ class Waves extends Component {
         }
         let fullClass;
         if (size === "small") {
-            fullClass = `${allUserClass.join(" ")} buttonWaves Small`;
+            fullClass = `${allUserClass.join(" ")} buttonWaves buttonWaves_small`;
         } else if (size === "medium") {
-            fullClass = `${allUserClass.join(" ")} buttonWaves Medium`;
+            fullClass = `${allUserClass.join(" ")} buttonWaves buttonWaves_medium`;
         } else {
             fullClass = `${allUserClass.join(" ")} buttonWaves`;
         }

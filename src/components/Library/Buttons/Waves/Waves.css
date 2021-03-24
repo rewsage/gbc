@@ -15,17 +15,23 @@
     transition: all 0.5s;
     cursor: pointer;
 }
-.Small {
-    width: 9vw;
-    height: 2.7vw;
-    font-size: 20px;
-    padding: 10px;
+
+.buttonWaves_small {
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+    padding: 4px;
 }
-.Medium {
-    width: 11vw;
-    height: 3.2vw;
+
+.buttonWaves_small:before {
+    border: 3px solid #fff;
+}
+
+.buttonWaves_medium {
+    width: 120px;
+    height: 50px;
     font-size: 23px;
-    padding: 15px;
+    padding: 12px;
 }
 .buttonWaves:before {
     content: "";
