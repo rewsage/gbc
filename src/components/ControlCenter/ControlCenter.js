@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import '../../assets/css/ControlCenter/ControlCenter.scss';
 import Tabs from "./Tabs.js";
 import StyleMenu from "./StyleMenu";
+import ExportMenu from "./ExportMenu";
 
 class ControlCenter extends Component {
     state = {
-        currentTab: "Style",
+        currentTab: 'Style',
     }
 
     render() {
@@ -13,7 +14,8 @@ class ControlCenter extends Component {
             <div className="control-center">
                 <Tabs currentTab={this.currentTab()}
                       switchTab={this.switchTab}/>
-                <StyleMenu/>
+                {this.currentTab() === 'Style' && <StyleMenu/>}
+                {this.currentTab() === 'Export' && <ExportMenu/>}
             </div>
         )
     }
