@@ -21,13 +21,13 @@ class InputForm extends Component {
     }
 
     handleChange = (event) => {
-        const {returnValue} = this.props;
+        const {returnValue, styleType} = this.props;
 
         this.setState({
             value: event.target.value
+        }, () => {
+            returnValue(styleType, this.state.value);
         });
-
-        returnValue(this.state.value);
     }
 }
 

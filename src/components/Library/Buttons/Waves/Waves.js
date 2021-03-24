@@ -4,14 +4,17 @@ import "./Waves.css"
 class Waves extends Component {
     render() {
         const properties = this.props.className.split(" ");
-        const colors = {background: '',
-                        color: ''}
+        const colors = {
+            background: '',
+            color: ''
+        }
         let size;
         let allUserClass = [];
         let text = this.props.children ? this.props.children : "Scooby Doo";
         for (let property of properties) {
             let propertyName = property.split("-")[0];
             let value = property.split("-")[1];
+
             if (propertyName === "cl") {
                 colors["color"] = value;
             } else if (propertyName === "bg") {

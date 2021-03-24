@@ -4,55 +4,57 @@ import DropdownMenu from "./DropdownMenu";
 import InputForm from "./InputForm";
 
 class StyleMenu extends Component {
-    state = {
-        fontSize: '',
-        fontWeight: '',
-        bgColor: '',
-        text: '',
+    constructor(props) {
+        super(props);
+
+        this.stylesObj = {
+            sz: '',
+            // fontWeight: '',
+            bg: '',
+            cl: '',
+            text: '',
+        }
+
+        this.state = {
+
+        }
     }
 
     render () {
         const fontSize = ["Small", "Medium", "Large"]
-        const fontWeight = ["Light", "Regular", "Bold"]
+        // const fontWeight = ["Light", "Regular", "Bold"]
 
         return (
             <div className="control-menu">
                 <DropdownMenu label={"Font size"}
                               elements={fontSize}
-                              returnValue={this.getFontSize}/>
-                <DropdownMenu label={"Font weight"}
-                              elements={fontWeight}
-                              returnValue={this.getFontWeight}/>
+                              styleType={'sz'}
+                              returnValue={this.getStyle}/>
+                {/*<DropdownMenu label={"Font weight"}*/}
+                {/*              elements={fontWeight}*/}
+                {/*              styleType={'fontWeight'}*/}
+                {/*              returnValue={this.getStyle}/>*/}
                 <InputForm label={"Background Color"}
-                           returnValue={this.getBgColor}/>
+                           styleType={'bg'}
+                           returnValue={this.getStyle}/>
+                <InputForm label={"Color"}
+                           styleType={'cl'}
+                           returnValue={this.getStyle}/>
                 <InputForm label={"Text"}
-                           returnValue={this.getText}/>
+                           styleType={'text'}
+                           returnValue={this.getStyle}/>
             </div>
         )
     }
 
-    getFontSize = (value) => {
-       this.setState({
-           fontSize: value,
-       })
-    }
+    getStyle = (styleType, value) => {
+        const  {returnStyles} = this.props;
 
-    getFontWeight = (value) => {
-        this.setState({
-            fontWeight: value,
-        })
-    }
-
-    getBgColor = (value) => {
-        this.setState({
-            bgColor: value,
-        })
-    }
-
-    getText = (value) => {
-        this.setState({
-            text: value,
-        })
+        this.setState(state => {
+           state[styleType] = value;
+        }, () => {
+           returnStyles(this.state);
+        });
     }
 }
 

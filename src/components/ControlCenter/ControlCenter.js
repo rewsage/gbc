@@ -10,11 +10,13 @@ class ControlCenter extends Component {
     }
 
     render() {
+        const {returnStyles} =  this.props;
+
         return(
             <div className="control-center">
                 <Tabs currentTab={this.currentTab()}
                       switchTab={this.switchTab}/>
-                {this.currentTab() === 'Style' && <StyleMenu/>}
+                {this.currentTab() === 'Style' && <StyleMenu returnStyles={returnStyles}/>}
                 {this.currentTab() === 'Export' && <ExportMenu/>}
             </div>
         )
