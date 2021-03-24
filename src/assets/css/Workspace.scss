@@ -7,9 +7,30 @@
   box-shadow: 0 4px 50px 9px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   z-index: 1;
+
+
+  display: flex;
+  justify-content: space-between;
 }
 
 .workspace_light {
   background: #F0F0F0;
   box-shadow: 0 4px 50px 9px rgba(0, 0, 0, 0.13);
+}
+
+
+
+
+
+.input {
+  width: 20vw;
+  height: 3vw;
+  display: inline;
+}
+
+.submit {
+  height: 3vw;
+  width: 7vw;
+  background: #1CEDE1;
+  display: inline;
 }
