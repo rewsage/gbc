@@ -16,7 +16,7 @@ let tree = [];
 if (pathComponents) {
     let folderDef = [];
     for (let jsFile of pathComponents) {
-        let pathPart = jsFile.split("/").slice(1);
+        let pathPart = jsFile.split("/").slice(2);
         let currentIndex = 0;
         let isNextFile = pathPart.length;
         let currentPath = "";
@@ -27,20 +27,18 @@ if (pathComponents) {
                 folderDef.push(currentPath);
                 let jsObject = {
                     "name": folder, "dirs": [],
-                    "files": [], "path": []
+                    "files": []
                 };
-                if (currentIndex + 1 < isNextFile) {
+                if (currentIndex + 2 < isNextFile) {
                     jsObject["dirs"].push(pathPart[currentIndex]);
                 } else {
                     let fileName = pathPart[pathPart.length - 1];
                     jsObject["files"].push(fileName);
-                    let pathFile = "./" + currentPath + fileName;
-                    jsObject["path"].push(pathFile);
                 }
                 tree.push(jsObject);
             } else {
                 let jsObject = tree[folderDef.indexOf(currentPath)];
-                if (currentIndex + 1 < isNextFile) {
+                if (currentIndex + 2 < isNextFile) {
                     if (!jsObject["dirs"].includes(pathPart[currentIndex])) {
                         jsObject["dirs"].push(pathPart[currentIndex]);
                     }
@@ -48,8 +46,6 @@ if (pathComponents) {
                     if (!jsObject["files"].includes(pathPart[pathPart.length - 1])) {
                         let fileName = pathPart[pathPart.length - 1];
                         jsObject["files"].push(fileName);
-                        let pathFile = "./" + currentPath + fileName;
-                        jsObject["path"].push(pathFile);
                     }
                 }
             }
