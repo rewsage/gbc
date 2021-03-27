@@ -25,13 +25,13 @@ class DropdownMenu extends Component {
     }
 
     handleChange = (event) => {
-        const {returnValue, styleType} = this.props;
+        const {getStyles, styleType} = this.props;
 
         this.setState({
             value: event.target.value
+        }, () => {
+            getStyles(styleType, this.state.value);
         });
-
-        returnValue(styleType, this.state.value);
     }
 }
 

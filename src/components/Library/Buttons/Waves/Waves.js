@@ -4,13 +4,16 @@ import "./Waves.css"
 class Waves extends Component {
     render() {
         const properties = this.props.className.split(" ");
+
         const colors = {
             background: '',
             color: ''
         }
+
         let size;
         let allUserClass = [];
-        let text = this.props.children ? this.props.children : "Scooby Doo";
+        let text = this.props.children || "Scooby Doo";
+
         for (let property of properties) {
             let propertyName = property.split("-")[0];
             let value = property.split("-")[1];
@@ -20,19 +23,22 @@ class Waves extends Component {
             } else if (propertyName === "bg") {
                 colors["background"] = value;
             } else if (propertyName === "sz") {
-                size = value;
+                size = value.toLowerCase();
             } else {
                 allUserClass.push(propertyName);
             }
         }
+
         let fullClass;
+
         if (size === "small") {
-            fullClass = `${allUserClass.join(" ")} buttonWaves buttonWaves_small`;
+            fullClass = `${allUserClass.join(" ")}buttonWaves buttonWaves_small`;
         } else if (size === "medium") {
-            fullClass = `${allUserClass.join(" ")} buttonWaves buttonWaves_medium`;
+            fullClass = `${allUserClass.join(" ")}buttonWaves buttonWaves_medium`;
         } else {
-            fullClass = `${allUserClass.join(" ")} buttonWaves`;
+            fullClass = `${allUserClass.join(" ")}buttonWaves`;
         }
+
         return (<button className={`${fullClass}`} style={colors}>
             <p>{text}</p>
             <span className={"buttonWaves__inner"}>

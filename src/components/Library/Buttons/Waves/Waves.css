@@ -1,11 +1,9 @@
 .buttonWaves {
-    width: 180px;
-    height: 70px;
     z-index: 0;
     position: relative;
-    padding: 20px;
+    padding: 16px;
     text-align: center;
-    font-size: 27px;
+    font-size: 24px;
 
     color: #333333;
     background: #F2C94C;
@@ -17,22 +15,15 @@
 }
 
 .buttonWaves_small {
-    width: 80px;
-    height: 30px;
-    font-size: 14px;
-    padding: 4px;
-}
-
-.buttonWaves_small:before {
-    border: 3px solid #fff;
+    font-size: 11px;
+    padding: 8px;
 }
 
 .buttonWaves_medium {
-    width: 120px;
-    height: 50px;
-    font-size: 23px;
-    padding: 12px;
+    font-size: 18px;
+    padding: 10px;
 }
+
 .buttonWaves:before {
     content: "";
     z-index: 1;
@@ -43,6 +34,10 @@
     height: 100%;
 
     border: 6px solid #fff;
+}
+
+.buttonWaves_small:before {
+    border: 3px solid #fff;
 }
 
 .buttonWaves:hover {

@@ -5,15 +5,18 @@ import ControlCenter from "./ControlCenter/ControlCenter";
 
 class Workspace extends React.Component {
     state = {
-        styles: {},
+        // sz: '',
+        //do not touch
     }
 
     render() {
         const {themeContext} = this.props;
         const {userComponentName} = this.props;
         const Component = components[userComponentName];
-        const currentComponent = userComponentName &&
-                                 <Component className={"cl-#33333 sz-small bg-#676767"}>{this.state.styles.text}</Component>;
+
+        const currentComponent = userComponentName && <Component className={this.buildClassName()}>
+                                                            {this.state.text}
+                                                      </Component>;
 
         return (
             <div className={`workspace workspace_${themeContext}`}>
@@ -21,16 +24,27 @@ class Workspace extends React.Component {
                     <div className="workspace__content">
                         {currentComponent}
                     </div>
-                    <ControlCenter returnStyles={this.getStyles}/>
+                    <ControlCenter getStyles={this.getStyles}/>
                 </div>
             </div>
         )
     }
 
-    getStyles = (stylesObj) => {
-        this.setState({
-            styles: stylesObj,
+    getStyles = (styleType, value) => {
+        this.setState({[styleType]: value}, () => {
+            console.log(this.state);
         })
+    }
+
+    buildClassName = () => {
+        let className = '';
+
+        for (let style in this.state) {
+            className += `${style}-${this.state[style]} `
+        }
+
+        console.log(className)
+        return className;
     }
 }
 

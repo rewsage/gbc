@@ -4,57 +4,33 @@ import DropdownMenu from "./DropdownMenu";
 import InputForm from "./InputForm";
 
 class StyleMenu extends Component {
-    constructor(props) {
-        super(props);
-
-        this.stylesObj = {
-            sz: '',
-            // fontWeight: '',
-            bg: '',
-            cl: '',
-            text: '',
-        }
-
-        this.state = {
-
-        }
-    }
-
     render () {
-        const fontSize = ["Small", "Medium", "Large"]
+        const {getStyles} = this.props;
+        const size = ["Small", "Medium", "Large"]
         // const fontWeight = ["Light", "Regular", "Bold"]
+
 
         return (
             <div className="control-menu">
-                <DropdownMenu label={"Font size"}
-                              elements={fontSize}
+                <DropdownMenu label={"Size"}
+                              elements={size}
                               styleType={'sz'}
-                              returnValue={this.getStyle}/>
+                              getStyles={getStyles}/>
                 {/*<DropdownMenu label={"Font weight"}*/}
                 {/*              elements={fontWeight}*/}
                 {/*              styleType={'fontWeight'}*/}
-                {/*              returnValue={this.getStyle}/>*/}
+                {/*              getStyles={getStyles}/>*/}
                 <InputForm label={"Background Color"}
                            styleType={'bg'}
-                           returnValue={this.getStyle}/>
+                           getStyles={getStyles}/>
                 <InputForm label={"Color"}
                            styleType={'cl'}
-                           returnValue={this.getStyle}/>
+                           getStyles={getStyles}/>
                 <InputForm label={"Text"}
                            styleType={'text'}
-                           returnValue={this.getStyle}/>
+                           getStyles={getStyles}/>
             </div>
         )
-    }
-
-    getStyle = (styleType, value) => {
-        const  {returnStyles} = this.props;
-
-        this.setState(state => {
-           state[styleType] = value;
-        }, () => {
-           returnStyles(this.state);
-        });
     }
 }
 
