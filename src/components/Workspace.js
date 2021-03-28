@@ -1,11 +1,10 @@
 import React from 'react';
 import '../assets/css/Workspace.scss'
-import * as components from "../Hub"
+import * as components from "../utils/Hub"
 import ControlCenter from "./ControlCenter/ControlCenter";
 
 class Workspace extends React.Component {
     state = {
-        // sz: '',
         //do not touch
     }
 
@@ -14,7 +13,7 @@ class Workspace extends React.Component {
         const {userComponentName} = this.props;
         const Component = components[userComponentName];
 
-        const currentComponent = userComponentName && <Component className={this.buildClassName()}>
+        const currentComponent = userComponentName && <Component className={`${this.buildClassName()}`}>
                                                             {this.state.text}
                                                       </Component>;
 
@@ -40,7 +39,9 @@ class Workspace extends React.Component {
         let className = '';
 
         for (let style in this.state) {
-            className += `${style}-${this.state[style]} `
+            if (style !== 'text') {
+                className += `${style}-${this.state[style]} `
+            }
         }
 
         console.log(className)

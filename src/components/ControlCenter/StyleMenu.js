@@ -6,20 +6,17 @@ import InputForm from "./InputForm";
 class StyleMenu extends Component {
     render () {
         const {getStyles} = this.props;
-        const size = ["Small", "Medium", "Large"]
-        // const fontWeight = ["Light", "Regular", "Bold"]
-
+        const fontWeight = ["Light", "Regular", "Bold"]
 
         return (
             <div className="control-menu">
-                <DropdownMenu label={"Size"}
-                              elements={size}
-                              styleType={'sz'}
+                <InputForm label={"Font Size"}
+                           styleType={'fs'}
+                           getStyles={getStyles}/>
+                <DropdownMenu label={"Font weight"}
+                              elements={fontWeight}
+                              styleType={'fw'}
                               getStyles={getStyles}/>
-                {/*<DropdownMenu label={"Font weight"}*/}
-                {/*              elements={fontWeight}*/}
-                {/*              styleType={'fontWeight'}*/}
-                {/*              getStyles={getStyles}/>*/}
                 <InputForm label={"Background Color"}
                            styleType={'bg'}
                            getStyles={getStyles}/>

@@ -1,53 +1,24 @@
 import React, {Component} from 'react';
 import "./Waves.css"
+import StyleReader from "../../../../utils/StyleReader";
+
 
 class Waves extends Component {
     render() {
-        const properties = this.props.className.split(" ");
-
-        const colors = {
-            background: '',
-            color: ''
-        }
-
-        let size;
-        let allUserClass = [];
         let text = this.props.children || "Scooby Doo";
+        let styleReader = new StyleReader(this.props.className);
 
-        for (let property of properties) {
-            let propertyName = property.split("-")[0];
-            let value = property.split("-")[1];
-
-            if (propertyName === "cl") {
-                colors["color"] = value;
-            } else if (propertyName === "bg") {
-                colors["background"] = value;
-            } else if (propertyName === "sz") {
-                size = value.toLowerCase();
-            } else {
-                allUserClass.push(propertyName);
-            }
-        }
-
-        let fullClass;
-
-        if (size === "small") {
-            fullClass = `${allUserClass.join(" ")}buttonWaves buttonWaves_small`;
-        } else if (size === "medium") {
-            fullClass = `${allUserClass.join(" ")}buttonWaves buttonWaves_medium`;
-        } else {
-            fullClass = `${allUserClass.join(" ")}buttonWaves`;
-        }
-
-        return (<button className={`${fullClass}`} style={colors}>
-            <p>{text}</p>
-            <span className={"buttonWaves__inner"}>
+        return (
+            <button className={styleReader.userClassName + "buttonWaves"} style={styleReader.style}>
+                <p>{text}</p>
+                <span className={"buttonWaves__inner"}>
                     <span className={"buttonWaves__wave"}/>
                     <span className={"buttonWaves__wave"}/>
                     <span className={"buttonWaves__wave"}/>
                     <span className={"buttonWaves__wave"}/>
                 </span>
-        </button>);
+            </button>
+        );
     }
 }
 

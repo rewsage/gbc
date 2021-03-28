@@ -1,0 +1,19 @@
+.classic-btn {
+  padding: 20px 24px;
+
+  color: #424242;
+  background: #EC9360;
+  border-radius: 100px;
+
+  transition: 0.2s color;
+}
+
+.classic-btn:hover {
+  color: white;
+}
+
+.classic-btn:active {
+  transform: translateY(2px);
+}
+
+
