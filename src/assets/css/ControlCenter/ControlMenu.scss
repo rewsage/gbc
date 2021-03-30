@@ -6,6 +6,11 @@
   flex-direction: column;
 }
 
+.control-menu_export {
+  width: max-content;
+  padding-top: 10px;
+}
+
 .control-menu__form{
   width: 260px;
   padding-bottom: 15px;
@@ -57,4 +62,8 @@
   width: 32%;
 }
 
+.control-menu {
+  display: flex;
+  flex-flow: column;
+}
 
