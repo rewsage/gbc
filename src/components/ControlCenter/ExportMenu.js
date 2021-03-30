@@ -5,12 +5,13 @@ import Instruction from "./Instruction";
 
 class StyleMenu extends Component {
     render () {
+        let componentName = this.props.componentName
         return (
             <div className="control-menu control-menu_export">
                 <p>To import a component:</p>
-                <Instruction text={'import Component from "a/b/c/hj"'} id={"js"} />
+                <Instruction text={'import ' + componentName + ' from "Library/Buttons/' + componentName + '"'} id={"js"} />
                 <p>Then you can use it:</p>
-                <Instruction text={'&ltComponent className="bg-red sz-small cl-blue" />'} id={"html"} />
+                <Instruction text={"&lt" + componentName + ' className="' + this.props.fullClass + '" />'} id={"html"} />
             </div>
         )
     }

@@ -16,7 +16,7 @@ class Instruction extends React.Component {
         return (
             <div className={"instruction"}>
                 <p className={"instruction__text"} id={this.props.id}>
-                    <Highlight className={"highlight"} language="javascript, html">
+                    <Highlight className={"highlight"} language="javascript, html, jsx">
                         {text}
                     </Highlight>
                 </p>

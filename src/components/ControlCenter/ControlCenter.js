@@ -6,18 +6,23 @@ import ExportMenu from "./ExportMenu";
 
 class ControlCenter extends Component {
     state = {
-        currentTab: 'Style',
+        currentTab: 'Style'
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.componentName !== this.props.componentName) {
+            this.setState({currentTab: 'Style'})
+        }
     }
 
     render() {
         const {getStyles} =  this.props;
-
         return(
             <div className="control-center">
                 <Tabs currentTab={this.currentTab()}
                       switchTab={this.switchTab}/>
-                {this.currentTab() === 'Style' && <StyleMenu getStyles={getStyles}/>}
-                {this.currentTab() === 'Export' && <ExportMenu/>}
+                    {this.currentTab() === 'Style' && <StyleMenu getStyles={getStyles}/>}
+                    {this.currentTab() === 'Export' && <ExportMenu componentName={this.props.componentName} fullClass={this.props.fullClass}/>}
             </div>
         )
     }
