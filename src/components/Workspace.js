@@ -12,18 +12,21 @@ class Workspace extends React.Component {
         const {themeContext} = this.props;
         const {userComponentName} = this.props;
         const Component = components[userComponentName];
-
-        const currentComponent = userComponentName && <Component className={`${this.buildClassName()}`}>
+        const className = this.buildClassName();
+        const currentComponent = userComponentName && <Component className={className}>
                                                             {this.state.text}
                                                       </Component>;
 
+        const currentMenu = userComponentName && <ControlCenter getStyles={this.getStyles}
+                                                                componentName={userComponentName}
+                                                                fullClassName={className}/>;
         return (
-            <div className={`workspace workspace_${themeContext}`}>
+            <div className={`workspace workspace_${themeContext}`} key={userComponentName}>
                 <div className="workspace__inner">
                     <div className="workspace__content">
                         {currentComponent}
                     </div>
-                    <ControlCenter getStyles={this.getStyles}/>
+                    {currentMenu}
                 </div>
             </div>
         )
@@ -39,12 +42,11 @@ class Workspace extends React.Component {
         let className = '';
 
         for (let style in this.state) {
-            if (style !== 'text') {
+            if (style !== 'text' && style !== this.state.componentName) {
                 className += `${style}-${this.state[style]} `
             }
         }
 
-        console.log(className)
         return className;
     }
 }

@@ -1,9 +1,17 @@
 .control-menu {
   padding: 20px 45px 5px 45px;
   overflow: auto;
-  max-height: 300px;
+  height: 260px;
 
   display: flex;
   flex-direction: column;
 }
 
+.control-menu_export {
+  width: max-content;
+  padding-top: 10px;
+}
+
+.control-menu__text {
+  font-weight: 600;
+}

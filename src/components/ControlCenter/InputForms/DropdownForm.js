@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class DropdownForm extends Component {
     state = {
-        value: '',
+        value: 'Regular',
     }
 
     render () {
