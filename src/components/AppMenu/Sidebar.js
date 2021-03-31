@@ -25,6 +25,7 @@ class Sidebar extends Component {
 
                         <div className="sidebar__wrapper">
                             <button className={"tree-element__dir tree-element__dir_root"} onClick={this.goDown}>
+                                <div className={`tree-element__highlighter tree-element__highlighter_disabled`}/>
                                 {arrowIcon}
                                 {folderIcon}
                                 {list[this.state.id].name}

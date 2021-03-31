@@ -10,34 +10,56 @@ class Instruction extends React.Component {
     }
 
     render() {
-        let text = (this.props.id === "html") ?
-            <p dangerouslySetInnerHTML={{__html: this.props.text}} /> :
-            this.props.text;
+        const {id, componentName, fullClassName, componentText} = this.props;
+        let closingTagText = '" />';
+        let text;
+
+        if (componentText !== undefined) {
+            closingTagText = '" >' + componentText + "&lt" + componentName + ' />'
+        }
+
+        switch (id) {
+            case 'js':
+                text = 'import ' + componentName + ' from "Library/Buttons/' + componentName + '"';
+                break
+            default:
+                text = "&lt" + componentName + ' className="' + fullClassName + closingTagText;
+        }
+
+        text = (id === "html") ? <p dangerouslySetInnerHTML={{__html: text}} /> : text;
+
+
         return (
             <div className={"instruction"}>
-                <p className={"instruction__text"} id={this.props.id}>
+                <p className={"instruction__text"} id={id}>
                     <Highlight className={"highlight"} language="javascript, html, jsx">
                         {text}
                     </Highlight>
                 </p>
-                <button disabled={this.state.isDisabled} onClick={this.copyToClipboard} className={"instruction__button"}>
+                <button disabled={this.state.isDisabled}
+                        onClick={this.copyToClipboard}
+                        className={"instruction__button"}>
                     {this.state.textButton}
                 </button>
             </div>
         )
     }
+
     copyToClipboard = () => {
         let str = document.getElementById(this.props.id).innerText;
         let el = document.createElement('textarea');
+
         el.value = str;
         document.body.appendChild(el);
         el.select();
         document.execCommand('copy');
         document.body.removeChild(el);
+
         this.setState({
             textButton: "Copied",
             isDisabled: true
         })
+
         setTimeout(this.backCopy, 1000)
     }
     backCopy = () => {
