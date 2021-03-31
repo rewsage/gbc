@@ -36,7 +36,8 @@ class Workspace extends React.Component {
 
         const currentMenu = userComponentName && <ControlCenter getStyles={this.getStyles}
                                                                 componentName={userComponentName}
-                                                                fullClassName={className}/>;
+                                                                fullClassName={className}
+                                                                componentText={this.state.text}/>;
         return (
             <div className={`workspace workspace_${themeContext}`} key={userComponentName}>
                 <div className="workspace__inner">
@@ -57,6 +58,7 @@ class Workspace extends React.Component {
         this.setState({
             [userComponentName]: updatedObj
         })
+        this.setState({[styleType]: value})
     }
 
     buildClassName = (componentName) => {

@@ -35,6 +35,7 @@ class InnerTree extends Component {
             <button className={"tree-element__dir"}
                     key={index}
                     onClick={this.goDown}>
+                <div className={`tree-element__highlighter tree-element__highlighter_disabled`}/>
                 {arrowIcon}
                 {folderIcon}
                 {dir}
@@ -42,7 +43,7 @@ class InnerTree extends Component {
         ));
 
         const fileBtn = listPosition.files.map((file, index) => (
-           <FileBtn key = {index}
+           <FileBtn key={index}
                     file={file}
                     callComponent={this.props.callComponent}
                     userComponentName={this.props.userComponentName}/>

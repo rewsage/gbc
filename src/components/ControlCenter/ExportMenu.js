@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import '../../assets/css/ControlCenter/ControlMenu.scss';
-import {text} from "@fortawesome/fontawesome-svg-core";
 import Instruction from "./Instruction";
 
 class StyleMenu extends Component {
     render () {
-        const {componentName, fullClassName} = this.props;
+        const {componentName, fullClassName, componentText} = this.props;
 
         return (
             <div className="control-menu control-menu_export">
                 <p className="control-menu__text">To import a component:</p>
-                <Instruction text={'import ' + componentName + ' from "Library/Buttons/' + componentName + '"'} id={"js"} />
+                <Instruction id={"js"}
+                             componentName={componentName}
+                             fullClassName={fullClassName}
+                             componentText={componentText}/>
+
                 <p className="control-menu__text">Then you can use it:</p>
-                <Instruction text={"&lt" + componentName + ' className="' + fullClassName + '" />'} id={"html"} />
+                <Instruction id={"html"}
+                             componentName={componentName}
+                             fullClassName={fullClassName}
+                             componentText={componentText}/>
             </div>
         )
     }

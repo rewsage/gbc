@@ -25,10 +25,13 @@ class FileBtn extends Component {
 
         return (
             <button className="tree-element__file"
-                    onClick={ this.displayComponent }>
-                <div className={`tree-element__highlighter ${condition}`}/>
-                {fileIcon}
-                {this.props.file}
+                    onClick={ this.displayComponent }
+                    onMouseOver={ this.eliminate }>
+                <div className={`tree-element__highlighter tree-element__highlighter_${condition}`}/>
+                    {fileIcon}
+                <div className="tree-element__wrapper">
+                    {this.props.file}
+                </div>
             </button>
         )
     }
@@ -38,6 +41,12 @@ class FileBtn extends Component {
         const fileName = this.props.file.slice(0, -3);
         callComponent(fileName)
 
+        this.setState({
+            isCalled: !this.isCalled()
+        })
+    }
+
+    eliminate = () => {
         this.setState({
             isCalled: !this.isCalled()
         })
