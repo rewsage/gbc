@@ -24,7 +24,7 @@ class StyleReader {
 
             switch (propertyName) {
                 case 'fs':
-                    this._style.fontSize = value;
+                    this._style.fontSize = value + 'px';
                     break;
                 case 'fw':
                     this._style.fontWeight = this._handleFwProperty(value);

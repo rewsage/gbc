@@ -1,60 +1,9 @@
 .control-menu {
-  padding: 20px 0 0 45px;
+  padding: 20px 45px 5px 45px;
   overflow: auto;
+  max-height: 300px;
 
   display: flex;
   flex-direction: column;
 }
-
-.control-menu__form{
-  width: 260px;
-  padding-bottom: 15px;
-
-  display: flex;
-  justify-content: space-between;
-}
-
-.control-menu__label {
-  font-size: 16px;
-  font-weight: 700;
-
-  //margin-right: 25px;
-}
-
-.control-menu__dropdown {
-  background: #f0f0f0;
-
-
-  font-size: 17px;
-  border-radius: 6px;
-
-  border: 2px #d3d3d3 solid;
-  color: #686868;
-  padding: 3px 12px;
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-
-  &:after {
-    content: "";
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    font-size: 60%;
-    line-height: 30px;
-    padding: 0 7px;
-    background: #000;
-    color: red;
-    pointer-events: none;
-  }
-}
-
-.control-menu__input {
-  width: 32%;
-}
-
 

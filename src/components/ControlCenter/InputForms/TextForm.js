@@ -1,0 +1,35 @@
+import React, { Component } from 'react';
+
+class TextForm extends Component {
+    state = {
+        value: '',
+    }
+
+    render () {
+        const {label} = this.props;
+
+        return (
+            <form className="form">
+                <label className="form__label">{label}</label>
+                <div className="form__wrapper">
+                    <textarea className="form__textarea"
+                              value={this.state.value}
+                              onChange={this.handleChange}>
+                    </textarea>
+                </div>
+            </form>
+        )
+    }
+
+    handleChange = (event) => {
+        const {getStyles, styleType} = this.props;
+
+        this.setState({
+            value: event.target.value
+        }, () => {
+            getStyles(styleType, this.state.value);
+        });
+    }
+}
+
+export default TextForm;

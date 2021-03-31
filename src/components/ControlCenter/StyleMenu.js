@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import '../../assets/css/ControlCenter/ControlMenu.scss';
-import DropdownMenu from "./DropdownMenu";
-import InputForm from "./InputForm";
+import '../../assets/css/ControlCenter/InputForms.scss';
+import DropdownForm from "./InputForms/DropdownForm";
+import TextForm from "./InputForms/TextForm";
+import NumberForm from "./InputForms/NumberForm";
+import ColorForm from "./InputForms/ColorForm";
 
 class StyleMenu extends Component {
     render () {
@@ -10,22 +12,22 @@ class StyleMenu extends Component {
 
         return (
             <div className="control-menu">
-                <InputForm label={"Font Size"}
-                           styleType={'fs'}
+                <NumberForm label={"Font Size"}
+                            styleType={'fs'}
+                            getStyles={getStyles}/>
+                <ColorForm label={"Background"}
+                           styleType={'bg'}
                            getStyles={getStyles}/>
-                <DropdownMenu label={"Font weight"}
+                <ColorForm label={"Color"}
+                           styleType={'cl'}
+                           getStyles={getStyles}/>
+                <DropdownForm label={"Font weight"}
                               elements={fontWeight}
                               styleType={'fw'}
                               getStyles={getStyles}/>
-                <InputForm label={"Background Color"}
-                           styleType={'bg'}
-                           getStyles={getStyles}/>
-                <InputForm label={"Color"}
-                           styleType={'cl'}
-                           getStyles={getStyles}/>
-                <InputForm label={"Text"}
-                           styleType={'text'}
-                           getStyles={getStyles}/>
+                <TextForm label={"Text"}
+                          styleType={'text'}
+                          getStyles={getStyles}/>
             </div>
         )
     }
