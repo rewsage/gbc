@@ -5,14 +5,31 @@ import ControlCenter from "./ControlCenter/ControlCenter";
 
 class Workspace extends React.Component {
     state = {
-        //do not touch
+        "Waves": {
+            fs: "18",
+            fw: "400",
+            bg: "#fff",
+            cl: "#000"
+        },
+        "Classic": {
+            fs: "18",
+            fw: "400",
+            bg: "#000",
+            cl: "#fff"
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.userComponentName !== this.props.userComponentName) {
+            this.setStyle(prevProps.userComponentName, this.state[prevProps.userComponentName]);
+        }
     }
 
     render() {
         const {themeContext} = this.props;
         const {userComponentName} = this.props;
         const Component = components[userComponentName];
-        const className = this.buildClassName();
+        const className = this.buildClassName(userComponentName);
         const currentComponent = userComponentName && <Component className={className}>
                                                             {this.state.text}
                                                       </Component>;
@@ -33,21 +50,28 @@ class Workspace extends React.Component {
     }
 
     getStyles = (styleType, value) => {
-        this.setState({[styleType]: value}, () => {
-            console.log(this.state);
+        const {userComponentName} = this.props;
+        let updatedObj = this.state[userComponentName];
+        updatedObj[styleType] = value
+
+        this.setState({
+            [userComponentName]: updatedObj
         })
     }
 
-    buildClassName = () => {
+    buildClassName = (componentName) => {
         let className = '';
 
-        for (let style in this.state) {
-            if (style !== 'text' && style !== this.state.componentName) {
-                className += `${style}-${this.state[style]} `
+        for (let style in this.state[componentName]) {
+            if (style !== 'text') {
+                className += `${style}-${this.state[componentName][style]} `
             }
         }
-
         return className;
+    }
+
+    setStyle = (componentName, style) => {
+        this.setState({[componentName]: style})
     }
 }
 
