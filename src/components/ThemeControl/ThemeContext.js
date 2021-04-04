@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-const { Provider, Consumer } = React.createContext();
+
+const { Provider, Consumer } = React.createContext('light');
 
 class ThemeContextProvider extends Component {
     state = {

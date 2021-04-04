@@ -3,24 +3,50 @@ import {ChromePicker} from "react-color";
 
 
 class ColorForm extends Component {
-    state = {
-        isActive: false,
-        background: '#ec9360',
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isOpen: false,
+            background: '#ec9360',
+        };
+
+        this.toggleContainer = React.createRef();
+    }
+
+    componentDidMount() {
+        window.addEventListener('click', this.onClickOutsideHandler);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('click', this.onClickOutsideHandler);
+    }
+
+    onClickHandler = () => {
+        this.setState(currentState => ({
+            isOpen: !currentState.isOpen
+        }));
+    }
+
+    onClickOutsideHandler = (event) => {
+        if (this.state.isOpen && !this.toggleContainer.current.contains(event.target)) {
+            this.setState({ isOpen: false });
+        }
+    }
 
     render() {
         const {label} = this.props;
-        const colorPicker = this.isActive() && <ChromePicker color={ this.state.background }
-                                                             onChange={ this.handleChange }
-                                                             disableAlpha={true}/>;
+        const colorPicker = this.isOpen() && <ChromePicker color={ this.state.background }
+                                                           onChange={ this.handleChange }
+                                                           disableAlpha={true}/>;
 
         return (
             <form className="form">
                 <label className="form__label">{label}</label>
-                <div className="form__wrapper">
+                <div className="form__wrapper" ref={this.toggleContainer}>
                    <button className="form__color-btn"
                           type="button"
-                          onClick={this.handleClick}>
+                          onClick={this.onClickHandler}>
                        <div style={{background: this.state.background}}/>
                        <p>{this.state.background}</p>
                     </button>
@@ -40,12 +66,8 @@ class ColorForm extends Component {
         getStyles(styleType, this.state.background);
     }
 
-    handleClick = () => {
-        this.setState({ isActive: !this.isActive() })
-    }
-
-    isActive = () => {
-        return this.state.isActive;
+    isOpen = () => {
+        return this.state.isOpen;
     }
 }
 

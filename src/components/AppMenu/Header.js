@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLaptopCode } from "@fortawesome/free-solid-svg-icons"
 import ThemeSwitcher from "../ThemeControl/ThemeSwitcher"
 
-function Header(props) {
+function Header() {
     const headerLogo = <FontAwesomeIcon className="header__logo" icon={faLaptopCode}/>
 
     return (
@@ -13,7 +13,7 @@ function Header(props) {
                 <div className="header__inner">
                     {headerLogo}
                     <p className="header__title">GBC</p>
-                    <ThemeSwitcher className="header__switcher"/>
+                    <ThemeSwitcher/>
                 </div>
             </div>
         </header>

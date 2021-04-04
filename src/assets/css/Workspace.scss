@@ -7,7 +7,6 @@
   border-radius: 15px;
   z-index: 1;
 
-
   display: flex;
   justify-content: space-between;
 }
@@ -27,5 +26,7 @@
 }
 
 .workspace__content {
+  height: 100%;
   padding: 40px 0 0 70px;
+  overflow: auto;
 }
