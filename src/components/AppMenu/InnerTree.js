@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolder, faFolderOpen } from "@fortawesome/free-regular-svg-icons"
 import { faCaretRight, faCaretDown, faFileCode } from "@fortawesome/free-solid-svg-icons"
 import FileBtn from "./FileBtn"
+import ButtonDir from "./ButtonDir";
 
 const folderOpen = <FontAwesomeIcon className="tree-element__icon tree-element__icon_folder" icon={faFolderOpen}/>
 const folderClose = <FontAwesomeIcon className="tree-element__icon tree-element__icon_folder" icon={faFolder}/>
@@ -17,33 +18,26 @@ class InnerTree extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: this.props.id + 1,
             isActive: false
         }
     }
 
     render () {
-        const arrowIcon = this.isActive() ? arrowDown : arrowRight;
-        const folderIcon = this.isActive() ? folderOpen : folderClose;
-        const listPosition = list[this.props.id];
+        let indexDir;
+        for (let index = 0; index < list.length; index++) {
+            if (list[index].name === this.props.openDir) {
+               indexDir = index;
+            }
+        }
+        const currentDir = list[indexDir];
 
-        const innerTree = this.isActive() && <InnerTree id={this.state.id}
-                                                        callComponent={this.props.callComponent}
-                                                        userComponentName={this.props.userComponentName}/>
-
-        const dirBtn = listPosition.dirs.map((dir, index) => (
-            <button className={"tree-element__dir"}
-                    key={index}
-                    onClick={this.goDown}>
-                <div className={`tree-element__highlighter tree-element__highlighter_disabled`}/>
-                {arrowIcon}
-                {folderIcon}
-                {dir}
-            </button>
+        const dirBtn = currentDir.dirs.map((dir) => (
+            <ButtonDir dirName={dir} callComponent={this.props.callComponent}
+                                     userComponentName={this.props.userComponentName}/>
         ));
 
-        const fileBtn = listPosition.files.map((file, index) => (
-           <FileBtn key={index}
+        const fileBtn = currentDir.files.map((file) => (
+           <FileBtn key={file}
                     file={file}
                     callComponent={this.props.callComponent}
                     userComponentName={this.props.userComponentName}/>
@@ -52,18 +46,9 @@ class InnerTree extends Component {
         return (
             <div className="tree-element">
                 {dirBtn}
-                {innerTree}
                 {fileBtn}
             </div>
         )
-    }
-
-     goDown = () => {
-        this.setState((state) => ({ isActive: !state.isActive }))
-    }
-
-    isActive = () => {
-        return this.state.isActive;
     }
 }
 

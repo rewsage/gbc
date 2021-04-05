@@ -8,14 +8,22 @@ class Workspace extends React.Component {
         "Waves": {
             fs: "18",
             fw: "400",
-            bg: "#fff",
-            cl: "#000"
+            bg: "#F2C94C",
+            cl: "#333333"
         },
         "Classic": {
             fs: "18",
             fw: "400",
-            bg: "#000",
-            cl: "#fff"
+            bg: "#EC9360",
+            cl: "#424242"
+        },
+        "Card": {
+            fs: "18",
+            fw: "400",
+            bg: "#282C34",
+            cl: "#CDCDCD",
+            bw: 'medium',
+            bc: '#EC9360'
         }
     }
 

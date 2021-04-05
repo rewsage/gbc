@@ -21,7 +21,7 @@ class ControlCenter extends Component {
             <div className="control-center">
                 <Tabs currentTab={this.currentTab()}
                       switchTab={this.switchTab}/>
-                    {this.currentTab() === 'Style' && <StyleMenu getStyles={getStyles}/>}
+                    {this.currentTab() === 'Style' && <StyleMenu getStyles={getStyles} componentName={componentName}/>}
                     {this.currentTab() === 'Export' && <ExportMenu componentName={componentName}
                                                                    fullClassName={fullClassName}
                                                                    componentText={componentText}/>}
