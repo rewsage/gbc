@@ -5,14 +5,39 @@ import ControlCenter from "./ControlCenter/ControlCenter";
 
 class Workspace extends React.Component {
     state = {
-        //do not touch
+        "Waves": {
+            fs: "18",
+            fw: "400",
+            bg: "#F2C94C",
+            cl: "#333333"
+        },
+        "Classic": {
+            fs: "18",
+            fw: "400",
+            bg: "#EC9360",
+            cl: "#424242"
+        },
+        "Card": {
+            fs: "18",
+            fw: "400",
+            bg: "#282C34",
+            cl: "#CDCDCD",
+            bw: 'medium',
+            bc: '#EC9360'
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.userComponentName !== this.props.userComponentName) {
+            this.setStyle(prevProps.userComponentName, this.state[prevProps.userComponentName]);
+        }
     }
 
     render() {
         const {themeContext} = this.props;
         const {userComponentName} = this.props;
         const Component = components[userComponentName];
-        const className = this.buildClassName();
+        const className = this.buildClassName(userComponentName);
         const currentComponent = userComponentName && <Component className={className}>
                                                             {this.state.text}
                                                       </Component>;
@@ -34,19 +59,29 @@ class Workspace extends React.Component {
     }
 
     getStyles = (styleType, value) => {
+        const {userComponentName} = this.props;
+        let updatedObj = this.state[userComponentName];
+        updatedObj[styleType] = value
+
+        this.setState({
+            [userComponentName]: updatedObj
+        })
         this.setState({[styleType]: value})
     }
 
-    buildClassName = () => {
+    buildClassName = (componentName) => {
         let className = '';
 
-        for (let style in this.state) {
-            if (style !== 'text' && style !== this.state.componentName) {
-                className += `${style}-${this.state[style]} `
+        for (let style in this.state[componentName]) {
+            if (style !== 'text') {
+                className += `${style}-${this.state[componentName][style]} `
             }
         }
-
         return className;
+    }
+
+    setStyle = (componentName, style) => {
+        this.setState({[componentName]: style})
     }
 }
 

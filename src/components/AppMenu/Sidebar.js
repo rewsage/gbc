@@ -5,14 +5,13 @@ import { default as InnerTree, folderOpen, folderClose, arrowRight, arrowDown } 
 
 class Sidebar extends Component {
     state = {
-        id: 0,
         isActive: false
     }
 
     render() {
         const arrowIcon = this.isActive() ? arrowDown : arrowRight;
         const folderIcon = this.isActive() ? folderOpen : folderClose;
-        const innerTree = this.isActive() && <InnerTree id={this.state.id}
+        const innerTree = this.isActive() && <InnerTree openDir={list[0].name}
                                                         callComponent={this.props.callComponent}
                                                         userComponentName={this.props.userComponentName}/>
 
@@ -28,7 +27,7 @@ class Sidebar extends Component {
                                 <div className={`tree-element__highlighter tree-element__highlighter_disabled`}/>
                                 {arrowIcon}
                                 {folderIcon}
-                                {list[this.state.id].name}
+                                {list[0].name}
                             </button>
 
                             {innerTree}

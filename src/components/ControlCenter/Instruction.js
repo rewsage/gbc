@@ -20,10 +20,10 @@ class Instruction extends React.Component {
 
         switch (id) {
             case 'js':
-                text = 'import ' + componentName + ' from "Library/Buttons/' + componentName + '"';
+                text = `import ${componentName} from "Library/Buttons/${componentName}"`;
                 break
             default:
-                text = "&lt" + componentName + ' className="' + fullClassName + closingTagText;
+                text = `&lt${componentName} className="${fullClassName} ${closingTagText}`;
         }
 
         text = (id === "html") ? <p dangerouslySetInnerHTML={{__html: text}} /> : text;
@@ -32,7 +32,7 @@ class Instruction extends React.Component {
         return (
             <div className={"instruction"}>
                 <p className={"instruction__text"} id={id}>
-                    <Highlight className={"highlight"} language="javascript, html, jsx">
+                    <Highlight className={"highlight"}>
                         {text}
                     </Highlight>
                 </p>

@@ -2,7 +2,7 @@ const fs = require("fs");
 const pattern = /(\.\/|\/\w)[\w\/]+/g;
 let pathComponents;
 try {
-    const data = fs.readFileSync("utils/Hub.js", 'utf-8')
+    const data = fs.readFileSync("Hub.js", 'utf-8')
     pathComponents = data.match(pattern).map((item) => {
         if (item.slice(-3, 0) !== ".js") {
             return item += ".js"
@@ -54,7 +54,7 @@ if (pathComponents) {
 }
 
 try {
-    fs.writeFileSync('list.json', JSON.stringify(tree));
+    fs.writeFileSync('../list.json', JSON.stringify(tree));
 } catch (err) {
     console.error(err);
 }

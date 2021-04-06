@@ -35,6 +35,12 @@ class StyleReader {
                 case 'cl':
                     this._style.color = value;
                     break;
+                case 'bc':
+                    this._style.borderColor = value;
+                    break;
+                case 'bw':
+                    this._style.borderWidth = value + 'px';
+                    break;
                 default:
                     this._userClassName += property;
             }
