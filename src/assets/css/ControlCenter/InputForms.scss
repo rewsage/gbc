@@ -14,7 +14,7 @@
 
 .form__wrapper {
   position: relative;
-  width: 15%;
+  width: 75%;
 
   display: flex;
   justify-content: flex-start;
@@ -26,7 +26,7 @@
 }
 
 .form__color-btn {
-  width: 100%;
+  width: 20%;
 
   border-radius: 6px;
   border: 2px #d3d3d3 solid;
@@ -65,12 +65,12 @@
 }
 
 .form__dropdown {
-  width: 100%;
+  width: 20%;
 }
 
 .form__textarea {
-  width: 100%;
-  max-height: 30px;
+  width: 20%;
+  height: 30px;
 
   border-radius: 6px;
   outline: none;

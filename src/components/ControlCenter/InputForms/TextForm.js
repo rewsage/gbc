@@ -11,7 +11,7 @@ class TextForm extends Component {
         return (
             <form className="form">
                 <label className="form__label">{label}</label>
-                <div className="form__wrapper">
+                <div className="form__wrapper form__wrapper_long">
                     <textarea className="form__textarea"
                               value={this.state.value}
                               onChange={this.handleChange}>
