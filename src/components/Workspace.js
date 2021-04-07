@@ -5,26 +5,9 @@ import ControlCenter from "./ControlCenter/ControlCenter";
 
 class Workspace extends React.Component {
     state = {
-        "Waves": {
-            fs: "18",
-            fw: "400",
-            bg: "#F2C94C",
-            cl: "#333333"
-        },
-        "Classic": {
-            fs: "18",
-            fw: "400",
-            bg: "#EC9360",
-            cl: "#424242"
-        },
-        "Card": {
-            fs: "18",
-            fw: "400",
-            bg: "#282C34",
-            cl: "#CDCDCD",
-            bw: 'medium',
-            bc: '#EC9360'
-        }
+        "Cards": {},
+        "Classic": {},
+        "Waves": {},
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -71,13 +54,16 @@ class Workspace extends React.Component {
 
     buildClassName = (componentName) => {
         let className = '';
+        let styleObj = this.state[componentName]
 
-        for (let style in this.state[componentName]) {
-            if (style !== 'text') {
-                className += `${style}-${this.state[componentName][style]} `
+        for (let style in styleObj) {
+            if (style !== 'text' && styleObj[style] !== '') {
+                className += `${style}-${styleObj[style]} `
             }
         }
-        return className;
+
+        console.log(this.state);
+        return className.slice(0, -1);
     }
 
     setStyle = (componentName, style) => {

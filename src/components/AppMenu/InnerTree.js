@@ -31,13 +31,15 @@ class InnerTree extends Component {
         }
         const currentDir = list[indexDir];
 
-        const dirBtn = currentDir.dirs.map((dir) => (
-            <ButtonDir dirName={dir} callComponent={this.props.callComponent}
-                                     userComponentName={this.props.userComponentName}/>
+        const dirBtn = currentDir.dirs.map((dir, index) => (
+            <ButtonDir key={index}
+                       dirName={dir}
+                       callComponent={this.props.callComponent}
+                       userComponentName={this.props.userComponentName}/>
         ));
 
         const fileBtn = currentDir.files.map((file) => (
-           <FileBtn key={file}
+            <FileBtn key={file}
                     file={file}
                     callComponent={this.props.callComponent}
                     userComponentName={this.props.userComponentName}/>

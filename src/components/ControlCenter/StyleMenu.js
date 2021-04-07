@@ -7,24 +7,24 @@ import ColorForm from "./InputForms/ColorForm";
 
 class StyleMenu extends Component {
     render () {
-        const {getStyles} = this.props;
+        const {getStyles, componentName, componentStyle} = this.props;
         const fontWeight = ["Light", "Regular", "Bold"]
+
         let numberForm = <NumberForm label={"Font Size"}
                                      styleType={'fs'}
                                      getStyles={getStyles}/>;
         let colorBg = <ColorForm label={"Background"}
-                                   styleType={'bg'}
-                                   getStyles={getStyles}/>;
+                                 styleType={'bg'}
+                                 getStyles={getStyles}/>;
         let color = <ColorForm label={"Color"}
-                               styleType={'bg'}
+                               styleType={'cl'}
                                getStyles={getStyles}/>;
         let borderWidth  = <NumberForm label={"Border Width"}
-                                 styleType={'bw'}
-                                 getStyles={getStyles}/>;
+                                       styleType={'bw'}
+                                       getStyles={getStyles}/>;
         let borderColor = <ColorForm label={"Border Color"}
                                      styleType={'bc'}
                                      getStyles={getStyles}/>;
-
         let dropdownForm = <DropdownForm label={"Font weight"}
                                          elements={fontWeight}
                                          styleType={'fw'}
@@ -39,7 +39,7 @@ class StyleMenu extends Component {
 
         return (
             <div className="control-menu">
-                {formList[this.props.componentName]}
+                {formList[componentName]}
             </div>
         )
     }

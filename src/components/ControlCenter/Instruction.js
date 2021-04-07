@@ -11,11 +11,11 @@ class Instruction extends React.Component {
 
     render() {
         const {id, componentName, fullClassName, componentText} = this.props;
-        let closingTagText = '" />';
+        let closingTagText = '"/>';
         let text;
 
         if (componentText !== undefined) {
-            closingTagText = '" >' + componentText + "&lt" + componentName + ' />'
+            closingTagText = '">' + componentText + "&lt" + componentName + '/>'
         }
 
         switch (id) {
@@ -23,10 +23,10 @@ class Instruction extends React.Component {
                 text = `import ${componentName} from "Library/Buttons/${componentName}"`;
                 break
             default:
-                text = `&lt${componentName} className="${fullClassName} ${closingTagText}`;
+                text = `&lt${componentName} className="${fullClassName}${closingTagText}`;
         }
 
-        text = (id === "html") ? <p dangerouslySetInnerHTML={{__html: text}} /> : text;
+        text = (id === "html") ? <p dangerouslySetInnerHTML={{__html: text}}/> : text;
 
 
         return (

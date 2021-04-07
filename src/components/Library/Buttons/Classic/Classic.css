@@ -2,6 +2,8 @@
   padding: 20px 24px;
 
   border-radius: 100px;
+  background: #56CCF2;
+  color: white;
 
   transition: 0.2s color;
 }

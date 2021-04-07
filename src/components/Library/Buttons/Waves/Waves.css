@@ -1,4 +1,7 @@
 .buttonWaves {
+    background: #F2C94C;
+    color: #333333;
+
     z-index: 0;
     position: relative;
     padding: 16px;
