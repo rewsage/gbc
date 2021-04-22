@@ -1,8 +1,6 @@
 .instruction {
   display: flex;
   margin-bottom: 12px;
-
-
 }
 
 .instruction__text {
@@ -10,8 +8,13 @@
   margin-right: 10px;
 }
 
+.token-line {
+  display: flex;
+}
+
 .instruction__button {
   width: 120px;
+  max-height: 48px;
 
   border-radius: 5px;
   background: #EC9360;
@@ -26,10 +29,9 @@
 }
 
 .highlight {
-  display: flex;
   align-items: center;
-  height: 46px;
+  padding: 5px;
 
-  font-size: 18px;
+  font-size: 22px;
   border-radius: 5px;
 }

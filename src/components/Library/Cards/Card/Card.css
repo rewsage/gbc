@@ -15,3 +15,7 @@
 .card > p {
     padding: 2px 2px;
 }
+
+.card__button {
+    margin: 10px 0;
+}

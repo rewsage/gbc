@@ -1,8 +1,12 @@
+import React from "react";
+
 class StyleReader {
     constructor(className) {
         this.className = className;
         this._userClassName = '';
-        this._style = {}
+        this._style = {};
+        this.currentButton = 'Classic';
+        this.url = '';
     }
 
     get userClassName() {
@@ -13,6 +17,16 @@ class StyleReader {
     get style() {
         this._decomposeClassName();
         return this._style;
+    }
+
+    get button() {
+        this._decomposeClassName();
+        return this.currentButton;
+    }
+
+    get img() {
+        this._decomposeClassName();
+        return this.url;
     }
 
     _decomposeClassName() {
@@ -40,6 +54,12 @@ class StyleReader {
                     break;
                 case 'bw':
                     this._style.borderWidth = value + 'px';
+                    break;
+                case 'bt':
+                    this.currentButton = value;
+                    break;
+                case 'url':
+                    this.url = property.split("-").slice(1).join("-");
                     break;
                 default:
                     this._userClassName += property;

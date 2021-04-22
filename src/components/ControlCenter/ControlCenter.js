@@ -16,7 +16,7 @@ class ControlCenter extends Component {
     }
 
     render() {
-        const {getStyles, componentName, fullClassName, componentText} =  this.props;
+        const {getStyles, componentName, fullClassName, componentText, buttonClass} =  this.props;
         return(
             <div className="control-center">
                 <Tabs currentTab={this.currentTab()}
@@ -24,6 +24,7 @@ class ControlCenter extends Component {
                     {this.currentTab() === 'Style' && <StyleMenu getStyles={getStyles} componentName={componentName}/>}
                     {this.currentTab() === 'Export' && <ExportMenu componentName={componentName}
                                                                    fullClassName={fullClassName}
+                                                                   buttonClass={buttonClass}
                                                                    componentText={componentText}/>}
             </div>
         )
