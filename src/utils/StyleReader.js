@@ -50,10 +50,10 @@ class StyleReader {
     }
 
     _handleFwProperty(value) {
-        switch (value) {
-            case 'Light':
+        switch (value.toLowerCase()) {
+            case 'light':
                 return '400';
-            case 'Bold':
+            case 'bold':
                 return '600';
             default:
                 return '500';

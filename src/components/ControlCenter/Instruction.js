@@ -10,7 +10,7 @@ class Instruction extends React.Component {
     }
 
     render() {
-        const {id, componentName, fullClassName, componentText} = this.props;
+        const {id, componentName, className, componentText} = this.props;
         let closingTagText = '"/>';
         let text;
 
@@ -23,7 +23,7 @@ class Instruction extends React.Component {
                 text = `import ${componentName} from` + `"Library/Buttons/${componentName}"`;
                 break
             default:
-                text = `&lt${componentName} className="${fullClassName}${closingTagText}`;
+                text = `&lt${componentName} className="${className}${closingTagText}`;
         }
 
         text = (id === "html") ? <p dangerouslySetInnerHTML={{__html: text}}/> : text;

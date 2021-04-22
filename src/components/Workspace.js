@@ -58,7 +58,7 @@ class Workspace extends React.Component {
             }
         }
 
-        console.log(this.state);
+        console.log(className);
         return className.slice(0, -1);
     }
 
