@@ -15,6 +15,14 @@ class ColorForm extends Component {
     }
 
     componentDidMount() {
+        const {componentStyle, styleType} = this.props;
+
+        if (componentStyle[styleType] !== '') {
+            this.setState({
+                background: componentStyle[styleType],
+            })
+        }
+
         window.addEventListener('click', this.onClickOutsideHandler);
     }
 
@@ -62,8 +70,11 @@ class ColorForm extends Component {
     handleChange = (color) => {
         const { styleType, getStyles } = this.props;
 
-        this.setState({ background: color.hex });
-        getStyles(styleType, this.state.background);
+        this.setState({
+            background: color.hex
+        },() => {
+            getStyles(styleType, this.state.background);
+        });
     }
 
     isOpen = () => {

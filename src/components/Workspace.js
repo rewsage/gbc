@@ -5,30 +5,27 @@ import ControlCenter from "./ControlCenter/ControlCenter";
 
 class Workspace extends React.Component {
     state = {
-        "Cards": {},
-        "Classic": {},
-        "Waves": {},
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.userComponentName !== this.props.userComponentName) {
-            this.setStyle(prevProps.userComponentName, this.state[prevProps.userComponentName]);
-        }
+        "Classic": { fs: '', bg: '', cl: '', fw: '', text: '' },
+        "Waves": { fs: '', bg: '', cl: '', fw: '', text: '' },
+        "Card": { fs: '', bg: '', cl: '', fw: '', text: '', bw: '', bc: '' },
     }
 
     render() {
-        const {themeContext} = this.props;
-        const {userComponentName} = this.props;
+        const {themeContext, userComponentName} = this.props;
         const Component = components[userComponentName];
+
+        const componentText = userComponentName && this.state[userComponentName].text;
+        const componentStyle = this.state[userComponentName];
         const className = this.buildClassName(userComponentName);
         const currentComponent = userComponentName && <Component className={className}>
-                                                            {this.state.text}
+                                                            {componentText}
                                                       </Component>;
 
         const currentMenu = userComponentName && <ControlCenter getStyles={this.getStyles}
+                                                                componentStyle={componentStyle}
                                                                 componentName={userComponentName}
-                                                                fullClassName={className}
-                                                                componentText={this.state.text}/>;
+                                                                className={className}
+                                                                componentText={componentText}/>;
         return (
             <div className={`workspace workspace_${themeContext}`} key={userComponentName}>
                 <div className="workspace__inner">
@@ -49,7 +46,6 @@ class Workspace extends React.Component {
         this.setState({
             [userComponentName]: updatedObj
         })
-        this.setState({[styleType]: value})
     }
 
     buildClassName = (componentName) => {
@@ -57,7 +53,7 @@ class Workspace extends React.Component {
         let styleObj = this.state[componentName]
 
         for (let style in styleObj) {
-            if (style !== 'text' && styleObj[style] !== '') {
+            if (style !== 'text' && styleObj.hasOwnProperty(style) && styleObj[style] !== '') {
                 className += `${style}-${styleObj[style]} `
             }
         }

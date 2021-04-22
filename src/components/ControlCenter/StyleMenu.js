@@ -1,45 +1,23 @@
 import React, { Component } from 'react';
 import '../../assets/css/ControlCenter/InputForms.scss';
-import DropdownForm from "./InputForms/DropdownForm";
-import TextForm from "./InputForms/TextForm";
-import NumberForm from "./InputForms/NumberForm";
-import ColorForm from "./InputForms/ColorForm";
+import FormTemplate from './FormTemplate';
 
 class StyleMenu extends Component {
     render () {
-        const {getStyles, componentName, componentStyle} = this.props;
-        const fontWeight = ["Light", "Regular", "Bold"]
+        const {getStyles, componentStyle} = this.props;
+        let formsList = [];
 
-        let numberForm = <NumberForm label={"Font Size"}
-                                     styleType={'fs'}
-                                     getStyles={getStyles}/>;
-        let colorBg = <ColorForm label={"Background"}
-                                 styleType={'bg'}
-                                 getStyles={getStyles}/>;
-        let color = <ColorForm label={"Color"}
-                               styleType={'cl'}
-                               getStyles={getStyles}/>;
-        let borderWidth  = <NumberForm label={"Border Width"}
-                                       styleType={'bw'}
-                                       getStyles={getStyles}/>;
-        let borderColor = <ColorForm label={"Border Color"}
-                                     styleType={'bc'}
-                                     getStyles={getStyles}/>;
-        let dropdownForm = <DropdownForm label={"Font weight"}
-                                         elements={fontWeight}
-                                         styleType={'fw'}
-                                         getStyles={getStyles}/>;
-        let textForm = <TextForm label={"Text"}
-                                 styleType={'text'}
-                                 getStyles={getStyles}/>;
-
-        const formList = {"Classic": [numberForm, colorBg, color, dropdownForm, textForm],
-                          "Waves": [numberForm, colorBg, color, dropdownForm, textForm],
-                          "Card": [numberForm, colorBg, color, dropdownForm, textForm, borderWidth, borderColor]};
+        for (let styleType in componentStyle) {
+            if (componentStyle.hasOwnProperty(styleType)) {
+                formsList.push(<FormTemplate styleType={styleType}
+                                             getStyles={getStyles}
+                                             componentStyle={componentStyle}/>)
+            }
+        }
 
         return (
             <div className="control-menu">
-                {formList[componentName]}
+                {formsList}
             </div>
         )
     }

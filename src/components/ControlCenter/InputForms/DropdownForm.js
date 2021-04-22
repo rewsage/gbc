@@ -5,6 +5,16 @@ class DropdownForm extends Component {
         value: 'Regular',
     }
 
+    componentDidMount() {
+        const {componentStyle, styleType} = this.props;
+
+        if (componentStyle[styleType] !== '') {
+            this.setState({
+                value: componentStyle[styleType],
+            })
+        }
+    }
+
     render () {
         const {label, elements} = this.props;
 
@@ -30,7 +40,7 @@ class DropdownForm extends Component {
         const {getStyles, styleType} = this.props;
 
         this.setState({
-            value: event.target.value
+            value: event.target.value,
         }, () => {
             getStyles(styleType, this.state.value);
         });

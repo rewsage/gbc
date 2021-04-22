@@ -20,7 +20,7 @@ class Instruction extends React.Component {
 
         switch (id) {
             case 'js':
-                text = `import ${componentName} from "Library/Buttons/${componentName}"`;
+                text = `import ${componentName} from` + `"Library/Buttons/${componentName}"`;
                 break
             default:
                 text = `&lt${componentName} className="${fullClassName}${closingTagText}`;
