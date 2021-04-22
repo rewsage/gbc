@@ -1,6 +1,7 @@
 import React from "react";
-import "../../assets/css/ControlCenter/Instruction.scss"
-import Highlight from "react-highlight";
+import "../../assets/css/ControlCenter/Instruction.scss";
+import Highlight, { defaultProps } from "prism-react-renderer";
+import theme from "prism-react-renderer/themes/oceanicNext";
 
 
 class Instruction extends React.Component {
@@ -10,32 +11,38 @@ class Instruction extends React.Component {
     }
 
     render() {
-        const {id, componentName, className, componentText} = this.props;
-        let closingTagText = '"/>';
+        const {id, componentName, className, componentText, additionText} = this.props;
         let text;
-
-        if (componentText !== undefined) {
-            closingTagText = '">' + componentText + "&lt" + componentName + '/>'
-        }
 
         switch (id) {
             case 'js':
-                text = `import ${componentName} from` + `"Library/Buttons/${componentName}"`;
+                text = `import ${componentName} from "path/to/Library/${componentName}/${componentName}";`;
                 break
             default:
-                text = `&lt${componentName} className="${className}${closingTagText}`;
+                if (componentText === '') {
+                    text = `<${componentName} className="${className}"${additionText}/>`;
+                } else {
+                    text = `<${componentName} className="${className}"${additionText}>${componentText}</${componentName}>`;
+                }
         }
-
-        text = (id === "html") ? <p dangerouslySetInnerHTML={{__html: text}}/> : text;
-
 
         return (
             <div className={"instruction"}>
-                <p className={"instruction__text"} id={id}>
-                    <Highlight className={"highlight"}>
-                        {text}
+                <div className={"instruction__text"} id={id}>
+                    <Highlight {...defaultProps} code={text} language="jsx" theme={theme}>
+                        {({ style, tokens, getLineProps, getTokenProps }) => (
+                            <pre className={"highlight"} style={style}>
+                                {tokens.map((line, i) => (
+                                    <div {...getLineProps({ line, key: i })}>
+                                        {line.map((token, key) => (
+                                            <span {...getTokenProps({ token, key })} />
+                                        ))}
+                                    </div>
+                                ))}
+                            </pre>
+                        )}
                     </Highlight>
-                </p>
+                </div>
                 <button disabled={this.state.isDisabled}
                         onClick={this.copyToClipboard}
                         className={"instruction__button"}>
