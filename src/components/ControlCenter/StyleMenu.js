@@ -8,10 +8,11 @@ class StyleMenu extends Component {
         let formsList = [];
 
         for (let styleType in componentStyle) {
-            if (componentStyle.hasOwnProperty(styleType)) {
+            if ( componentStyle.hasOwnProperty(styleType) ) {
                 formsList.push(<FormTemplate styleType={styleType}
                                              getStyles={getStyles}
-                                             componentStyle={componentStyle}/>)
+                                             componentStyle={componentStyle}
+                                             key={styleType}/>)
             }
         }
 

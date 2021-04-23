@@ -1,12 +1,14 @@
-import React from "react";
-
 class StyleReader {
-    constructor(className) {
-        this.className = className;
+    constructor(componentStyle) {
+        this._className = this._buildClassName(componentStyle);
         this._userClassName = '';
         this._style = {};
-        this.currentButton = 'Classic';
-        this.url = '';
+        this._currentButton = 'Classic';
+        this._url = '';
+    }
+
+    get className() {
+        return this._className;
     }
 
     get userClassName() {
@@ -21,16 +23,16 @@ class StyleReader {
 
     get button() {
         this._decomposeClassName();
-        return this.currentButton;
+        return this._currentButton;
     }
 
     get img() {
         this._decomposeClassName();
-        return this.url;
+        return this._url;
     }
 
     _decomposeClassName() {
-        const properties = this.className.split(' ');
+        const properties = this._className.split(' ');
 
         properties.forEach(property => {
             let propertyName = property.split("-")[0];
@@ -55,11 +57,11 @@ class StyleReader {
                 case 'bw':
                     this._style.borderWidth = value + 'px';
                     break;
-                case 'bt':
-                    this.currentButton = value;
+                case 'btn':
+                    this._currentButton = value;
                     break;
                 case 'url':
-                    this.url = property.split("-").slice(1).join("-");
+                    this._url = property.split("-").slice(1).join("-");
                     break;
                 default:
                     this._userClassName += property;
@@ -78,6 +80,22 @@ class StyleReader {
             default:
                 return '500';
         }
+    }
+
+    _buildClassName(componentStyle) {
+        let className = '';
+
+        for (let style in componentStyle) {
+            if (
+                style !== 'text' &&
+                componentStyle.hasOwnProperty(style) &&
+                componentStyle[style] !== ''
+            ) {
+                className += `${style}-${componentStyle[style]} `
+            }
+        }
+
+        return className.slice(0, -1);
     }
 }
 

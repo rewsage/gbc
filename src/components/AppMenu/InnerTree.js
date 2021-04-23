@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolder, faFolderOpen } from "@fortawesome/free-regular-svg-icons"
 import { faCaretRight, faCaretDown, faFileCode } from "@fortawesome/free-solid-svg-icons"
 import FileBtn from "./FileBtn"
-import ButtonDir from "./ButtonDir";
+import DirBtn from "./DirBtn";
 
 const folderOpen = <FontAwesomeIcon className="tree-element__icon tree-element__icon_folder" icon={faFolderOpen}/>
 const folderClose = <FontAwesomeIcon className="tree-element__icon tree-element__icon_folder" icon={faFolder}/>
@@ -23,26 +23,29 @@ class InnerTree extends Component {
     }
 
     render () {
+        const { openDir, callComponent, userComponentName } = this.props;
         let indexDir;
+
         for (let index = 0; index < list.length; index++) {
-            if (list[index].name === this.props.openDir) {
+            if (list[index].name === openDir) {
                indexDir = index;
             }
         }
+
         const currentDir = list[indexDir];
 
-        const dirBtn = currentDir.dirs.map((dir) => (
-            <ButtonDir dirName={dir}
-                       key={dir}
-                       callComponent={this.props.callComponent}
-                       userComponentName={this.props.userComponentName}/>
+        const dirBtn = currentDir.dirs.map((dirName) => (
+            <DirBtn key={dirName}
+                    dirName={dirName}
+                    callComponent={callComponent}
+                    userComponentName={userComponentName}/>
         ));
 
         const fileBtn = currentDir.files.map((file) => (
             <FileBtn key={file}
-                    file={file}
-                    callComponent={this.props.callComponent}
-                    userComponentName={this.props.userComponentName}/>
+                     file={file}
+                     callComponent={callComponent}
+                     userComponentName={userComponentName}/>
         ));
 
         return (
