@@ -17,15 +17,16 @@ class ControlCenter extends Component {
 
     render() {
 
-        const {getStyles, componentName, componentStyle} =  this.props;
+        const {getStyles, componentName, componentsState} =  this.props;
         return(
             <div className="control-center">
                 <Tabs currentTab={this.currentTab()}
                       switchTab={this.switchTab}/>
                     {this.currentTab() === 'Style' && <StyleMenu getStyles={getStyles}
-                                                                 componentStyle={componentStyle}/>}
+                                                                 componentsState={componentsState}
+                                                                 componentName={componentName}/>}
                     {this.currentTab() === 'Export' && <ExportMenu componentName={componentName}
-                                                                   componentStyle={componentStyle}/>}
+                                                                   componentsState={componentsState}/>}
             </div>
         )
     }

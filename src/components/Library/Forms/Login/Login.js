@@ -13,7 +13,6 @@ class Login extends Component {
         const componentStyle = componentsState && componentsState[componentName];
         let styleReader = new StyleReader(componentStyle);
         let defaultLabel = typeForm || componentsState[componentName].type;
-        const style = styleReader.style;
         let type = 'text';
 
         if (defaultLabel === "Password") {
@@ -29,11 +28,7 @@ class Login extends Component {
                        className={"email__input"}
                        placeholder=""
                        value={this.state.value}
-                       style={{fontSize: style.fontSize,
-                               fontWeight: style.fontWeight,
-                               color: style.color,
-                               borderBottomColor: style.borderColor,
-                               borderBottomWidth: style.borderWidth}}/>
+                       style={styleReader.style}/>
                 <label className={"email__label"}>{label}</label>
             </form>
         )

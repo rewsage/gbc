@@ -4,35 +4,49 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/oceanicNext";
 import StyleReader from "../../utils/StyleReader";
 
-class Instruction extends React.Component {
+class Tag extends React.Component {
     state = {
         textButton: "Copy",
         isDisabled: false
     }
 
     render() {
-        const {id, componentName, componentStyle} = this.props;
-        const componentText = componentStyle && componentStyle.text;
-        const styleReader = new StyleReader(componentStyle);
-        let className = styleReader.className;
+        const {componentName, componentsState} = this.props;
+        const componentStyle = componentsState[componentName];
+        const styleReaderCard = new StyleReader(componentStyle);
+        let className = styleReaderCard.className;
         let text;
-        let additionText = '';
+        if (componentName === "Card") {
+            const componentText = componentStyle.text ? '\n\t' + componentStyle.text : '';
+            let Button = styleReaderCard.button;
+            className = className.replace(`btn-${Button}`, '')
+            const styleReaderButton = new StyleReader(componentsState[Button]);
+            let classButton = styleReaderButton.className;
+            let buttonText = componentsState[Button].text;
+            let buttonTag
 
-        switch (id) {
-            case 'js':
-                text = `import ${componentName} from "path/to/Library/${componentName}/${componentName}";`;
-                break
-            default:
-                if (componentText === '' || componentText === undefined) {
-                    text = `<${componentName} className="${className}"${additionText}/>`;
-                } else {
-                    text = `<${componentName} className="${className}"${additionText}>${componentText}</${componentName}>`;
-                }
+            if (buttonText === '' || buttonText === undefined) {
+                buttonTag = `<${Button} className="${classButton}"/>`;
+            } else {
+                buttonTag = `<${Button} className="${classButton}">\n\t\t${buttonText}\n\t</${Button}>`;
+            }
+
+            text = `<${componentName} className="${className}">${componentText}\n\t${buttonTag}\n</${componentName}>`;
+        } else {
+            const componentText = componentStyle.text;
+
+            if (componentText === '' || componentText === undefined) {
+                text = `<${componentName} className="${className}"/>`;
+            } else {
+                text = `<${componentName} className="${className}">${componentText}</${componentName}>`;
+            }
         }
+
+        text = text.replaceAll(/\t/g, "    ");
 
         return (
             <div className={"instruction"}>
-                <div className={"instruction__text"} id={id}>
+                <div className={"instruction__text"} id={"tag"}>
                     <Highlight {...defaultProps} code={text} language="jsx" theme={theme}>
                         {({ style, tokens, getLineProps, getTokenProps }) => (
                             <pre className={"highlight"} style={style}>
@@ -55,8 +69,9 @@ class Instruction extends React.Component {
             </div>
         )
     }
+
     copyToClipboard = () => {
-        let wrongStr = document.getElementById(this.props.id).innerText;
+        let wrongStr = document.getElementById("tag").innerText;
         let str = wrongStr.replaceAll(/\n/g, '');
         let el = document.createElement('textarea');
 
@@ -73,6 +88,7 @@ class Instruction extends React.Component {
 
         setTimeout(this.backCopy, 1000)
     }
+
     backCopy = () => {
         this.setState({
             textButton: "Copy",
@@ -81,4 +97,4 @@ class Instruction extends React.Component {
     }
 }
 
-export default Instruction;
+export default Tag;

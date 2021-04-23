@@ -4,7 +4,8 @@ import FormTemplate from './FormTemplate';
 
 class StyleMenu extends Component {
     render () {
-        const {getStyles, componentStyle} = this.props;
+        const {getStyles, componentsState, componentName} = this.props;
+        let componentStyle = componentsState[componentName];
         let formsList = [];
 
         for (let styleType in componentStyle) {

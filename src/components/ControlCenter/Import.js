@@ -2,37 +2,20 @@ import React from "react";
 import "../../assets/css/ControlCenter/Instruction.scss";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/oceanicNext";
-import StyleReader from "../../utils/StyleReader";
 
-class Instruction extends React.Component {
+class Import extends React.Component {
     state = {
         textButton: "Copy",
         isDisabled: false
     }
 
     render() {
-        const {id, componentName, componentStyle} = this.props;
-        const componentText = componentStyle && componentStyle.text;
-        const styleReader = new StyleReader(componentStyle);
-        let className = styleReader.className;
-        let text;
-        let additionText = '';
-
-        switch (id) {
-            case 'js':
-                text = `import ${componentName} from "path/to/Library/${componentName}/${componentName}";`;
-                break
-            default:
-                if (componentText === '' || componentText === undefined) {
-                    text = `<${componentName} className="${className}"${additionText}/>`;
-                } else {
-                    text = `<${componentName} className="${className}"${additionText}>${componentText}</${componentName}>`;
-                }
-        }
+        const componentName = this.props.componentName;
+        let text = `import ${componentName} from "path/to/Library/${componentName}/${componentName}";`;
 
         return (
             <div className={"instruction"}>
-                <div className={"instruction__text"} id={id}>
+                <div className={"instruction__text"} id={"import"}>
                     <Highlight {...defaultProps} code={text} language="jsx" theme={theme}>
                         {({ style, tokens, getLineProps, getTokenProps }) => (
                             <pre className={"highlight"} style={style}>
@@ -55,8 +38,9 @@ class Instruction extends React.Component {
             </div>
         )
     }
+
     copyToClipboard = () => {
-        let wrongStr = document.getElementById(this.props.id).innerText;
+        let wrongStr = document.getElementById("import").innerText;
         let str = wrongStr.replaceAll(/\n/g, '');
         let el = document.createElement('textarea');
 
@@ -73,6 +57,7 @@ class Instruction extends React.Component {
 
         setTimeout(this.backCopy, 1000)
     }
+
     backCopy = () => {
         this.setState({
             textButton: "Copy",
@@ -81,4 +66,4 @@ class Instruction extends React.Component {
     }
 }
 
-export default Instruction;
+export default Import;

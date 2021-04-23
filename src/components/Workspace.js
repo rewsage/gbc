@@ -6,7 +6,7 @@ import ControlCenter from "./ControlCenter/ControlCenter";
 class Workspace extends React.Component {
     state = {
         "Classic": { text: '', fs: '', bg: '', cl: '', fw: '', br: '' },
-        "Waves": { text: '', fs: '', bg: '', cl: '', fw: '' },
+        "Waves": { text: '', fs: '', bg: '', bc: '', cl: '', fw: '' },
         "Phone": { fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', br: '' },
         "Login": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '', type: 'Email' },
         "Entry": { text: '', bg: '', bw: '', bc: '', br: '', login: 'Email', btn: 'Classic' },
@@ -17,7 +17,6 @@ class Workspace extends React.Component {
         const {themeContext, userComponentName} = this.props;
         const componentText = userComponentName && this.state[userComponentName].text;
         const Component = components[userComponentName];
-        const componentStyle = this.state[userComponentName];
 
         const currentComponent = userComponentName && <Component componentsState={this.state}
                                                                  componentName={userComponentName}>
@@ -25,7 +24,7 @@ class Workspace extends React.Component {
                                                       </Component>
 
         const currentMenu = userComponentName && <ControlCenter getStyles={this.getStyles}
-                                                                componentStyle={componentStyle}
+                                                                componentsState={this.state}
                                                                 componentName={userComponentName}/>;
 
         return (
