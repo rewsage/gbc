@@ -4,8 +4,10 @@ import StyleReader from "../../../../utils/StyleReader";
 
 class Classic extends Component {
     render() {
+        const {componentsState, componentName} = this.props;
+        const componentStyle = componentsState && componentsState[componentName];
         let text = this.props.children || "Scooby Doo";
-        let styleReader = new StyleReader(this.props.className);
+        let styleReader = new StyleReader(componentStyle);
 
         return (
             <button className={styleReader.userClassName + "classic-btn"}

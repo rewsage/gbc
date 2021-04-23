@@ -5,42 +5,29 @@ import ControlCenter from "./ControlCenter/ControlCenter";
 
 class Workspace extends React.Component {
     state = {
-        "Classic": { fs: '', bg: '', cl: '', fw: '', text: '', br: '' },
-        "Waves": { fs: '', bg: '', cl: '', fw: '', text: '' },
-        "Card": { fs: '', bg: '', cl: '', fw: '', text: '', bw: '', bc: '' , url: '' },
-        "Phone": {fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', br: '' },
-        "Login": {fs: '', cl: '', fw: '', text: '', bw: '', bc: '', type: '' },
-        "Entry": { fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', br: '' },
-        ClassicClass: "fs-18 fw-400 bg-#EC9360 cl-#424242 ",
-        WavesClass: "fs-18 fw-400 bg-#F2C94C cl-#333333 ",
+        "Classic": { text: '', fs: '', bg: '', cl: '', fw: '', br: '' },
+        "Waves": { text: '', fs: '', bg: '', cl: '', fw: '' },
+        "Phone": { fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', br: '' },
+        "Login": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '', type: 'Email' },
+        "Entry": { text: '', bg: '', bw: '', bc: '', br: '', login: 'Email', btn: 'Classic' },
+        "Card": { text: '', url: '', fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', btn: 'Classic' },
     }
 
     render() {
         const {themeContext, userComponentName} = this.props;
         const componentText = userComponentName && this.state[userComponentName].text;
         const Component = components[userComponentName];
-
         const componentStyle = this.state[userComponentName];
-        const className = this.buildClassName(userComponentName);
 
-        let buttonClass = {};
-        if (userComponentName === "Card") {
-            buttonClass["Classic"] = {"class": this.state.ClassicClass,
-                                      "text": this.state.Classic.text};
-            buttonClass["Waves"] = {"class": this.state.WavesClass,
-                                    "text": this.state.Waves.text};
-        }
-        const currentComponent = userComponentName && <Component className={className}
-                                                                 buttonClass={buttonClass}>
+        const currentComponent = userComponentName && <Component componentsState={this.state}
+                                                                 componentName={userComponentName}>
                                                           {componentText}
-                                                      </Component>;
+                                                      </Component>
 
         const currentMenu = userComponentName && <ControlCenter getStyles={this.getStyles}
                                                                 componentStyle={componentStyle}
-                                                                componentName={userComponentName}
-                                                                className={className}
-                                                                buttonClass={buttonClass}
-                                                                componentText={componentText}/>;
+                                                                componentName={userComponentName}/>;
+
         return (
             <div className={`workspace workspace_${themeContext}`} key={userComponentName}>
                 <div className="workspace__inner">
@@ -61,21 +48,6 @@ class Workspace extends React.Component {
         this.setState({
             [userComponentName]: updatedObj
         })
-    }
-
-    buildClassName = (componentName) => {
-        let className = '';
-        let styleObj = this.state[componentName]
-
-        for (let style in styleObj) {
-            if (style !== 'text' && styleObj.hasOwnProperty(style) && styleObj[style] !== '') {
-                className += `${style}-${styleObj[style]} `
-
-            }
-        }
-
-        console.log(className);
-        return className.slice(0, -1);
     }
 }
 

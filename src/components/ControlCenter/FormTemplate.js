@@ -5,7 +5,7 @@ import NumberForm from "./InputForms/NumberForm";
 import ColorForm from "./InputForms/ColorForm";
 
 function FormTemplate(props) {
-    const {styleType,getStyles, componentStyle} = props;
+    const {styleType, getStyles, componentStyle} = props;
     let form;
 
     switch (styleType) {
@@ -47,12 +47,6 @@ function FormTemplate(props) {
                                  getStyles={getStyles}
                                  componentStyle={componentStyle}/>
             break;
-        case 'url':
-            form = <TextForm label={"url"}
-                             styleType={'url'}
-                             getStyles={getStyles}
-                             componentStyle={componentStyle}/>
-            break;
         case 'br':
             form = <NumberForm label={"Border Radius"}
                              styleType={'br'}
@@ -60,19 +54,42 @@ function FormTemplate(props) {
                              componentStyle={componentStyle}/>
             break;
         case 'type':
-            const types = ["Email", "Password", "Telephone"];
+            const types = ["Email", "Password", "Telephone", "Login"];
             form = <DropdownForm label={"Type"}
                                  elements={types}
                                  styleType={'type'}
                                  getStyles={getStyles}
                                  componentStyle={componentStyle}/>
             break;
-        default:
+        case 'login':
+            const logins = ["Email", "Telephone", "Login"];
+            form = <DropdownForm label={"Type"}
+                                 elements={logins}
+                                 styleType={'login'}
+                                 getStyles={getStyles}
+                                 componentStyle={componentStyle}/>
+            break;
+        case 'btn':
+            const buttons = ["Classic", "Waves"];
+            form = <DropdownForm label={"Button"}
+                                 elements={buttons}
+                                 styleType={'btn'}
+                                 getStyles={getStyles}
+                                 componentStyle={componentStyle}/>
+            break;
+        case 'text':
             form = <TextForm label={"Text"}
                              styleType={'text'}
                              getStyles={getStyles}
                              componentStyle={componentStyle}/>
+            break;
+        case 'url':
+            form = <TextForm label={"Image URL"}
+                             styleType={'url'}
+                             getStyles={getStyles}
+                             componentStyle={componentStyle}/>
         }
+
 
     return (
         form

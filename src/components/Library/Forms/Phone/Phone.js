@@ -9,7 +9,9 @@ class Phone extends Component {
     }
 
     render () {
-        let styleReader = new StyleReader(this.props.className);
+        const {componentsState, componentName} = this.props;
+        const componentStyle = componentsState && componentsState[componentName];
+        let styleReader = new StyleReader(componentStyle);
 
         return (
             <form>

@@ -2,29 +2,29 @@ import React from "react";
 import InnerTree from "./InnerTree";
 import { arrowRight, arrowDown, folderOpen, folderClose } from "./InnerTree"
 
-class ButtonDir extends React.Component {
+class DirBtn extends React.Component {
     state = {
         id: this.props.id,
         isActive: false
     }
 
     render() {
-        const dir = this.props.dirName;
+        const {dirName, callComponent, userComponentName} = this.props;
         const arrowIcon = this.isActive() ? arrowDown : arrowRight;
         const folderIcon = this.isActive() ? folderOpen : folderClose;
-        const innerTree = this.isActive() && <InnerTree openDir={this.props.dirName}
-                                                            callComponent={this.props.callComponent}
-                                                            userComponentName={this.props.userComponentName}/>
+        const innerTree = this.isActive() && <InnerTree openDir={dirName}
+                                                        callComponent={callComponent}
+                                                        userComponentName={userComponentName}/>
 
         return(
             <div>
                 <button className={"tree-element__dir"}
-                        key={dir}
+                        key={dirName}
                         onClick={this.goDown}>
                     <div className={`tree-element__highlighter tree-element__highlighter_disabled`}/>
                     {arrowIcon}
                     {folderIcon}
-                    {dir}
+                    {dirName}
                 </button>
                 {innerTree}
             </div>
@@ -39,4 +39,4 @@ class ButtonDir extends React.Component {
     }
 }
 
-export default ButtonDir;
+export default DirBtn;

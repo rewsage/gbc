@@ -9,8 +9,11 @@ class Login extends Component {
     }
 
     render() {
-        let styleReader = new StyleReader(this.props.className);
-        let defaultLabel = styleReader.typeForm;
+        const {componentsState, componentName, typeForm} = this.props;
+        const componentStyle = componentsState && componentsState[componentName];
+        let styleReader = new StyleReader(componentStyle);
+        let defaultLabel = typeForm || componentsState[componentName].type;
+        const style = styleReader.style;
         let type = 'text';
 
         if (defaultLabel === "Password") {
@@ -18,7 +21,6 @@ class Login extends Component {
         }
 
         let label = this.props.children || defaultLabel;
-        const style = styleReader.style;
 
         return (
             <form className={styleReader.userClassName + "email__group"}>
@@ -38,8 +40,8 @@ class Login extends Component {
     }
 
     handleChange = (event) => {
-        let styleReader = new StyleReader(this.props.className);
-        if (styleReader.typeForm === "Telephone") {
+        const {componentsState, componentName, typeForm} = this.props;
+        if (typeForm === "Telephone" || componentsState[componentName].type === "Telephone") {
             let input = document.querySelector(".email__input");
             input.addEventListener("input", mask, false);
             input.addEventListener("focus", mask, false);

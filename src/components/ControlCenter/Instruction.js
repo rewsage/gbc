@@ -2,6 +2,7 @@ import React from "react";
 import "../../assets/css/ControlCenter/Instruction.scss";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/oceanicNext";
+import StyleReader from "../../utils/StyleReader";
 
 
 class Instruction extends React.Component {
@@ -11,8 +12,26 @@ class Instruction extends React.Component {
     }
 
     render() {
-        const {id, componentName, className, componentText, additionText} = this.props;
+        const {id, componentName, componentStyle} = this.props;
+        const componentText = componentStyle && componentStyle.text;
+        const styleReader = new StyleReader(componentStyle);
+        let className = styleReader.className;
         let text;
+        let additionText = '';
+
+        // if (componentName === "Card") {
+        //     let styleReader = new StyleReader(className);
+        //     let currentButton = styleReader.button;
+        //     let url = styleReader.img;
+        //     let urlProps = '';
+        //     className = className.replace(` url-${url}`, '');
+        //
+        //     if (url !== '') {
+        //         urlProps = `\nurl="${url}"`
+        //     }
+        //
+        //     additionText = `\nbtn="${buttonClass[currentButton]["class"]}"${urlProps}`
+        // }
 
         switch (id) {
             case 'js':
