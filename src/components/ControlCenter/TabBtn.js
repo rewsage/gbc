@@ -7,17 +7,7 @@ class TabBtn extends Component {
 
     render() {
         const {btnName, currentTab} = this.props;
-        const activeMarker = this.isActive() ? 'active' : 'disabled';
-
-        if (!this.isActive() && (btnName === currentTab)) {
-            this.setState({
-                isActive: true,
-            })
-        } else if (this.isActive() && (btnName !== currentTab)) {
-            this.setState({
-                isActive: false,
-            })
-        }
+        const activeMarker = btnName === currentTab ? 'active' : 'disabled';
 
         return(
             <div className="tabs__wrapper">
@@ -33,10 +23,6 @@ class TabBtn extends Component {
     pressBtn = () => {
         const { switchTab, btnName } = this.props;
         switchTab(btnName);
-    }
-
-    isActive = () => {
-        return this.state.isActive;
     }
 }
 

@@ -6,17 +6,28 @@ class FileBtn extends Component {
         isCalled: false,
     }
 
-    render() {
-        const { userComponentName, file } = this.props;
+    static getDerivedStateFromProps(props, state) {
+        const { userComponentName, file } = props;
         const fileName = file.slice(0, -3);
         const isEqual = userComponentName === fileName;
-        const highlightState = this.isCalled() && isEqual ? 'active' : 'disabled';
+
+        if (state.isCalled && !isEqual) {
+            return { isCalled: false }
+        } else if (!state.isCalled && isEqual) {
+            return { isCalled: true }
+        }
+
+        return null;
+    }
+
+    render() {
+        const condition = this.isCalled() ? 'active' : 'disabled';
 
         return (
             <button className="tree-element__file"
                     onClick={ this.displayComponent }
                     onMouseOver={ this.eliminate }>
-                <div className={`tree-element__highlighter tree-element__highlighter_${highlightState}`}/>
+                <div className={`tree-element__highlighter tree-element__highlighter_${condition}`}/>
                     {fileIcon}
                 <div className="tree-element__wrapper">
                     {this.props.file}
