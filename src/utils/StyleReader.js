@@ -7,6 +7,7 @@ class StyleReader {
         this._style = {};
         this.currentButton = 'Classic';
         this.url = '';
+        this.type = "Email"
     }
 
     get userClassName() {
@@ -27,6 +28,11 @@ class StyleReader {
     get img() {
         this._decomposeClassName();
         return this.url;
+    }
+
+    get typeForm() {
+        this._decomposeClassName();
+        return this.type;
     }
 
     _decomposeClassName() {
@@ -55,11 +61,17 @@ class StyleReader {
                 case 'bw':
                     this._style.borderWidth = value + 'px';
                     break;
+                case 'br':
+                    this._style.borderRadius = value + 'px';
+                    break;
                 case 'bt':
                     this.currentButton = value;
                     break;
                 case 'url':
                     this.url = property.split("-").slice(1).join("-");
+                    break;
+                case 'type':
+                    this.type = value;
                     break;
                 default:
                     this._userClassName += property;

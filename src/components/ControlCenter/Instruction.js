@@ -19,7 +19,7 @@ class Instruction extends React.Component {
                 text = `import ${componentName} from "path/to/Library/${componentName}/${componentName}";`;
                 break
             default:
-                if (componentText === '') {
+                if (componentText === '' || componentText === undefined) {
                     text = `<${componentName} className="${className}"${additionText}/>`;
                 } else {
                     text = `<${componentName} className="${className}"${additionText}>${componentText}</${componentName}>`;

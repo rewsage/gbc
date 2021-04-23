@@ -47,6 +47,26 @@ function FormTemplate(props) {
                                  getStyles={getStyles}
                                  componentStyle={componentStyle}/>
             break;
+        case 'url':
+            form = <TextForm label={"url"}
+                             styleType={'url'}
+                             getStyles={getStyles}
+                             componentStyle={componentStyle}/>
+            break;
+        case 'br':
+            form = <NumberForm label={"Border Radius"}
+                             styleType={'br'}
+                             getStyles={getStyles}
+                             componentStyle={componentStyle}/>
+            break;
+        case 'type':
+            const types = ["Email", "Password", "Telephone"];
+            form = <DropdownForm label={"Type"}
+                                 elements={types}
+                                 styleType={'type'}
+                                 getStyles={getStyles}
+                                 componentStyle={componentStyle}/>
+            break;
         default:
             form = <TextForm label={"Text"}
                              styleType={'text'}

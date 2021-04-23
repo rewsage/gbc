@@ -3,7 +3,7 @@ import '../../assets/css/ControlCenter/ControlMenu.scss';
 import Instruction from "./Instruction";
 import StyleReader from "../../utils/StyleReader";
 
-class StyleMenu extends Component {
+class ExportMenu extends Component {
     render () {
         const {componentName, className, componentText, buttonClass} = this.props;
         let additionText = '';
@@ -13,7 +13,7 @@ class StyleMenu extends Component {
             let styleReader = new StyleReader(className);
             let currentButton = styleReader.button;
             let url = styleReader.img;
-            rightClass = className.replace(` url-${url}`, '');
+            rightClass = className.replace(`url-${url}`, '');
             let urlProps = '';
 
             if (url !== '') {
@@ -40,4 +40,4 @@ class StyleMenu extends Component {
     }
 }
 
-export default StyleMenu;
+export default ExportMenu;

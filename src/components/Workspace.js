@@ -5,10 +5,12 @@ import ControlCenter from "./ControlCenter/ControlCenter";
 
 class Workspace extends React.Component {
     state = {
-        "Classic": { fs: '', bg: '', cl: '', fw: '', text: '' },
+        "Classic": { fs: '', bg: '', cl: '', fw: '', text: '', br: '' },
         "Waves": { fs: '', bg: '', cl: '', fw: '', text: '' },
-        "Card": { fs: '', bg: '', cl: '', fw: '', text: '', bw: '', bc: '' },
-        "Phone": {},
+        "Card": { fs: '', bg: '', cl: '', fw: '', text: '', bw: '', bc: '' , url: '' },
+        "Phone": {fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', br: '' },
+        "Login": {fs: '', cl: '', fw: '', text: '', bw: '', bc: '', type: '' },
+        "Entry": { fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', br: '' },
         ClassicClass: "fs-18 fw-400 bg-#EC9360 cl-#424242 ",
         WavesClass: "fs-18 fw-400 bg-#F2C94C cl-#333333 ",
     }
