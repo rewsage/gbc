@@ -15,6 +15,18 @@ class DropdownForm extends Component {
         }
     }
 
+    static getDerivedStateFromProps(props, state) {
+        const {componentStyle, styleType} = props;
+
+        if (componentStyle[styleType] === '' && state.value !== 'Regular') {
+            return { value: 'Regular' }
+        } else if (componentStyle[styleType] !== state.value && componentStyle[styleType] !== '') {
+            return { value: componentStyle[styleType] }
+        }
+
+        return null;
+    }
+
     render () {
         const {label, elements} = this.props;
 
@@ -38,12 +50,7 @@ class DropdownForm extends Component {
 
     handleChange = (event) => {
         const {getStyles, styleType} = this.props;
-
-        this.setState({
-            value: event.target.value,
-        }, () => {
-            getStyles(styleType, this.state.value);
-        });
+        getStyles(styleType, event.target.value);
     }
 }
 

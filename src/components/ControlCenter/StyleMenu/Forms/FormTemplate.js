@@ -47,6 +47,12 @@ function FormTemplate(props) {
                                  getStyles={getStyles}
                                  componentStyle={componentStyle}/>
             break;
+        case 'wd':
+            form = <NumberForm label={"Width"}
+                               styleType={'wd'}
+                               getStyles={getStyles}
+                               componentStyle={componentStyle}/>
+            break;
         case 'btn':
             const buttons = ["Classic", "Waves"];
             form = <DropdownForm label={"Button"}
@@ -67,7 +73,6 @@ function FormTemplate(props) {
                              getStyles={getStyles}
                              componentStyle={componentStyle}/>
         }
-
 
     return (
         form

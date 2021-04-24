@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import '../../assets/css/ControlCenter/ControlMenu.scss';
+import '../../../assets/css/ControlCenter/ControlMenu.scss';
 import Instruction from "./Instruction";
 
 class ExportMenu extends Component {
     render () {
         const {componentName, componentStyle} = this.props;
-        console.log(componentStyle);
 
         return (
             <div className="control-menu control-menu_export">

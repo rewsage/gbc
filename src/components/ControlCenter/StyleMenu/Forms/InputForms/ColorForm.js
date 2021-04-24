@@ -30,6 +30,23 @@ class ColorForm extends Component {
         window.removeEventListener('click', this.onClickOutsideHandler);
     }
 
+    static getDerivedStateFromProps(props, state) {
+        const {componentStyle, styleType} = props;
+
+        if (componentStyle[styleType] === '' &&
+            state.background !== '#ec9360' &&
+            !state.isOpen
+           ) {
+            return {
+                isOpen: false,
+                background: '#ec9360',
+            }
+        }
+
+        return null;
+    }
+
+
     onClickHandler = () => {
         this.setState(currentState => ({
             isOpen: !currentState.isOpen

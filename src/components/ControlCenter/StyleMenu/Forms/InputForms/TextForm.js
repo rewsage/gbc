@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class NumberForm extends Component {
+class TextForm extends Component {
     state = {
         value: '',
     }
@@ -15,20 +15,27 @@ class NumberForm extends Component {
         }
     }
 
+    static getDerivedStateFromProps(props, state) {
+        const {componentStyle, styleType} = props;
+
+        if (componentStyle[styleType] !== state.value) {
+            return { value: componentStyle[styleType] }
+        }
+
+        return null;
+    }
+
     render () {
         const {label} = this.props;
 
         return (
             <form className="form">
                 <label className="form__label">{label}</label>
-                <div className="form__wrapper">
-                    <input className="form__number"
-                           type="number"
-                           min="0"
-                           placeholder="18"
-                           value={this.state.value}
-                           onChange={this.handleChange}>
-                    </input>
+                <div className="form__wrapper form__wrapper_long">
+                    <textarea className="form__textarea"
+                              value={this.state.value}
+                              onChange={this.handleChange}>
+                    </textarea>
                 </div>
             </form>
         )
@@ -36,14 +43,8 @@ class NumberForm extends Component {
 
     handleChange = (event) => {
         const {getStyles, styleType} = this.props;
-
-
-        this.setState({
-            value: event.target.value,
-        }, () => {
-            getStyles(styleType, this.state.value);
-        });
+        getStyles(styleType, event.target.value);
     }
 }
 
-export default NumberForm;
+export default TextForm;

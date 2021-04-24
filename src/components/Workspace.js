@@ -7,7 +7,7 @@ class Workspace extends React.Component {
     state = {
         "Classic": { fs: '', bg: '', cl: '', fw: '', text: '' },
         "Waves": { fs: '', bg: '', cl: '', fw: '', text: '' },
-        "Card": { fs: '', bg: '', cl: '', fw: '', text: '', bw: '', bc: '', btn: 'Classic', url: '' },
+        "Card": { fs: '', bg: '', cl: '', fw: '', text: '', bw: '', bc: '', btn: '', url: '' },
         "Phone": {},
     }
 
@@ -23,6 +23,7 @@ class Workspace extends React.Component {
                                                       </Component>
 
         const currentMenu = userComponentName && <ControlCenter getStyles={this.getStyles}
+                                                                resetStyles={this.resetStyles}
                                                                 componentStyle={componentStyle}
                                                                 componentName={userComponentName}/>;
 
@@ -40,12 +41,28 @@ class Workspace extends React.Component {
 
     getStyles = (styleType, value) => {
         const {userComponentName} = this.props;
-        let updatedObj = this.state[userComponentName];
+        const updatedObj = this.state[userComponentName];
         updatedObj[styleType] = value
 
         this.setState({
-            [userComponentName]: updatedObj
+            [userComponentName]: updatedObj,
         })
+    }
+
+    resetStyles = () => {
+        const {userComponentName} = this.props;
+        const resetObj = this.state[userComponentName];
+        const properties =  Object.keys(resetObj);
+
+        properties.forEach(property => {
+           resetObj[property] = '';
+        });
+
+        this.setState({
+            [userComponentName]: resetObj,
+        })
+
+        console.log(this.state);
     }
 }
 

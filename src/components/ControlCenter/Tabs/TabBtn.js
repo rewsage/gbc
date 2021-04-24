@@ -6,8 +6,8 @@ class TabBtn extends Component {
     }
 
     render() {
-        const {btnName, currentTab} = this.props;
-        const activeMarker = btnName === currentTab ? 'active' : 'disabled';
+        const {btnName, currentTabName} = this.props;
+        const activeMarker = btnName === currentTabName ? 'active' : 'disabled';
 
         return(
             <div className="tabs__wrapper">

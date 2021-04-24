@@ -1,43 +1,48 @@
 import React, { Component } from 'react';
 import '../../assets/css/ControlCenter/ControlCenter.scss';
-import Tabs from "./Tabs.js";
-import StyleMenu from "./StyleMenu";
-import ExportMenu from "./ExportMenu";
+import Tabs from "./Tabs/Tabs.js";
+import StyleMenu from "./StyleMenu/StyleMenu";
+import ExportMenu from "./ExportMenu/ExportMenu";
 
 class ControlCenter extends Component {
     state = {
-        currentTab: 'Style'
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.componentName !== this.props.componentName) {
-            this.setState({currentTab: 'Style'})
-        }
+        currentTabName: 'Style'
     }
 
     render() {
+        const {getStyles, resetStyles, componentName, componentStyle } =  this.props;
+        let currentTab;
 
-        const {getStyles, componentName, componentStyle} =  this.props;
+        switch ( this.currentTabName() ) {
+            case ('Style'):
+                currentTab = <StyleMenu getStyles={getStyles}
+                                        resetStyles={resetStyles}
+                                        componentStyle={componentStyle}/>
+                break;
+            case ('Export'): {
+                currentTab = <ExportMenu componentName={componentName}
+                                         componentStyle={componentStyle}/>
+                break;
+            }
+        }
+
         return(
             <div className="control-center">
-                <Tabs currentTab={this.currentTab()}
+                <Tabs currentTabName={this.currentTabName()}
                       switchTab={this.switchTab}/>
-                    {this.currentTab() === 'Style' && <StyleMenu getStyles={getStyles}
-                                                                 componentStyle={componentStyle}/>}
-                    {this.currentTab() === 'Export' && <ExportMenu componentName={componentName}
-                                                                   componentStyle={componentStyle}/>}
+                {currentTab}
             </div>
         )
     }
 
-    switchTab = (tabName) => {
+    switchTab = (currentTabName) => {
         this.setState({
-            currentTab: tabName,
+            currentTabName: currentTabName,
         })
     }
 
-    currentTab = () => {
-        return this.state.currentTab;
+    currentTabName = () => {
+        return this.state.currentTabName;
     }
 }
 

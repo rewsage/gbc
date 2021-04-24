@@ -1,8 +1,8 @@
 import React from "react";
-import "../../assets/css/ControlCenter/Instruction.scss";
+import "../../../assets/css/ControlCenter/Instruction.scss";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/oceanicNext";
-import StyleReader from "../../utils/StyleReader";
+import StyleReader from "../../../utils/StyleReader";
 
 
 class Instruction extends React.Component {
@@ -15,33 +15,20 @@ class Instruction extends React.Component {
         const {id, componentName, componentStyle} = this.props;
         const componentText = componentStyle && componentStyle.text;
         const styleReader = new StyleReader(componentStyle);
-        let className = styleReader.className;
+        const className = styleReader.className;
         let text;
-        let additionText = '';
-
-        // if (componentName === "Card") {
-        //     let styleReader = new StyleReader(className);
-        //     let currentButton = styleReader.button;
-        //     let url = styleReader.img;
-        //     let urlProps = '';
-        //     className = className.replace(` url-${url}`, '');
-        //
-        //     if (url !== '') {
-        //         urlProps = `\nurl="${url}"`
-        //     }
-        //
-        //     additionText = `\nbtn="${buttonClass[currentButton]["class"]}"${urlProps}`
-        // }
 
         switch (id) {
             case 'js':
                 text = `import ${componentName} from "path/to/Library/${componentName}/${componentName}";`;
                 break
             default:
+                const displayingAttribute = className === '' ? '' : ` className="${className}"`;
+
                 if (componentText === '') {
-                    text = `<${componentName} className="${className}"${additionText}/>`;
+                    text = `<${componentName}${displayingAttribute}/>`;
                 } else {
-                    text = `<${componentName} className="${className}"${additionText}>${componentText}</${componentName}>`;
+                    text = `<${componentName}${displayingAttribute}>${componentText}</${componentName}>`;
                 }
         }
 

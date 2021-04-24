@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import '../../assets/css/ControlCenter/InputForms.scss';
-import FormTemplate from './FormTemplate';
+import '../../../assets/css/ControlCenter/InputForms.scss';
+import FormTemplate from './Forms/FormTemplate';
+import ResetBtn from "./ResetBtn";
 
 class StyleMenu extends Component {
     render () {
-        const {getStyles, componentStyle} = this.props;
-        let formsList = [];
+        const {getStyles, resetStyles, componentStyle} = this.props;
+        const formsList = [];
 
         for (let styleType in componentStyle) {
             if ( componentStyle.hasOwnProperty(styleType) ) {
@@ -18,7 +19,10 @@ class StyleMenu extends Component {
 
         return (
             <div className="control-menu">
-                {formsList}
+                <div className="control-menu__inner">
+                    {formsList}
+                </div>
+                <ResetBtn resetStyles={resetStyles}/>
             </div>
         )
     }

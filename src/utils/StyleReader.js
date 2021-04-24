@@ -1,44 +1,43 @@
 class StyleReader {
     constructor(componentStyle) {
-        this._className = this._buildClassName(componentStyle);
-        this._userClassName = '';
+        this._componentStyle = componentStyle;
         this._style = {};
-        this._currentButton = 'Classic';
-        this._url = '';
+        this._userClassName = '';
+        this._btn = 'Classic';
     }
 
     get className() {
-        return this._className;
+        return this._buildClassName(this._componentStyle)
     }
 
     get userClassName() {
-        this._decomposeClassName();
+        this._decomposeComponentStyle();
         return this._userClassName;
     }
 
     get style() {
-        this._decomposeClassName();
+        this._decomposeComponentStyle();
         return this._style;
     }
 
     get button() {
-        this._decomposeClassName();
-        return this._currentButton;
+        this._decomposeComponentStyle();
+        return this._btn;
     }
 
-    get img() {
-        this._decomposeClassName();
+    get url() {
+        this._decomposeComponentStyle();
         return this._url;
     }
 
-    _decomposeClassName() {
-        const properties = this._className.split(' ');
+    _decomposeComponentStyle() {
+        const properties = Object.keys(this._componentStyle);
 
         properties.forEach(property => {
-            let propertyName = property.split("-")[0];
-            let value = property.split("-")[1];
+            const value = this._componentStyle[property];
+            if (value === '') return null;
 
-            switch (propertyName) {
+            switch (property) {
                 case 'fs':
                     this._style.fontSize = value + 'px';
                     break;
@@ -58,10 +57,12 @@ class StyleReader {
                     this._style.borderWidth = value + 'px';
                     break;
                 case 'btn':
-                    this._currentButton = value;
+                    this._btn = value;
                     break;
                 case 'url':
                     this._url = property.split("-").slice(1).join("-");
+                    break;
+                case 'text':
                     break;
                 default:
                     this._userClassName += property;
@@ -91,7 +92,7 @@ class StyleReader {
                 componentStyle.hasOwnProperty(style) &&
                 componentStyle[style] !== ''
             ) {
-                className += `${style}-${componentStyle[style]} `
+                className += `${style}-${componentStyle[style].toLowerCase()} `
             }
         }
 
