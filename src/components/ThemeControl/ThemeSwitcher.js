@@ -1,18 +1,18 @@
 import React from 'react'
-import { ThemeContextConsumer } from './ThemeContext'
+import ThemeContext from './ThemeContext'
 
 function ThemeSwitcher() {
     return (
-        <ThemeContextConsumer>
-            {context => (
+        <ThemeContext.Consumer>
+            { ( {toggleTheme} ) => (
                    <div className="header__switcher">
                     <input type="checkbox"
                            className="header__toggle-btn"
-                           onClick={context.toggleTheme}>
+                           onClick={toggleTheme}>
                     </input>
                 </div>
             )}
-        </ThemeContextConsumer>
+        </ThemeContext.Consumer>
     );
 }
 

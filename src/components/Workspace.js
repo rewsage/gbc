@@ -2,6 +2,7 @@ import React from 'react';
 import '../assets/css/Workspace.scss'
 import * as components from "../utils/Hub"
 import ControlCenter from "./ControlCenter/ControlCenter";
+import ThemeContext from "./ThemeControl/ThemeContext";
 
 class Workspace extends React.Component {
     state = {
@@ -12,7 +13,9 @@ class Workspace extends React.Component {
     }
 
     render() {
-        const {themeContext, userComponentName} = this.props;
+        const {userComponentName} = this.props;
+        const themeContext = this.context.theme;
+
         const componentText = userComponentName && this.state[userComponentName].text;
         const Component = components[userComponentName];
         const componentStyle = this.state[userComponentName];
@@ -64,6 +67,8 @@ class Workspace extends React.Component {
 
         console.log(this.state);
     }
+
+    static contextType = ThemeContext;
 }
 
 export default Workspace;

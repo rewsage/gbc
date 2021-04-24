@@ -1,31 +1,29 @@
-import React from 'react'
+import React, { Component } from 'react'
 import '../assets/css/App.scss'
 import Sidebar from "./AppMenu/Sidebar"
 import Header from "./AppMenu/Header";
-import {ThemeContextConsumer} from "./ThemeControl/ThemeContext";
+import ThemeContext from "./ThemeControl/ThemeContext";
 import Workspace from "./Workspace";
 
 
-class App extends React.Component {
+class App extends Component {
     state = {
         userComponentName: "",
+        theme: 'light',
     }
 
     render() {
         return (
-            <ThemeContextConsumer>
-                {context => (
-                    <main className={`app app_${context.theme}`}>
-                        <section className="app__menu">
-                            <Header />
-                            <Sidebar callComponent={this.callComponent}
-                                     userComponentName={this.state.userComponentName}/>
-                        </section>
-                        <Workspace userComponentName={this.state.userComponentName}
-                                   themeContext={context.theme}/>
-                    </main>
-                )}
-            </ThemeContextConsumer>
+            <ThemeContext.Provider value={ { theme: this.state.theme, toggleTheme: this.toggleTheme } }>
+                <main className={`app app_${this.state.theme}`}>
+                    <section className="app__menu">
+                        <Header />
+                        <Sidebar callComponent={this.callComponent}
+                                 userComponentName={this.state.userComponentName}/>
+                    </section>
+                    <Workspace userComponentName={this.state.userComponentName}/>
+                </main>
+            </ThemeContext.Provider>
         );
     }
 
@@ -40,6 +38,12 @@ class App extends React.Component {
             })
         }
     }
+
+    toggleTheme = () => {
+        this.setState({
+            theme: this.state.theme === 'light' ? 'dark' : 'light',
+        });
+    }
 }
 
-export default App
+export default App;
