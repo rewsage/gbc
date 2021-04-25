@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import '../../../assets/css/ControlCenter/Tabs.scss';
 import TabBtn from "./TabBtn";
+import ThemeContext from "../../ThemeControl/ThemeContext";
 
 class Tabs extends Component {
 
     render() {
         const { switchTab, currentTabName } = this.props;
+        const themeContext = this.context.theme;
         const btnNames = ["Style", "Export"];
 
         const tabButtons = btnNames.map((name, index) => {
@@ -16,13 +18,13 @@ class Tabs extends Component {
         });
 
         return(
-            <div className="tabs">
+            <div className={`tabs tabs_${themeContext}`}>
                 {tabButtons}
             </div>
         )
     }
 
-
+    static contextType = ThemeContext;
 }
 
 export default Tabs;
