@@ -10,12 +10,13 @@ export default function textBuilder(componentName, componentsState) {
     const styleReaderButton = new StyleReader(componentsState[Button]);
     let classButton = styleReaderButton.className;
     let buttonText = componentsState[Button].text;
-    let buttonTag
+    let buttonTag;
+    let classText = isClassEmpty(classButton);
 
     if (buttonText === '' || buttonText === undefined) {
-        buttonTag = `<${Button} className="${classButton}"/>`;
+        buttonTag = `<${Button}${classText}/>`;
     } else {
-        buttonTag = `<${Button} className="${classButton}">\n\t\t${buttonText}\n\t</${Button}>`;
+        buttonTag = `<${Button}${classText}>\n\t\t${buttonText}\n\t</${Button}>`;
     }
 
     if (componentName === "Card") {
@@ -26,18 +27,20 @@ export default function textBuilder(componentName, componentsState) {
 
         let additionalText = '';
         if (src !== '') {
-            additionalText += `src="${src}"`;
+            additionalText += ` src="${src}"`;
         }
 
-        return text = `<Card className="${className}" ${additionalText}>${componentText}\n\t${buttonTag}\n</Card>`;
+        classText = isClassEmpty(className);
+        return text = `<Card${classText}${additionalText}>${componentText}\n\t${buttonTag}\n</Card>`;
     } else if (componentName === 'Entry') {
         const componentText = componentStyle.text ? '\n\t' + componentStyle.text : '';
         let typeForm = componentsState["Login"].type;
         className = className.replace(`btn-${Button}`, '').trim();
 
         let Login = textBuilder('Login', componentsState);
-        let Pass = Login.replace(`type="${typeForm}"`, `type="password"`)
-        return text = `<Entry className="${className}">${componentText}\n\t${Login}\n\t${Pass}\n\t${buttonTag}\n</Entry>`;
+        let Pass = Login.replace(`type="${typeForm}"`, `type="Password"`)
+        classText = isClassEmpty(className);
+        return text = `<Entry${classText}>${componentText}\n\t${Login}\n\t${Pass}\n\t${buttonTag}\n</Entry>`;
     } else {
         let additionalText = '';
         if (componentName === 'Login') {
@@ -45,15 +48,24 @@ export default function textBuilder(componentName, componentsState) {
             className = className.replace(`type-${typeForm}`, '').trim();
 
             if (typeForm !== '') {
-                additionalText += `type="${typeForm}"`;
+                additionalText += ` type="${typeForm}"`;
             }
         }
         const componentText = componentStyle.text;
+        classText = isClassEmpty(className)
 
         if (componentText === '' || componentText === undefined) {
-            return text = `<${componentName} className="${className}" ${additionalText}/>`;
+            return text = `<${componentName}${classText}${additionalText}/>`;
         } else {
-            return text = `<${componentName} className="${className}" ${additionalText}>${componentText}</${componentName}>`;
+            return text = `<${componentName}${classText}${additionalText}>${componentText}</${componentName}>`;
         }
+    }
+}
+
+function isClassEmpty(className) {
+    if (className === '') {
+        return '';
+    } else {
+        return ` classname="${className}"`;
     }
 }
