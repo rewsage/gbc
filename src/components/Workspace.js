@@ -9,7 +9,7 @@ class Workspace extends React.Component {
         "Waves": { text: '', fs: '', bg: '', bc: '', cl: '', fw: '' },
         "Phone": { fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', br: '' },
         "Login": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '', type: 'Email' },
-        "Entry": { text: '', bg: '', bw: '', bc: '', br: '', login: 'Email', btn: 'Classic' },
+        "Entry": { text: '', bg: '', bw: '', bc: '', br: '', btn: 'Classic' },
         "Card": { text: '', url: '', fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', btn: 'Classic' },
     }
 

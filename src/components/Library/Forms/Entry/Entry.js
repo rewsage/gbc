@@ -8,7 +8,7 @@ class Entry extends Component {
     render() {
         const {componentsState, componentName} = this.props;
         const componentStyle = componentsState && componentsState[componentName];
-        const loginType = componentStyle.login;
+        const loginType = componentsState["Login"].type;
         let styleReader = new StyleReader(componentStyle);
         let nameForm = this.props.children || "Вход";
         const buttonName = componentStyle.btn;

@@ -61,14 +61,6 @@ function FormTemplate(props) {
                                  getStyles={getStyles}
                                  componentStyle={componentStyle}/>
             break;
-        case 'login':
-            const logins = ["Email", "Telephone", "Login"];
-            form = <DropdownForm label={"Type"}
-                                 elements={logins}
-                                 styleType={'login'}
-                                 getStyles={getStyles}
-                                 componentStyle={componentStyle}/>
-            break;
         case 'btn':
             const buttons = ["Classic", "Waves"];
             form = <DropdownForm label={"Button"}

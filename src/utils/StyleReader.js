@@ -98,7 +98,7 @@ class StyleReader {
             }
         }
 
-        return className.slice(0, -1);
+        return className.trim();
     }
 }
 
