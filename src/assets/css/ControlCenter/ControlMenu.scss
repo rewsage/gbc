@@ -16,12 +16,8 @@
   flex-direction: column;
 }
 
-.control-menu_export {
+.control-menu__inner_export {
   width: max-content;
-  padding-top: 10px;
-
-  flex-direction: column;
-  justify-content: initial;
 }
 
 .control-menu__text {

@@ -14,14 +14,14 @@ export default function textBuilder(componentName, componentsState) {
     let classText;
 
     if (componentName === "Card") {
-        const src = styleReader.img;
+        const src = styleReader.url;
         // удаляем ненужные параметры, которые будут передаваться отдельным пропсом или как children
         className = className.replace(`btn-${Button}`, '').trim();
         className = className.replace(`url-${src}`, '').trim();
 
         // формируем отдельный пропс для src
         let additionalText = '';
-        if (src !== '') {
+        if (src !== undefined) {
             additionalText += ` src="${src}"`;
         }
 

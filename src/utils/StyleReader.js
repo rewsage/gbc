@@ -63,7 +63,7 @@ class StyleReader {
                     this._btn = value;
                     break;
                 case 'url':
-                    this._url = property.split("-").slice(1).join("-");
+                    this._url = value;
                     break;
                 case 'text':
                     break;
