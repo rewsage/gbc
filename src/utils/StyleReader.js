@@ -56,6 +56,9 @@ class StyleReader {
                 case 'bw':
                     this._style.borderWidth = value + 'px';
                     break;
+                case 'br':
+                    this._style.borderRadius = value + 'px';
+                    break;
                 case 'btn':
                     this._btn = value;
                     break;
@@ -96,7 +99,7 @@ class StyleReader {
             }
         }
 
-        return className.slice(0, -1);
+        return className.trim();
     }
 }
 

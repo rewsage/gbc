@@ -21,16 +21,24 @@
 }
 
 .form__number {
-  width: 60px;
-  max-height: 32px;
+  width: 50px;
+  height: 35px;
+
+  padding-left: 8px;
+  outline: none;
+  border-radius: 3px;
+  border:0;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
 }
 
 .form__color-btn {
   width: 20%;
+  height: 35px;
 
   border-radius: 6px;
-  border: 2px #d3d3d3 solid;
   padding: 4px 12px;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+  background: white;
 
   display: flex;
   justify-content: space-between;
@@ -39,7 +47,7 @@
   outline: none;
   cursor: pointer;
 
-  color: inherit;
+  color: #686868;
   font-size: inherit;
   font-weight: inherit;
 
@@ -51,11 +59,11 @@
   }
 
   & p {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 
-.form__color-form {
+.form__color-picker {
   position: absolute;
   top: 20px;
   left: 40px;
@@ -66,13 +74,18 @@
 
 .form__dropdown {
   width: 20%;
+  height: 35px;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
 }
 
 .form__textarea {
-  width: 20%;
-  height: 30px;
+  width: 40%;
+  height: 35px;
 
-  border-radius: 6px;
+  overflow: auto;
+  padding: 7px;
   outline: none;
-  border: 2px #d3d3d3 solid;
+  border-radius: 10px;
+  border:0;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
 }

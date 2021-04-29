@@ -6,10 +6,12 @@ import ThemeContext from "./ThemeControl/ThemeContext";
 
 class Workspace extends React.Component {
     state = {
-        "Classic": { fs: '', bg: '', cl: '', fw: '', text: '' },
-        "Waves": { fs: '', bg: '', cl: '', fw: '', text: '' },
-        "Card": { fs: '', bg: '', cl: '', fw: '', text: '', bw: '', bc: '', btn: '', url: '' },
-        "Phone": {},
+        "Classic": { text: '', fs: '', bg: '', cl: '', fw: '', br: '' },
+        "Waves": { text: '', fs: '', bg: '', bc: '', cl: '', fw: '' },
+        "Phone": { fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', br: '' },
+        "Login": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '', type: '' },
+        "Entry": { text: '', bg: '', bw: '', bc: '', br: '', btn: '' },
+        "Card": { text: '', url: '', fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', btn: '' },
     }
 
     render() {
@@ -18,7 +20,6 @@ class Workspace extends React.Component {
 
         const componentText = userComponentName && this.state[userComponentName].text;
         const Component = components[userComponentName];
-        const componentStyle = this.state[userComponentName];
 
         const currentComponent = userComponentName && <Component componentsState={this.state}
                                                                  componentName={userComponentName}>
@@ -27,7 +28,7 @@ class Workspace extends React.Component {
 
         const currentMenu = userComponentName && <ControlCenter getStyles={this.getStyles}
                                                                 resetStyles={this.resetStyles}
-                                                                componentStyle={componentStyle}
+                                                                componentsState={this.state}
                                                                 componentName={userComponentName}/>;
 
         return (

@@ -35,7 +35,7 @@ class NumberForm extends Component {
                     <input className="form__number"
                            type="number"
                            min="0"
-                           placeholder="18"
+                           placeholder={0}
                            value={this.state.value}
                            onChange={this.handleChange}>
                     </input>

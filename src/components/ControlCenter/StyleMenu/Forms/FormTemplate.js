@@ -53,6 +53,20 @@ function FormTemplate(props) {
                                getStyles={getStyles}
                                componentStyle={componentStyle}/>
             break;
+        case 'br':
+            form = <NumberForm label={"Border Radius"}
+                             styleType={'br'}
+                             getStyles={getStyles}
+                             componentStyle={componentStyle}/>
+            break;
+        case 'type':
+            const types = ["Email", "Password", "Telephone", "Login"];
+            form = <DropdownForm label={"Type"}
+                                 elements={types}
+                                 styleType={'type'}
+                                 getStyles={getStyles}
+                                 componentStyle={componentStyle}/>
+            break;
         case 'btn':
             const buttons = ["Classic", "Waves"];
             form = <DropdownForm label={"Button"}

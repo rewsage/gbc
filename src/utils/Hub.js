@@ -2,3 +2,5 @@ export { default as Classic } from "../components/Library/Buttons/Classic/Classi
 export { default as Waves } from "../components/Library/Buttons/Waves/Waves"
 export { default as Card } from "../components/Library/Cards/Card/Card"
 export { default as Phone } from "../components/Library/Forms/Phone/Phone"
+export { default as Login } from "../components/Library/Forms/Login/Login"
+export { default as Entry } from "../components/Library/Forms/Entry/Entry"

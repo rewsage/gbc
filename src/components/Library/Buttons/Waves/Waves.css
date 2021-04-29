@@ -1,48 +1,24 @@
 .buttonWaves {
-    background: #F2C94C;
-    color: #333333;
-
     z-index: 0;
+    color: #333333;
+    background: #F2C94C;
     position: relative;
     padding: 16px;
     text-align: center;
-    font-size: 24px;
 
     outline: none;
-    border: none;
     -webkit-transition: color 0.5s;
     transition: all 0.5s;
     cursor: pointer;
-}
-
-.buttonWaves_small {
-    font-size: 11px;
-    padding: 8px;
-}
-
-.buttonWaves_medium {
-    font-size: 18px;
-    padding: 10px;
-}
-
-.buttonWaves:before {
-    content: "";
-    z-index: 1;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
 
     border: 6px solid #fff;
 }
 
-.buttonWaves_small:before {
-    border: 3px solid #fff;
+.buttonWaves p {
+    margin: 0;
 }
-
 .buttonWaves:hover {
-    color: #fff !important;
+    color: #fff;
     background: #EC9360 !important;
 }
 .buttonWaves:hover:after {
@@ -105,5 +81,17 @@
 .buttonWaves:hover .buttonWaves__wave_right {
     -webkit-transform: translateZ(0) scale(1.7);
     transform: translateZ(0) scale(1.7);
+}
+
+button {
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
 }
 

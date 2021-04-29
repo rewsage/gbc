@@ -1,15 +1,18 @@
 .classic-btn {
-  padding: 20px 24px;
-
-  border-radius: 100px;
-  background: #56CCF2;
-  color: white;
-
-  transition: 0.2s color;
+  padding: 15px;
+  border: none;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  font-size: 18px;
+  color :#fff;
+  background-color: #0071f0;
+  outline: none;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
 }
 
 .classic-btn:hover {
-  color: white !important;
+  color: #E4D0BB !important;
 }
 
 .classic-btn:active {

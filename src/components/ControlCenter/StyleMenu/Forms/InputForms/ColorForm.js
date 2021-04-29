@@ -46,7 +46,6 @@ class ColorForm extends Component {
         return null;
     }
 
-
     onClickHandler = () => {
         this.setState(currentState => ({
             isOpen: !currentState.isOpen
@@ -76,7 +75,7 @@ class ColorForm extends Component {
                        <p>{this.state.background}</p>
                     </button>
 
-                    <div className="form__color-form">
+                    <div className="form__color-picker">
                         {colorPicker}
                     </div>
                 </div>

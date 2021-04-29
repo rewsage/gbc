@@ -6,7 +6,7 @@ import ResetBtn from "./ResetBtn";
 class StyleMenu extends Component {
     render () {
         const {getStyles, resetStyles, componentStyle} = this.props;
-        const formsList = [];
+        let formsList = [];
 
         for (let styleType in componentStyle) {
             if ( componentStyle.hasOwnProperty(styleType) ) {

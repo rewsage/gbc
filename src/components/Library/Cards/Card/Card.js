@@ -2,7 +2,7 @@ import React from "react";
 import "./Card.css";
 import defaultImg from "./product3.jpg";
 import StyleReader from "../../../../utils/StyleReader";
-import * as components from "../../../../utils/Hub"
+import * as components from "../../../../utils/Hub";
 
 class Card extends React.Component {
     render() {

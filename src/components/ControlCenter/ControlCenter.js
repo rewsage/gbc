@@ -10,7 +10,8 @@ class ControlCenter extends Component {
     }
 
     render() {
-        const {getStyles, resetStyles, componentName, componentStyle } =  this.props;
+        const {getStyles, resetStyles, componentName, componentsState} =  this.props;
+        const componentStyle = componentsState[componentName];
         let currentTab;
 
         switch ( this.currentTabName() ) {
@@ -21,7 +22,7 @@ class ControlCenter extends Component {
                 break;
             case ('Export'): {
                 currentTab = <ExportMenu componentName={componentName}
-                                         componentStyle={componentStyle}/>
+                                         componentsState={componentsState}/>
                 break;
             }
         }
