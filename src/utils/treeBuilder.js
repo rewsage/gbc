@@ -1,51 +1,60 @@
+// treeBuilder читает все пути из файла Hub.js и на основе этих путей строит файловое дерево
 const fs = require("fs");
-const pattern = /(\.\/|\/\w)[\w\/]+/g;
-let pathComponents;
+// шаблон для поиска относительного пути к компонентам из Hub.js
+const pattern = /\.\/[\w\/]+/g;
+let pathsToComponents;
 try {
     const data = fs.readFileSync("Hub.js", 'utf-8')
-    pathComponents = data.match(pattern).map((item) => {
+    // перебираем все найденные пути и добавляем им расширения,
+    // чтобы все были записаны в одном виде
+    pathsToComponents = data.match(pattern).map((item) => {
         if (item.slice(-3, 0) !== ".js") {
-            return item += ".js"
+            return item += ".js";
         }
     })
 } catch (err) {
-    console.error(err)
+    console.error(err);
 }
 
 let tree = [];
-if (pathComponents) {
-    let folderDef = [];
-    for (let jsFile of pathComponents) {
+if (pathsToComponents) {
+    let definedPaths = [];
+    for (let jsFile of pathsToComponents) {
+        // разбиваем путь на части и откидываем первые две папки относительного пути - "." и "components",
+        // так как эти папки у всех компонентов одинаковые и их нет смысла обрабатывать
         let pathPart = jsFile.split("/").slice(2);
         let currentIndex = 0;
-        let isNextFile = pathPart.length;
+        let fileIndex = pathPart.length - 1;
         let currentPath = "";
         for (let folder of pathPart.slice(0, -1)) {
-            currentIndex++
+            currentIndex++;
             currentPath += folder + "/";
-            if (!folderDef.includes(currentPath)) {
-                folderDef.push(currentPath);
-                let jsObject = {
+            if (!definedPaths.includes(currentPath)) {
+                definedPaths.push(currentPath);
+                let treeComponent = {
                     "name": folder, "dirs": [],
                     "files": []
                 };
-                if (currentIndex + 2 < isNextFile) {
-                    jsObject["dirs"].push(pathPart[currentIndex]);
+                if (currentIndex + 1 !== fileIndex) {
+                    treeComponent["dirs"].push(pathPart[currentIndex]);
                 } else {
-                    let fileName = pathPart[pathPart.length - 1];
-                    jsObject["files"].push(fileName);
+                    let fileName = pathPart[fileIndex];
+                    treeComponent["files"].push(fileName);
                 }
-                tree.push(jsObject);
+                tree.push(treeComponent);
             } else {
-                let jsObject = tree[folderDef.indexOf(currentPath)];
-                if (currentIndex + 2 < isNextFile) {
-                    if (!jsObject["dirs"].includes(pathPart[currentIndex])) {
-                        jsObject["dirs"].push(pathPart[currentIndex]);
+                // так как tree и definedPaths заполняются одновременно, то индексы компонента
+                // в этих массивах будут совпадать
+                let treeComponent = tree[definedPaths.indexOf(currentPath)];
+                if (currentIndex + 1 < fileIndex) {
+                    let dirName = pathPart[currentIndex]
+                    if (!treeComponent["dirs"].includes(dirName)) {
+                        treeComponent["dirs"].push(dirName);
                     }
                 } else {
-                    if (!jsObject["files"].includes(pathPart[pathPart.length - 1])) {
-                        let fileName = pathPart[pathPart.length - 1];
-                        jsObject["files"].push(fileName);
+                    let fileName = pathPart[fileIndex];
+                    if (!treeComponent["files"].includes(fileName)) {
+                        treeComponent["files"].push(fileName);
                     }
                 }
             }
