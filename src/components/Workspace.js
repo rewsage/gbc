@@ -4,7 +4,10 @@ import * as components from "../utils/Hub"
 import ControlCenter from "./ControlCenter/ControlCenter";
 import ThemeContext from "./ThemeControl/ThemeContext";
 
+// один из ключевых компонентов
+// Workspace отображает рабочее пользовательское пространство в правой части приложения
 class Workspace extends React.Component {
+    // состояние хранит стили всех компонентов в конкретный момент времени
     state = {
         "Classic": { text: '', fs: '', bg: '', cl: '', fw: '', br: '' },
         "Waves": { text: '', fs: '', bg: '', bc: '', cl: '', fw: '' },
@@ -17,15 +20,17 @@ class Workspace extends React.Component {
     render() {
         const {userComponentName} = this.props;
         const themeContext = this.context.theme;
-
         const componentText = userComponentName && this.state[userComponentName].text;
+        // исходя из переданного пропсом имени выбирается текущий компонент для отображения
         const Component = components[userComponentName];
 
+        // проверка на то, открыт ли компонент
         const currentComponent = userComponentName && <Component componentsState={this.state}
                                                                  componentName={userComponentName}>
                                                           {componentText}
                                                       </Component>
 
+        // аналогично
         const currentMenu = userComponentName && <ControlCenter getStyles={this.getStyles}
                                                                 resetStyles={this.resetStyles}
                                                                 componentsState={this.state}
@@ -43,6 +48,8 @@ class Workspace extends React.Component {
         )
     }
 
+    // метод получает стили из форм и на основе полученных данных
+    // обновляет состояние стилей компонета
     getStyles = (styleType, value) => {
         const {userComponentName} = this.props;
         const updatedObj = this.state[userComponentName];
@@ -53,6 +60,7 @@ class Workspace extends React.Component {
         })
     }
 
+    // метод сбрасывает стили всех компонетов
     resetStyles = () => {
         const {userComponentName} = this.props;
         const resetObj = this.state[userComponentName];
@@ -69,6 +77,7 @@ class Workspace extends React.Component {
         console.log(this.state);
     }
 
+    // передача контекста текущей UI-темы
     static contextType = ThemeContext;
 }
 

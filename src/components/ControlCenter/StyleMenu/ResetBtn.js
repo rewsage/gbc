@@ -10,6 +10,7 @@ class ResetBtn extends Component {
 
     render () {
         const condition = this.isActive() ? 'active' : 'false';
+        // иконки корзины и галочки кнопки
         const trashIcon = <FontAwesomeIcon className={`reset-btn__trash-icon`} icon={faTrashAlt}/>
         const checkIcon = <FontAwesomeIcon className={`reset-btn__check-icon`} icon={faCheck}/>
 
@@ -25,16 +26,23 @@ class ResetBtn extends Component {
         )
     }
 
+    // обработчик клика по кнопке
     handleClick = (e) => {
+        // предупредить поведение по умолчанию
         e.preventDefault();
+
+        // если по кнопке недавно нажимали, то ничего не предпринимать
         if ( this.isActive() ) return null;
+        // в ином случае сбросить стили компонента
         const { resetStyles } = this.props;
         resetStyles()
 
+        // сделать кнопку временно активной (нажатой)
         this.setState({
             isActive: true
         })
 
+        // через 2 секунды возвратить кнопку в начальное состояние
         setTimeout(() => {
             this.setState({
                 isActive: false,

@@ -5,6 +5,8 @@ class NumberForm extends Component {
         value: '',
     }
 
+    // метод, вызывающийся сразу после рендера компонента
+    // метод позволяет сохранить значение стиля формы после повторного монтирования StyleMenu
     componentDidMount() {
         const {componentStyle, styleType} = this.props;
 
@@ -15,13 +17,16 @@ class NumberForm extends Component {
         }
     }
 
+    // метод жизненного цикла, позволяющий синхронизировать состояние формы со стилем компонента
     static getDerivedStateFromProps(props, state) {
         const {componentStyle, styleType} = props;
 
+        // синхронизация значения формы и стиля компонента
         if (componentStyle[styleType] !== state.value) {
             return { value: componentStyle[styleType] }
         }
 
+        // в ином случае оставить без изменений
         return null;
     }
 
@@ -44,6 +49,7 @@ class NumberForm extends Component {
         )
     }
 
+    // метод передает изменения с помощью функции-колбэка
     handleChange = (event) => {
         const {getStyles, styleType} = this.props;
         getStyles(styleType, event.target.value);

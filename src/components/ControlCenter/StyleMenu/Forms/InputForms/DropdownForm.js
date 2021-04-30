@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 
+// форма - выпадающий список
 class DropdownForm extends Component {
+    // значение по умолчанию
     state = {
         value: 'Regular',
     }
 
+    // метод, вызывающийся сразу после рендера компонента
+    // метод позволяет сохранить значение стиля формы после повторного монтирования StyleMenu
     componentDidMount() {
         const {componentStyle, styleType} = this.props;
 
+        // если значение уже было задано (до размонтирования), то форма примет его
         if (componentStyle[styleType] !== '') {
             this.setState({
                 value: componentStyle[styleType],
@@ -15,21 +20,28 @@ class DropdownForm extends Component {
         }
     }
 
+    // метод жизненного цикла, позволяющий сбросить значение формы,
+    // а также синхронизировать состояние формы со стилем компонента
     static getDerivedStateFromProps(props, state) {
         const {componentStyle, styleType} = props;
 
+        // если стили были сброшены вручную (resetStyles),
+        // то форма примет значения по умолчанию
         if (componentStyle[styleType] === '' && state.value !== 'Regular') {
             return { value: 'Regular' }
+        // синхронизация значения формы и стиля компонента
         } else if (componentStyle[styleType] !== state.value && componentStyle[styleType] !== '') {
             return { value: componentStyle[styleType] }
         }
 
+        // в ином случае оставить без изменений
         return null;
     }
 
     render () {
         const {label, elements} = this.props;
 
+        // массив элементов выпадающего меню
         const optionList = elements.map((element, index) => {
            return <option value={element} key={index}>{element}</option>
         });
@@ -48,6 +60,7 @@ class DropdownForm extends Component {
         )
     }
 
+    // метод передает изменения с помощью функции-колбэка
     handleChange = (event) => {
         const {getStyles, styleType} = this.props;
         getStyles(styleType, event.target.value);

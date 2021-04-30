@@ -73,6 +73,6 @@ function isClassEmpty(className) {
     if (className === '') {
         return '';
     } else {
-        return ` classname="${className}"`;
+        return ` className="${className}"`;
     }
 }

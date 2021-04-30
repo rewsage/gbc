@@ -4,38 +4,50 @@ import Tabs from "./Tabs/Tabs.js";
 import StyleMenu from "./StyleMenu/StyleMenu";
 import ExportMenu from "./ExportMenu/ExportMenu";
 
+// ControlCenter отвечает за отображаение меню стилей (StyleMenu) и экспорта (ExportMenu)
 class ControlCenter extends Component {
+    // состояние хранит текущую открытую вкладку (меню)
     state = {
         currentTabName: 'Style'
     }
 
+
     render() {
         const {getStyles, resetStyles, componentName, componentsState} =  this.props;
+
+        // componentStyle содержит стиль активного компонента
         const componentStyle = componentsState[componentName];
-        let currentTab;
+        let currentMenu;
 
         switch ( this.currentTabName() ) {
             case ('Style'):
-                currentTab = <StyleMenu getStyles={getStyles}
+
+                // передаем в качестве пропсов колбэки и стиль компонента
+                currentMenu = <StyleMenu getStyles={getStyles}
                                         resetStyles={resetStyles}
                                         componentStyle={componentStyle}/>
                 break;
             case ('Export'): {
-                currentTab = <ExportMenu componentName={componentName}
+
+                // передаем в качестве пропсов состояние стилей компонентов и
+                // название текущего компонента
+                currentMenu = <ExportMenu componentName={componentName}
                                          componentsState={componentsState}/>
                 break;
             }
         }
 
+        // рендерим панель вкладок (Tabs) и выбранное на панели меню
         return(
             <div className="control-center">
                 <Tabs currentTabName={this.currentTabName()}
                       switchTab={this.switchTab}/>
-                {currentTab}
+                {currentMenu}
             </div>
         )
     }
 
+    // метод, отвечающий за смену вкладок
     switchTab = (currentTabName) => {
         this.setState({
             currentTabName: currentTabName,
