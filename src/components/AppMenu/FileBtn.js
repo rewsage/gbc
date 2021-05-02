@@ -3,7 +3,7 @@ import { fileIcon } from './InnerTree'
 
 class FileBtn extends Component {
     state = {
-        isCalled: false,
+        isCalled: false
     }
 
     static getDerivedStateFromProps(props, state) {

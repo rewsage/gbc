@@ -56,7 +56,7 @@ export default function textBuilder(componentName, componentsState) {
             }
         }
         classText = isClassEmpty(className);
-        // изменяем componentText, чтобы код кнопки не переносился на новую строку
+        // изменяем componentText, чтобы код кнопки не переносился на новую строку,
         // иначе в составных компонентах код будет выводиться некоректно
         componentText = componentStyle.text;
 

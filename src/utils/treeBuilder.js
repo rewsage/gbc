@@ -9,7 +9,7 @@ try {
     // чтобы все были записаны в одном виде
     pathsToComponents = data.match(pattern).map((item) => {
         if (item.slice(-3, 0) !== ".js") {
-            return item += ".js";
+            item += ".js";
         }
     })
 } catch (err) {

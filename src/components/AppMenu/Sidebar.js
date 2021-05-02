@@ -1,20 +1,10 @@
 import React, {Component} from 'react'
 import '../../assets/css/App-menu/Sidebar.scss'
-import list from '../../list.json'
-import { default as InnerTree, folderOpen, folderClose, arrowRight, arrowDown } from "./InnerTree";
+import DirBtn from "./DirBtn";
 
+// компонент Sidebar отвечает за навигацию в приложении
 class Sidebar extends Component {
-    state = {
-        isActive: false
-    }
-
     render() {
-        const arrowIcon = this.isActive() ? arrowDown : arrowRight;
-        const folderIcon = this.isActive() ? folderOpen : folderClose;
-        const innerTree = this.isActive() && <InnerTree openDir={list[0].name}
-                                                        callComponent={this.props.callComponent}
-                                                        userComponentName={this.props.userComponentName}/>
-
         return (
             <div className="sidebar">
                 <div className="container">
@@ -23,27 +13,14 @@ class Sidebar extends Component {
                         <p className="sidebar__title">LIBRARY</p>
 
                         <div className="sidebar__wrapper">
-                            <button className={"tree-element__dir tree-element__dir_root"} onClick={this.goDown}>
-                                <div className={`tree-element__highlighter tree-element__highlighter_disabled`}/>
-                                {arrowIcon}
-                                {folderIcon}
-                                {list[0].name}
-                            </button>
-
-                            {innerTree}
+                            <DirBtn dirName={"Library"}
+                                    callComponent={this.props.callComponent}
+                                    userComponentName={this.props.userComponentName}/>
                         </div>
                     </div>
                 </div>
             </div>
         )
-    }
-
-    goDown = () => {
-        this.setState((state) => ({ isActive: !state.isActive }))
-    }
-
-    isActive = () => {
-        return this.state.isActive;
     }
 }
 

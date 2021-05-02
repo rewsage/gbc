@@ -27,18 +27,24 @@ class App extends Component {
         );
     }
 
+    // функция callComponent отвечает за отображение компонента библиотеки
     callComponent = (name) => {
+        // если пользователь вызывает компонент, который уже отображается,
+        // значит этот компанент больше не нужно отображать
         if (name === this.state.userComponentName) {
             this.setState({
                 userComponentName: "",
             })
         } else {
+            // если пользователь вызывает новый компонент из библиотеки,
+            // то его нужно отобразить
             this.setState({
                 userComponentName: name,
             })
         }
     }
 
+    // функция toggleTheme устанавливает тему оформления приложения
     toggleTheme = () => {
         this.setState({
             theme: this.state.theme === 'light' ? 'dark' : 'light',
