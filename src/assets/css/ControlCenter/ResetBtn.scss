@@ -40,12 +40,12 @@
   }
 
   &:hover span {
-    transform: translateX(-72%);
+    transform: translateX(-40%);
     opacity: 0;
   }
 
   &:hover .reset-btn__wrapper {
-    transform: translateX(-29px);
+    transform: translateX(-31px);
   }
 }
 
@@ -66,7 +66,7 @@
   }
 
   & .reset-btn__wrapper {
-    transform: translateX(-29px);
+    transform: translateX(-31px);
   }
 }
 

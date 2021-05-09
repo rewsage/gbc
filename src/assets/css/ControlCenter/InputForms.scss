@@ -6,7 +6,7 @@
 }
 
 .form__label {
-  width: 25%;
+  width: 150px;
 
   font-size: 16px;
   font-weight: 700;
@@ -14,7 +14,7 @@
 
 .form__wrapper {
   position: relative;
-  width: 75%;
+  width: max-content;
 
   display: flex;
   justify-content: flex-start;
@@ -26,13 +26,13 @@
 
   padding-left: 8px;
   outline: none;
-  border-radius: 3px;
+  border-radius: 6px;
   border:0;
   box-shadow:4px 4px 10px rgba(0,0,0,0.06);
 }
 
 .form__color-btn {
-  width: 22%;
+  width: 160px;
   height: 35px;
 
   border-radius: 6px;
@@ -60,7 +60,9 @@
   }
 
   & p {
-    font-size: 17px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
   }
 }
 
@@ -74,13 +76,17 @@
 }
 
 .form__dropdown {
-  width: 20%;
+  width: 160px;
   height: 35px;
   box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+
+  border-radius: 6px;
+  border: 0;
+  outline: none;
 }
 
 .form__textarea {
-  width: 40%;
+  width: 370px;
   height: 35px;
 
   overflow: auto;

@@ -16,12 +16,6 @@ const fileIcon = <FontAwesomeIcon className="tree-element__icon tree-element__ic
 
 // компонент InnerTree выводит содержимое папки, которая его вызвала
 class InnerTree extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isActive: false
-        }
-    }
 
     render () {
         const { openDir, callComponent, userComponentName } = this.props;
