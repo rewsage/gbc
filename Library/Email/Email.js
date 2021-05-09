@@ -1,21 +1,20 @@
 import React, {Component} from "react";
 import "../Login.css"
-import StyleReader from "../../../../../utils/StyleReader";
+import StyleReader from "../StyleReader";
 
-class Login extends Component {
+class Email extends Component {
     state = {
         value: ""
     }
 
     render() {
-        const {componentsState} = this.props;
-        const componentStyle = componentsState && componentsState["Login"];
-        const styleReader = new StyleReader(componentStyle);
-        const label = this.props.children || "Login";
+        const className = this.props.className || "";
+        const label = this.props.children || "Email";
+        const styleReader = new StyleReader(className);
 
         return (
             <form className={styleReader.userClassName + "login__group"}>
-                <input type={"text"}
+                <input type={"email"}
                        onChange={this.handleChange}
                        className={"login__input"}
                        placeholder=""
@@ -33,4 +32,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default Email;

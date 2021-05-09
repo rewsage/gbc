@@ -31,39 +31,30 @@ export default function textBuilder(componentName, componentsState) {
 
         text = `<Card${classText}${additionalText}>${componentText}\n\t${buttonCode}\n</Card>`;
     } else if (componentName === 'Entry') {
-        let typeForm = componentsState["Login"].type;
+        let typeForm = componentStyle.type || "Email";
         // удаляем ненужные параметры, которые будут передаваться как children
         className = className.replace(`btn-${Button}`, '').trim();
+        className = className.replace(`type-${typeForm}`, '').trim();
 
-        let Login = textBuilder('Login', componentsState);
+        let Login = textBuilder(typeForm, componentsState);
         // второе поле в Entry всегда является паролем, поэтому оно отличается только типом
-        let Pass = Login.replace(`type="${typeForm}"`, `type="Password"`);
+        let Pass = textBuilder("Password", componentsState);
+
         const buttonCode = textBuilder(Button, componentsState);
 
         classText = isClassEmpty(className);
 
         text = `<Entry${classText}>${componentText}\n\t${Login}\n\t${Pass}\n\t${buttonCode}\n</Entry>`;
     } else {
-        let additionalText = '';
-        if (componentName === 'Login') {
-            let typeForm = componentStyle.type;
-            // удаляем ненужные параметры, которые будут передаваться отдельным пропсом
-            className = className.replace(`type-${typeForm}`, '').trim();
-
-            // формируем отдельный пропс для type
-            if (typeForm !== '') {
-                additionalText += ` type="${typeForm}"`;
-            }
-        }
         classText = isClassEmpty(className);
         // изменяем componentText, чтобы код кнопки не переносился на новую строку,
         // иначе в составных компонентах код будет выводиться некоректно
         componentText = componentStyle.text;
 
         if (componentText === '' || componentText === undefined) {
-            text = `<${componentName}${classText}${additionalText}/>`;
+            text = `<${componentName}${classText}/>`;
         } else {
-            text = `<${componentName}${classText}${additionalText}>${componentText}</${componentName}>`;
+            text = `<${componentName}${classText}>${componentText}</${componentName}>`;
         }
     }
     return text;

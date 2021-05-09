@@ -1,17 +1,18 @@
 import React, {Component} from "react";
 import "./Entry.css"
 import StyleReader from "../../../../utils/StyleReader";
-import Login from "../Login/Login";
 import * as components from "../../../../utils/Hub";
 
 class Entry extends Component {
     render() {
-        const {componentsState, componentName} = this.props;
-        const componentStyle = componentsState && componentsState[componentName];
-        const loginType = componentsState["Login"].type || 'Email';
+        const {componentsState} = this.props;
+        const componentStyle = componentsState && componentsState["Entry"];
+        const formType = componentStyle.type || "Email";
+        const Authorization = components[formType];
+        const Password = components["Password"];
 
         const styleReader = new StyleReader(componentStyle);
-        const formName = this.props.children || "Sign in";
+        const entryName = this.props.children || "Sign in";
 
         const buttonName = componentStyle.btn || 'Classic';
         const buttonText = componentsState[buttonName].text;
@@ -20,13 +21,9 @@ class Entry extends Component {
         return (
             <form className={styleReader.userClassName + " entry"}
                   style={styleReader.style}>
-                <h1 className={"entry__title"}>{formName}</h1>
-                <Login componentsState={componentsState}
-                       componentName={"Login"}
-                       formType={loginType}/>
-                <Login componentsState={componentsState}
-                       componentName={"Login"}
-                       formType={"Password"}/>
+                <h1 className={"entry__title"}>{entryName}</h1>
+                <Authorization componentsState={componentsState} />
+                <Password componentsState={componentsState} />
                 <Button componentsState={componentsState}
                         componentName={buttonName}>
                     {buttonText}

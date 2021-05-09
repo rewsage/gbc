@@ -4,8 +4,8 @@ import StyleReader from "../../../../utils/StyleReader";
 
 class Waves extends Component {
     render() {
-        const {componentsState, componentName} = this.props;
-        const componentStyle = componentsState && componentsState[componentName];
+        const {componentsState} = this.props;
+        const componentStyle = componentsState && componentsState["Waves"];
         let text = this.props.children || "Scooby Doo";
         let styleReader = new StyleReader(componentStyle);
 

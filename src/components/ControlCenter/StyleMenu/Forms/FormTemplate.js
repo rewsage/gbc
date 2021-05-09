@@ -72,7 +72,7 @@ function FormTemplate(props) {
             break;
         // тип ввода формы
         case 'type':
-            const types = ["Email", "Password", "Telephone", "Login"];
+            const types = ["Email", "Telephone", "Login"];
             form = <DropdownForm label={"Type"}
                                  elements={types}
                                  styleType={'type'}

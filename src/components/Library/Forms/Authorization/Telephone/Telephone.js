@@ -1,21 +1,23 @@
 import React, {Component} from "react";
 import "../Login.css"
 import StyleReader from "../../../../../utils/StyleReader";
+import mask from "../../Phone/phoneMask";
 
-class Login extends Component {
+class Telephone extends Component {
     state = {
         value: ""
     }
 
     render() {
         const {componentsState} = this.props;
-        const componentStyle = componentsState && componentsState["Login"];
+        const componentStyle = componentsState && componentsState["Telephone"];
         const styleReader = new StyleReader(componentStyle);
-        const label = this.props.children || "Login";
+        const label = this.props.children || "Telephone";
 
         return (
             <form className={styleReader.userClassName + "login__group"}>
                 <input type={"text"}
+                       id={"tel"}
                        onChange={this.handleChange}
                        className={"login__input"}
                        placeholder=""
@@ -27,10 +29,16 @@ class Login extends Component {
     }
 
     handleChange = (event) => {
+        let input = document.querySelector("#tel");
+        input.addEventListener("input", mask, false);
+        input.addEventListener("focus", mask, false);
+        input.addEventListener("blur", mask, false);
+        input.addEventListener("keydown", mask, false);
+
         this.setState({
             value: event.target.value
         })
     }
 }
 
-export default Login;
+export default Telephone;
