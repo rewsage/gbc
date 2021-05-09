@@ -109,6 +109,8 @@ class StyleReader {
         for (let style in componentStyle) {
             if (
                 style !== 'text' &&
+                style !== 'btn' &&
+                style !== 'url' &&
                 componentStyle.hasOwnProperty(style) &&
                 componentStyle[style] !== ''
             ) {

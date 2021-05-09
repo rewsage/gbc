@@ -15,10 +15,7 @@ export default function textBuilder(componentName, componentsState) {
 
     if (componentName === "Card") {
         const src = styleReader.url;
-        // удаляем ненужные параметры, которые будут передаваться отдельным пропсом или как children
-        className = className.replace(`btn-${Button}`, '').trim();
-        className = className.replace(`url-${src}`, '').trim();
-
+        
         // формируем отдельный пропс для src
         let additionalText = '';
         if (src !== undefined) {
@@ -32,8 +29,6 @@ export default function textBuilder(componentName, componentsState) {
         text = `<Card${classText}${additionalText}>${componentText}\n\t${buttonCode}\n</Card>`;
     } else if (componentName === 'Entry') {
         let typeForm = componentsState["Login"].type;
-        // удаляем ненужные параметры, которые будут передаваться как children
-        className = className.replace(`btn-${Button}`, '').trim();
 
         let Login = textBuilder('Login', componentsState);
         // второе поле в Entry всегда является паролем, поэтому оно отличается только типом
