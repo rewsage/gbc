@@ -3,6 +3,7 @@ import "../../../assets/css/ControlCenter/Instruction.scss";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/oceanicNext";
 
+// компонент DisplayingText просто выводит переданный текст с подсветкой кода
 class DisplayingText extends React.Component {
     render() {
         const text = this.props.text;

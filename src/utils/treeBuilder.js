@@ -9,7 +9,7 @@ try {
     // чтобы все были записаны в одном виде
     pathsToComponents = data.match(pattern).map((item) => {
         if (item.slice(-3, 0) !== ".js") {
-            item += ".js";
+            return item += ".js";
         }
     })
 } catch (err) {
@@ -63,7 +63,7 @@ if (pathsToComponents) {
 }
 
 try {
-    fs.writeFileSync('../list.json', JSON.stringify(tree));
+    fs.writeFileSync('../tree.json', JSON.stringify(tree));
 } catch (err) {
     console.error(err);
 }
