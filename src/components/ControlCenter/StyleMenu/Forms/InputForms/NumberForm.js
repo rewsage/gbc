@@ -5,18 +5,6 @@ class NumberForm extends Component {
         value: '',
     }
 
-    // метод, вызывающийся сразу после рендера компонента
-    // метод позволяет сохранить значение стиля формы после повторного монтирования StyleMenu
-    componentDidMount() {
-        const {componentStyle, styleType} = this.props;
-
-        if (componentStyle[styleType] !== '') {
-            this.setState({
-                value: componentStyle[styleType],
-            })
-        }
-    }
-
     // метод жизненного цикла, позволяющий синхронизировать состояние формы со стилем компонента
     static getDerivedStateFromProps(props, state) {
         const {componentStyle, styleType} = props;

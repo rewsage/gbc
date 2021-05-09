@@ -7,19 +7,6 @@ class DropdownForm extends Component {
         value: 'Regular',
     }
 
-    // метод, вызывающийся сразу после рендера компонента
-    // метод позволяет сохранить значение стиля формы после повторного монтирования StyleMenu
-    componentDidMount() {
-        const {componentStyle, styleType} = this.props;
-
-        // если значение уже было задано (до размонтирования), то форма примет его
-        if (componentStyle[styleType] !== '') {
-            this.setState({
-                value: componentStyle[styleType],
-            })
-        }
-    }
-
     // метод жизненного цикла, позволяющий сбросить значение формы,
     // а также синхронизировать состояние формы со стилем компонента
     static getDerivedStateFromProps(props, state) {
