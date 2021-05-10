@@ -66,9 +66,9 @@ function FormTemplate(props) {
         // закругление краев (border-radius)
         case 'br':
             form = <NumberForm label={"Border Radius"}
-                             styleType={'br'}
-                             getStyles={getStyles}
-                             componentStyle={componentStyle}/>
+                               styleType={'br'}
+                               getStyles={getStyles}
+                               componentStyle={componentStyle}/>
             break;
         // тип ввода формы
         case 'type':

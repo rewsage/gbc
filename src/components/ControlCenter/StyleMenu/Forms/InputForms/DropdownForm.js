@@ -12,8 +12,7 @@ class DropdownForm extends Component {
     static getDerivedStateFromProps(props, state) {
         const {componentStyle, styleType} = props;
 
-        // если стили были сброшены вручную (resetStyles),
-        // то форма примет значения по умолчанию
+        // если стили были сброшены вручную (resetStyles), то форма примет значения по умолчанию
         if (componentStyle[styleType] === '' && state.value !== 'Regular') {
             return { value: 'Regular' }
         // синхронизация значения формы и стиля компонента

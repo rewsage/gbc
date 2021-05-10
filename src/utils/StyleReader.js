@@ -72,6 +72,10 @@ class StyleReader {
                 case 'br':
                     this._style.borderRadius = value + 'px';
                     break;
+                case 'wd':
+                    if (value < 80) break;
+                    this._style.width = value + 'px';
+                    break;
                 case 'btn':
                     this._btn = value;
                     break;

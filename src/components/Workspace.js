@@ -14,7 +14,7 @@ class Workspace extends React.Component {
         "Phone": { fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', br: '' },
         "Login": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '', type: '' },
         "Entry": { text: '', bg: '', bw: '', bc: '', br: '', btn: '' },
-        "Card": { text: '', url: '', fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', btn: '' },
+        "Card": { text: '', url: '', fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', btn: '', wd: '' },
     }
 
     render() {
