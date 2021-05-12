@@ -1,20 +1,28 @@
 import React, {Component} from "react";
 import "../Login.css"
-import StyleReader from "../StyleReader";
+import StyleReader from "../../../../../utils/StyleReader";
 
-class Login extends Component {
+class Password extends Component {
     state = {
         value: ""
     }
 
     render() {
-        const className = this.props.className || "";
-        const label = this.props.children || "Login";
-        const styleReader = new StyleReader(className);
+        const {componentsState, componentWithSync} = this.props;
+        let componentStyle;
+
+        if (componentWithSync) {
+            componentStyle = componentsState && componentsState[componentWithSync];
+        } else {
+            componentStyle = componentsState && componentsState["Password"];
+        }
+
+        const styleReader = new StyleReader(componentStyle);
+        const label = this.props.children || "Password";
 
         return (
             <form className={styleReader.userClassName + "login__group"}>
-                <input type={"text"}
+                <input type={"password"}
                        onChange={this.handleChange}
                        className={"login__input"}
                        placeholder=""
@@ -32,4 +40,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default Password;

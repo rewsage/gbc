@@ -4,8 +4,8 @@ import StyleReader from "../../../../utils/StyleReader";
 
 class Classic extends Component {
     render() {
-        const {componentsState, componentName} = this.props;
-        const componentStyle = componentsState && componentsState[componentName];
+        const {componentsState} = this.props;
+        const componentStyle = componentsState && componentsState["Classic"];
         const text = this.props.children || "Scooby Doo";
         const styleReader = new StyleReader(componentStyle);
 

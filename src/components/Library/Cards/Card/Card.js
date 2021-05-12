@@ -6,8 +6,8 @@ import * as components from "../../../../utils/Hub";
 
 class Card extends React.Component {
     render() {
-        const {componentsState, componentName} = this.props;
-        const componentStyle = componentsState && componentsState[componentName];
+        const {componentsState} = this.props;
+        const componentStyle = componentsState && componentsState["Card"];
         const description = this.props.children || "Lorem ipsum dolor sit amet," +
                                                  " consectetur adipisicing elit." +
                                                  " Aperiam eligendi impedit molestiae nisi.";
@@ -24,8 +24,7 @@ class Card extends React.Component {
                 <p className={"card__description"}>
                     {description}
                 </p>
-                <Button componentsState={componentsState}
-                        componentName={buttonName}>
+                <Button componentsState={componentsState}>
                     {buttonText}
                 </Button>
             </div>

@@ -72,7 +72,7 @@ function FormTemplate(props) {
             break;
         // тип ввода формы
         case 'type':
-            const types = ["Email", "Password", "Telephone", "Login"];
+            const types = ["Email", "Telephone", "Login"];
             form = <DropdownForm label={"Type"}
                                  elements={types}
                                  styleType={'type'}
@@ -85,6 +85,15 @@ function FormTemplate(props) {
             form = <DropdownForm label={"Button"}
                                  elements={buttons}
                                  styleType={'btn'}
+                                 getStyles={getStyles}
+                                 componentStyle={componentStyle}/>
+            break;
+        // выбор синхранизации стилей форм
+        case 'sync':
+            const sync = ["None", "Login", "Pass"];
+            form = <DropdownForm label={"Synchronize"}
+                                 elements={sync}
+                                 styleType={'sync'}
                                  getStyles={getStyles}
                                  componentStyle={componentStyle}/>
             break;

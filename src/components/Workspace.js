@@ -12,9 +12,12 @@ class Workspace extends React.Component {
         "Classic": { text: '', fs: '', bg: '', cl: '', fw: '', br: '' },
         "Waves": { text: '', fs: '', bg: '', bc: '', cl: '', fw: '' },
         "Phone": { fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', br: '' },
-        "Login": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '', type: '' },
-        "Entry": { text: '', bg: '', bw: '', bc: '', br: '', btn: '' },
-        "Card": { text: '', url: '', fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', btn: '', wd: '' },
+        "Login": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '' },
+        "Password": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '' },
+        "Email": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '' },
+        "Telephone": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '' },
+        "Entry": { text: '', bg: '', bw: '', bc: '', br: '', btn: '', type: '', sync: '' },
+        "Card": { text: '', url: '', fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', btn: '' },
     }
 
     render() {
@@ -25,8 +28,7 @@ class Workspace extends React.Component {
         const Component = components[userComponentName];
 
         // проверка на то, открыт ли компонент
-        const currentComponent = userComponentName && <Component componentsState={this.state}
-                                                                 componentName={userComponentName}>
+        const currentComponent = userComponentName && <Component componentsState={this.state}>
                                                           {componentText}
                                                       </Component>
 

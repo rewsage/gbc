@@ -4,16 +4,15 @@ import StyleReader from "./StyleReader";
 export default function textBuilder(componentName, componentsState) {
     let text;
 
-    const componentStyle = componentsState[componentName];
-    let componentText = componentStyle.text ? '\n\t' + componentStyle.text : '';
-
-    const styleReader = new StyleReader(componentStyle);
-    let className = styleReader.className;
-    const Button = styleReader.button;
-
-    let classText;
-
     if (componentName === "Card") {
+        const componentStyle = componentsState[componentName];
+        let componentText = componentStyle.text ? '\n\t' + componentStyle.text : '';
+
+        const styleReader = new StyleReader(componentStyle);
+        let className = styleReader.className;
+        const Button = styleReader.button;
+
+        let classText;
         const src = styleReader.url;
         
         // формируем отдельный пропс для src
@@ -28,37 +27,59 @@ export default function textBuilder(componentName, componentsState) {
 
         text = `<Card${classText}${additionalText}>${componentText}\n\t${buttonCode}\n</Card>`;
     } else if (componentName === 'Entry') {
-        let typeForm = componentsState["Login"].type;
 
-        let Login = textBuilder('Login', componentsState);
+        const componentStyle = componentsState[componentName];
+        let componentText = componentStyle.text ? '\n\t' + componentStyle.text : '';
+        const sync = componentsState["Entry"].sync;
+
+        const styleReader = new StyleReader(componentStyle);
+        let className = styleReader.className;
+        const Button = styleReader.button;
+
+        let classText;
+        let typeForm = componentStyle.type || "Email";
+
+        // удаляем ненужные параметры, которые будут передаваться как children
+        className = className.replace(`btn-${Button}`, '').trim();
+        className = className.replace(`type-${typeForm}`, '').trim();
+        className = className.replace(`sync-${sync.toLocaleLowerCase()}`, '').trim();
+
+        let Login = textBuilder(typeForm, componentsState);
         // второе поле в Entry всегда является паролем, поэтому оно отличается только типом
-        let Pass = Login.replace(`type="${typeForm}"`, `type="Password"`);
+        let Pass = textBuilder("Password", componentsState);
+
         const buttonCode = textBuilder(Button, componentsState);
 
         classText = isClassEmpty(className);
 
         text = `<Entry${classText}>${componentText}\n\t${Login}\n\t${Pass}\n\t${buttonCode}\n</Entry>`;
     } else {
-        let additionalText = '';
-        if (componentName === 'Login') {
-            let typeForm = componentStyle.type;
-            // удаляем ненужные параметры, которые будут передаваться отдельным пропсом
-            className = className.replace(`type-${typeForm}`, '').trim();
+        let componentStyle = componentsState[componentName];
 
-            // формируем отдельный пропс для type
-            if (typeForm !== '') {
-                additionalText += ` type="${typeForm}"`;
+        const forms = ["Login", "Email", "Telephone", "Password"];
+
+        // делаем синхранизацию стилей для форм из Entry
+        if (forms.includes(componentName)) {
+            const sync = componentsState["Entry"].sync;
+            if (sync === "Login") {
+                const typeForm = componentsState["Entry"].type || "Email";
+                componentStyle = componentsState[typeForm];
+            } else if (sync === "Pass") {
+                componentStyle = componentsState["Password"];
             }
         }
-        classText = isClassEmpty(className);
-        // изменяем componentText, чтобы код кнопки не переносился на новую строку,
-        // иначе в составных компонентах код будет выводиться некоректно
-        componentText = componentStyle.text;
+
+        const styleReader = new StyleReader(componentStyle);
+        let className = styleReader.className;
+        let classText = isClassEmpty(className);
+
+        // код простого компонента выводится в одну строчку
+        let componentText = componentStyle.text;
 
         if (componentText === '' || componentText === undefined) {
-            text = `<${componentName}${classText}${additionalText}/>`;
+            text = `<${componentName}${classText}/>`;
         } else {
-            text = `<${componentName}${classText}${additionalText}>${componentText}</${componentName}>`;
+            text = `<${componentName}${classText}>${componentText}</${componentName}>`;
         }
     }
     return text;

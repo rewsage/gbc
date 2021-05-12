@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "../Login.css"
-import StyleReader from "../StyleReader";
+import StyleReader from "../../../../../utils/StyleReader";
 
 class Login extends Component {
     state = {
@@ -8,9 +8,17 @@ class Login extends Component {
     }
 
     render() {
-        const className = this.props.className || "";
+        const {componentsState, componentWithSync} = this.props;
+        let componentStyle;
+
+        if (componentWithSync) {
+            componentStyle = componentsState && componentsState[componentWithSync];
+        } else {
+            componentStyle = componentsState && componentsState["Login"];
+        }
+
+        const styleReader = new StyleReader(componentStyle);
         const label = this.props.children || "Login";
-        const styleReader = new StyleReader(className);
 
         return (
             <form className={styleReader.userClassName + "login__group"}>

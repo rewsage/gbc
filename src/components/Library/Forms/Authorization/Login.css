@@ -1,11 +1,11 @@
-.email__group {
+.login__group {
     position: relative;
-    margin-top: 30px;
+    margin-bottom: 30px;
     min-width: 250px;
     width: max-content;
 }
 
-.email__input {
+.login__input {
     position: relative;
     z-index: 1;
     width: 100%;
@@ -18,7 +18,7 @@
     transition: 0.2s ease-in-out;
 }
 
-.email__label {
+.login__label {
     position: absolute;
     top: 0;
     left: 0;
@@ -28,12 +28,12 @@
     transition: 0.2s ease-in-out;
 }
 
-.email__input:focus {
+.login__input:focus {
     border-bottom: 1px solid #1a73a8;
 }
 
-.email__input:focus ~ .email__label,
-.email__input:not(:placeholder-shown) ~ .email__label {
+.login__input:focus ~ .login__label,
+.login__input:not(:placeholder-shown) ~ .login__label {
     top: -55%;
     font-size: 16px;
     color: #909090;

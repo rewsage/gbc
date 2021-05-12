@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/cities/.idea/cities.iml" filepath="$USER_HOME$/cities/.idea/cities.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/gbc.iml" filepath="$PROJECT_DIR$/.idea/gbc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../test-shop/.idea/test-shop.iml" filepath="$PROJECT_DIR$/../test-shop/.idea/test-shop.iml" />
+      <module fileurl="file://$USER_HOME$/test-shop/.idea/test-shop.iml" filepath="$USER_HOME$/test-shop/.idea/test-shop.iml" />
     </modules>
   </component>
 </project>
