@@ -5,18 +5,6 @@ class NumberForm extends Component {
         value: '',
     }
 
-    // метод, вызывающийся сразу после рендера компонента
-    // метод позволяет сохранить значение стиля формы после повторного монтирования StyleMenu
-    componentDidMount() {
-        const {componentStyle, styleType} = this.props;
-
-        if (componentStyle[styleType] !== '') {
-            this.setState({
-                value: componentStyle[styleType],
-            })
-        }
-    }
-
     // метод жизненного цикла, позволяющий синхронизировать состояние формы со стилем компонента
     static getDerivedStateFromProps(props, state) {
         const {componentStyle, styleType} = props;
@@ -31,7 +19,14 @@ class NumberForm extends Component {
     }
 
     render () {
-        const {label} = this.props;
+        const {label, styleType} = this.props;
+        let minValue, placeholderValue = 0;
+
+        // минимальное значение ширины компонента должно быть не меньше 80px
+        if (styleType === 'wd') {
+            placeholderValue = 80;
+            minValue = 80;
+        }
 
         return (
             <form className="form">
@@ -39,8 +34,8 @@ class NumberForm extends Component {
                 <div className="form__wrapper">
                     <input className="form__number"
                            type="number"
-                           min="0"
-                           placeholder={0}
+                           min={minValue}
+                           placeholder={placeholderValue}
                            value={this.state.value}
                            onChange={this.handleChange}>
                     </input>

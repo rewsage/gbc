@@ -75,8 +75,6 @@ class Workspace extends React.Component {
         this.setState({
             [userComponentName]: resetObj,
         })
-
-        console.log(this.state);
     }
 
     // передача контекста текущей UI-темы

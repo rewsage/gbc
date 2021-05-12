@@ -1,7 +1,11 @@
 import React from 'react'
 import ThemeContext from './ThemeContext'
 
+// ThemeSwitcher - переключатель UI-темы
 function ThemeSwitcher() {
+
+    // получает из контекста метод toggleTheme и
+    // с его помощью меняет тему приложения
     return (
         <ThemeContext.Consumer>
             { ( {toggleTheme} ) => (
