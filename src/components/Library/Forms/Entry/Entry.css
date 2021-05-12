@@ -3,8 +3,9 @@
     padding: 30px;
     border: 0 solid #F2C94C;
 
+    background: white;
     border-radius: 10px;
-    box-shadow: 0 4px 16px #ccc;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     letter-spacing: 1px;
 }
 
