@@ -8,8 +8,15 @@ class Email extends Component {
     }
 
     render() {
-        const {componentsState} = this.props;
-        const componentStyle = componentsState && componentsState["Email"];
+        const {componentsState, componentWithSync} = this.props;
+        let componentStyle;
+
+        if (componentWithSync) {
+            componentStyle = componentsState && componentsState[componentWithSync];
+        } else {
+            componentStyle = componentsState && componentsState["Email"];
+        }
+
         const styleReader = new StyleReader(componentStyle);
         const label = this.props.children || "Email";
 

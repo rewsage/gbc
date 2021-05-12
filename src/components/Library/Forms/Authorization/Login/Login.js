@@ -8,8 +8,15 @@ class Login extends Component {
     }
 
     render() {
-        const {componentsState} = this.props;
-        const componentStyle = componentsState && componentsState["Login"];
+        const {componentsState, componentWithSync} = this.props;
+        let componentStyle;
+
+        if (componentWithSync) {
+            componentStyle = componentsState && componentsState[componentWithSync];
+        } else {
+            componentStyle = componentsState && componentsState["Login"];
+        }
+
         const styleReader = new StyleReader(componentStyle);
         const label = this.props.children || "Login";
 

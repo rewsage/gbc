@@ -16,7 +16,7 @@ class Workspace extends React.Component {
         "Password": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '' },
         "Email": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '' },
         "Telephone": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '' },
-        "Entry": { text: '', bg: '', bw: '', bc: '', br: '', btn: '', type: '' },
+        "Entry": { text: '', bg: '', bw: '', bc: '', br: '', btn: '', type: '', sync: '' },
         "Card": { text: '', url: '', fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', btn: '' },
     }
 

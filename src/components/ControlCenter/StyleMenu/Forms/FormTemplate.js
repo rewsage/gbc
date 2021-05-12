@@ -88,6 +88,15 @@ function FormTemplate(props) {
                                  getStyles={getStyles}
                                  componentStyle={componentStyle}/>
             break;
+        // выбор синхранизации стилей форм
+        case 'sync':
+            const sync = ["None", "Login", "Pass"];
+            form = <DropdownForm label={"Synchronize"}
+                                 elements={sync}
+                                 styleType={'sync'}
+                                 getStyles={getStyles}
+                                 componentStyle={componentStyle}/>
+            break;
         // текстовое поле компонента
         case 'text':
             form = <TextForm label={"Text"}

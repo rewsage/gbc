@@ -4,16 +4,15 @@ import StyleReader from "./StyleReader";
 export default function textBuilder(componentName, componentsState) {
     let text;
 
-    const componentStyle = componentsState[componentName];
-    let componentText = componentStyle.text ? '\n\t' + componentStyle.text : '';
-
-    const styleReader = new StyleReader(componentStyle);
-    let className = styleReader.className;
-    const Button = styleReader.button;
-
-    let classText;
-
     if (componentName === "Card") {
+        const componentStyle = componentsState[componentName];
+        let componentText = componentStyle.text ? '\n\t' + componentStyle.text : '';
+
+        const styleReader = new StyleReader(componentStyle);
+        let className = styleReader.className;
+        const Button = styleReader.button;
+
+        let classText;
         const src = styleReader.url;
         // удаляем ненужные параметры, которые будут передаваться отдельным пропсом или как children
         className = className.replace(`btn-${Button}`, '').trim();
@@ -31,10 +30,21 @@ export default function textBuilder(componentName, componentsState) {
 
         text = `<Card${classText}${additionalText}>${componentText}\n\t${buttonCode}\n</Card>`;
     } else if (componentName === 'Entry') {
+        const componentStyle = componentsState[componentName];
+        let componentText = componentStyle.text ? '\n\t' + componentStyle.text : '';
+        const sync = componentsState["Entry"].sync;
+
+        const styleReader = new StyleReader(componentStyle);
+        let className = styleReader.className;
+        const Button = styleReader.button;
+
+        let classText;
         let typeForm = componentStyle.type || "Email";
+
         // удаляем ненужные параметры, которые будут передаваться как children
         className = className.replace(`btn-${Button}`, '').trim();
         className = className.replace(`type-${typeForm}`, '').trim();
+        className = className.replace(`sync-${sync.toLocaleLowerCase()}`, '').trim();
 
         let Login = textBuilder(typeForm, componentsState);
         // второе поле в Entry всегда является паролем, поэтому оно отличается только типом
@@ -46,10 +56,27 @@ export default function textBuilder(componentName, componentsState) {
 
         text = `<Entry${classText}>${componentText}\n\t${Login}\n\t${Pass}\n\t${buttonCode}\n</Entry>`;
     } else {
-        classText = isClassEmpty(className);
-        // изменяем componentText, чтобы код кнопки не переносился на новую строку,
-        // иначе в составных компонентах код будет выводиться некоректно
-        componentText = componentStyle.text;
+        let componentStyle = componentsState[componentName];
+
+        const forms = ["Login", "Email", "Telephone", "Password"];
+
+        // делаем синхранизацию стилей для форм из Entry
+        if (forms.includes(componentName)) {
+            const sync = componentsState["Entry"].sync;
+            if (sync === "Login") {
+                const typeForm = componentsState["Entry"].type;
+                componentStyle = componentsState[typeForm];
+            } else if (sync === "Pass") {
+                componentStyle = componentsState["Password"];
+            }
+        }
+
+        const styleReader = new StyleReader(componentStyle);
+        let className = styleReader.className;
+        let classText = isClassEmpty(className);
+
+        // код простого компонента выводится в одну строчку
+        let componentText = componentStyle.text;
 
         if (componentText === '' || componentText === undefined) {
             text = `<${componentName}${classText}/>`;

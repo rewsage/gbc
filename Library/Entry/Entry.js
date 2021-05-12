@@ -15,7 +15,7 @@ class Entry extends Component {
                 nameForm = children[0];
                 Inside = children.slice(1);
             } else {
-                nameForm = "Вход"
+                nameForm = "Sign in";
                 Inside = children;
             }
         } else if (typeof children === "string") {
