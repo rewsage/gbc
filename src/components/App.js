@@ -5,7 +5,7 @@ import Header from "./AppMenu/Header";
 import ThemeContext from "./ThemeControl/ThemeContext";
 import Workspace from "./Workspace";
 
-
+// Компонент App несет в себе функцию отображения всего приложения в целом
 class App extends Component {
     state = {
         userComponentName: "",
@@ -14,6 +14,8 @@ class App extends Component {
 
     render() {
         return (
+            // Provider позволяет дочерним компонентам подписаться на изменения UI-темы,
+            // передавая в качестве пропсов значение темы (theme) и колбэк toggleTheme
             <ThemeContext.Provider value={ { theme: this.state.theme, toggleTheme: this.toggleTheme } }>
                 <main className={`app app_${this.state.theme}`}>
                     <section className="app__menu">

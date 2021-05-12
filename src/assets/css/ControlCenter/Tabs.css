@@ -1,10 +1,8 @@
 .tabs {
   width: 100%;
   padding: 0 20px;
-
   display: flex;
   flex-direction: row;
-
   border-top: 2px #D3D3D3 solid;
   border-bottom: 2px #D3D3D3 solid;
 }
@@ -22,21 +20,17 @@
 
 .tabs__btn {
   font-size: 17px;
-  font-weight: 700;
   padding: 10px 25px;
-
-  &:hover ~ .tabs__underline {
-    background: #EC9360;
-  }
+}
+.tabs__btn:hover ~ .tabs__underline {
+  background: #EC9360;
 }
 
 .tabs__underline {
   position: relative;
   top: 2px;
-
   width: calc(100% - 50px);
   height: 3px;
-
   background: none;
   margin: 0 25px;
   transition: 0.2s;
@@ -48,3 +42,4 @@
   background: #EC9360;
 }
 
+/*# sourceMappingURL=Tabs.css.map */

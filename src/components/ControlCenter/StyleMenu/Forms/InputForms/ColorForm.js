@@ -18,18 +18,8 @@ class ColorForm extends Component {
     }
 
     // метод, вызывающийся сразу после рендера компонента
-    // метод позволяет сохранить значение стиля формы после повторного монтирования StyleMenu
+    // обработчик событий дает возможность скрыть цветовую палитру при нажатии за её пределы
     componentDidMount() {
-        const {componentStyle, styleType} = this.props;
-
-        // если цвет уже был задан (до размонтирования), то форма примет его значение
-        if (componentStyle[styleType] !== '') {
-            this.setState({
-                color: componentStyle[styleType],
-            })
-        }
-
-        // обработчик событий дает возможность скрыть цветовую палитру при нажатии за её пределы
         window.addEventListener('click', this.onClickOutsideHandler);
     }
 
@@ -37,13 +27,13 @@ class ColorForm extends Component {
     componentWillUnmount() {
         window.removeEventListener('click', this.onClickOutsideHandler);
     }
-
-    // метод жизненного цикла, позволяющий сбросить значение формы
+    
+    // метод жизненного цикла, позволяющий сбросить значение формы,
+    // а также синхронизировать состояние формы со стилем компонента
     static getDerivedStateFromProps(props, state) {
         const {componentStyle, styleType} = props;
 
-        // если стили были сброшены вручную (resetStyles),
-        // то форма примет значения по умолчанию
+        // если стили были сброшены вручную (resetStyles), то форма примет значения по умолчанию,
         if (componentStyle[styleType] === '' &&
             state.color !== '#ec9360' &&
             !state.isOpen
@@ -51,6 +41,12 @@ class ColorForm extends Component {
             return {
                 isOpen: false,
                 color: '#ec9360',
+            }
+        // синхронизация значения формы и стиля компонента
+        } else if (componentStyle[styleType] !== state.color && componentStyle[styleType] !== '') {
+            return {
+                isOpen: state.isOpen,
+                color: componentStyle[styleType]
             }
         }
 
@@ -100,13 +96,8 @@ class ColorForm extends Component {
 
     // обрабатывает изменение цвета и с помощью колбэка передает эти изменения
     handleChange = (color) => {
-        const { styleType, getStyles } = this.props;
-
-        this.setState({
-            color: color.hex
-        },() => {
-            getStyles(styleType, this.state.color);
-        });
+        const {styleType, getStyles} = this.props;
+        getStyles(styleType, color.hex)
     }
 
     isOpen = () => {

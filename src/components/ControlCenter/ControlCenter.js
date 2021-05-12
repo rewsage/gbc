@@ -24,15 +24,15 @@ class ControlCenter extends Component {
 
                 // передаем в качестве пропсов колбэки и стиль компонента
                 currentMenu = <StyleMenu getStyles={getStyles}
-                                        resetStyles={resetStyles}
-                                        componentStyle={componentStyle}/>
+                                         resetStyles={resetStyles}
+                                         componentStyle={componentStyle}/>
                 break;
             case ('Export'): {
 
                 // передаем в качестве пропсов состояние стилей компонентов и
                 // название текущего компонента
                 currentMenu = <ExportMenu componentName={componentName}
-                                         componentsState={componentsState}/>
+                                          componentsState={componentsState}/>
                 break;
             }
         }

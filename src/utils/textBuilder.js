@@ -14,10 +14,7 @@ export default function textBuilder(componentName, componentsState) {
 
         let classText;
         const src = styleReader.url;
-        // удаляем ненужные параметры, которые будут передаваться отдельным пропсом или как children
-        className = className.replace(`btn-${Button}`, '').trim();
-        className = className.replace(`url-${src}`, '').trim();
-
+        
         // формируем отдельный пропс для src
         let additionalText = '';
         if (src !== undefined) {
@@ -30,6 +27,7 @@ export default function textBuilder(componentName, componentsState) {
 
         text = `<Card${classText}${additionalText}>${componentText}\n\t${buttonCode}\n</Card>`;
     } else if (componentName === 'Entry') {
+
         const componentStyle = componentsState[componentName];
         let componentText = componentStyle.text ? '\n\t' + componentStyle.text : '';
         const sync = componentsState["Entry"].sync;
@@ -64,7 +62,7 @@ export default function textBuilder(componentName, componentsState) {
         if (forms.includes(componentName)) {
             const sync = componentsState["Entry"].sync;
             if (sync === "Login") {
-                const typeForm = componentsState["Entry"].type;
+                const typeForm = componentsState["Entry"].type || "Email";
                 componentStyle = componentsState[typeForm];
             } else if (sync === "Pass") {
                 componentStyle = componentsState["Password"];

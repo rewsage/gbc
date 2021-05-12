@@ -1,16 +1,13 @@
-@import 'assets/css/mixins';
-
 body {
   margin: 0;
   line-height: 1.6;
-
   font-size: 22px;
-  font-weight: 600;
-  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 500;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .container {
-  width:100%;
+  width: 100%;
   max-width: 1200px;
   padding: 0 22px;
   margin: 0 auto;
@@ -19,7 +16,9 @@ body {
 *,
 *:before,
 *:after {
-  @include box-sizing(border-box);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 button {
@@ -28,22 +27,22 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
-
   color: inherit;
-  font: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 p {
   margin: 0;
   color: inherit;
-  font: inherit;
 }
 
 label {
-  font-family: inherit;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 pre {
   margin: 0;
-  font-weight: 500;
 }
+
+/*# sourceMappingURL=index.css.map */
