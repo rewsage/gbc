@@ -33,8 +33,14 @@
 }
 
 .login__input:focus ~ .login__label,
-.login__input:not(:placeholder-shown) ~ .login__label {
+.login__label_filled {
     top: -55%;
     font-size: 16px;
     color: #909090;
 }
+
+/*.login__input:not(:placeholder-shown) ~ .login__label {*/
+/*    top: -55%;*/
+/*    font-size: 16px;*/
+/*    color: #909090;*/
+/*}*/

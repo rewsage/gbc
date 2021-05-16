@@ -17,7 +17,7 @@ class Workspace extends React.Component {
         "Email": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '' },
         "Telephone": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '' },
         "Entry": { text: '', bg: '', bw: '', bc: '', br: '', btn: '', type: '', sync: '' },
-        "Card": { text: '', url: '', fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', btn: '' },
+        "Card": { text: '', url: '', fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', btn: '', wd: '' },
     }
 
     render() {

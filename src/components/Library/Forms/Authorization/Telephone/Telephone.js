@@ -10,6 +10,7 @@ class Telephone extends Component {
 
     render() {
         const {componentsState, componentWithSync} = this.props;
+        const condition = this.state.value === '' ? '' : 'filled'
         let componentStyle;
 
         if (componentWithSync) {
@@ -30,7 +31,7 @@ class Telephone extends Component {
                        placeholder=""
                        value={this.state.value}
                        style={styleReader.style}/>
-                <label className={"login__label"}>{label}</label>
+                <label className={`login__label login__label_${condition}`}>{label}</label>
             </form>
         )
     }
