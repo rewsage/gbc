@@ -62,9 +62,11 @@ export default function textBuilder(componentName, componentsState) {
         if (forms.includes(componentName)) {
             const sync = componentsState["Entry"].sync;
             if (sync === "Login") {
+                // берём стили выбранной формы из состояния Entry
                 const typeForm = componentsState["Entry"].type || "Email";
                 componentStyle = componentsState[typeForm];
             } else if (sync === "Pass") {
+                // синхронизируем стили с формой "Password"
                 componentStyle = componentsState["Password"];
             }
         }

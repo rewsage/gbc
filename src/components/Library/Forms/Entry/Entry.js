@@ -35,8 +35,7 @@ class Entry extends Component {
                                componentWithSync={componentWithSync}/>
                 <Password componentsState={componentsState}
                           componentWithSync={componentWithSync}/>
-                <Button componentsState={componentsState}
-                        componentName={buttonName}>
+                <Button componentsState={componentsState}>
                     {buttonText}
                 </Button>
             </form>

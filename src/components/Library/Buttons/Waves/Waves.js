@@ -10,7 +10,9 @@ class Waves extends Component {
         let styleReader = new StyleReader(componentStyle);
 
         return (
-            <button className={styleReader.userClassName + "buttonWaves"} style={styleReader.style}>
+            <button className={styleReader.userClassName + "buttonWaves"}
+                    style={styleReader.style}
+                    onClick={ e => this.handleClick(e) }>
                 <p>{text}</p>
                 <span className={"buttonWaves__inner"}>
                     <span className={"buttonWaves__wave"}/>
@@ -20,6 +22,10 @@ class Waves extends Component {
                 </span>
             </button>
         );
+    }
+
+    handleClick(e) {
+        e.preventDefault();
     }
 }
 

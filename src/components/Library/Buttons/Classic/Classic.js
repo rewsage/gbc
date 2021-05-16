@@ -11,10 +11,15 @@ class Classic extends Component {
 
         return (
             <button className={styleReader.userClassName + "classic-btn"}
-                    style={styleReader.style}>
+                    style={styleReader.style}
+                    onClick={ e => this.handleClick(e) }>
                 {text}
             </button>
         )
+    }
+
+    handleClick(e) {
+        e.preventDefault();
     }
 }
 
