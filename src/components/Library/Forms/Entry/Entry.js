@@ -28,7 +28,7 @@ class Entry extends Component {
         }
 
         return (
-            <form className={styleReader.userClassName + " entry"}
+            <div className={styleReader.userClassName + " entry"}
                   style={styleReader.style}>
                 <h1 className={"entry__title"}>{entryName}</h1>
                 <Authorization componentsState={componentsState}
@@ -39,7 +39,7 @@ class Entry extends Component {
                         componentName={buttonName}>
                     {buttonText}
                 </Button>
-            </form>
+            </div>
         )
     }
 }
