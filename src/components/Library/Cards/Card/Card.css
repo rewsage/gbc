@@ -2,13 +2,13 @@
     width: 400px;
     padding-bottom: 5px;
 
-    background: #282C34;
-    color: #CDCDCD;
+    background: #fff;
+    color: #282C34;
     border-radius: 10px;
 
     text-align: center;
     overflow: hidden;
-    border: 3px solid #F2C94C;
+    border: 3px solid #DADADA;
 }
 
 .card__img {
@@ -20,5 +20,5 @@
 }
 
 .card__button {
-    margin: 20px;
+    margin: 10px 0;
 }

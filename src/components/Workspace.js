@@ -10,13 +10,15 @@ class Workspace extends React.Component {
     // состояние хранит стили всех компонентов в конкретный момент времени
     state = {
         "Classic": { text: '', fs: '', bg: '', cl: '', fw: '', br: '' },
+        "Outline": { text: '', fs: '', bc: '', bw: '', clh: '', fw: '', br: '' },
         "Waves": { text: '', fs: '', bg: '', bc: '', cl: '', fw: '' },
-        "Phone": { fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', br: '' },
+        "Data": { text: '', mask: '', fs: '', bg: '', cl: '', fw: '', ow: '', oc: '', br: '' },
         "Login": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '' },
         "Password": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '' },
         "Email": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '' },
         "Telephone": { text: '', fs: '', cl: '', fw: '', bw: '', bc: '' },
         "Entry": { text: '', bg: '', bw: '', bc: '', br: '', btn: '', type: '', sync: '' },
+        "BankCard": { text: '', bg: '', cl: '', bw: '', bc: '', br: '' },
         "Card": { text: '', url: '', fs: '', bg: '', cl: '', fw: '', bw: '', bc: '', btn: '', wd: '' },
     }
 

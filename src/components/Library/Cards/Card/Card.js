@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react";
 import "./Card.css";
 import defaultImg from "./product3.jpg";
 import StyleReader from "../../../../utils/StyleReader";
@@ -24,7 +24,7 @@ class Card extends React.Component {
                 <p className={"card__description"}>
                     {description}
                 </p>
-                <Button componentsState={componentsState}>
+                <Button componentsState={componentsState} className={'card__button'}>
                     {buttonText}
                 </Button>
             </div>

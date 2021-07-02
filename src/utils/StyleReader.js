@@ -69,6 +69,12 @@ class StyleReader {
                 case 'bw':
                     this._style.borderWidth = value + 'px';
                     break;
+                case 'oc':
+                    this._style.outlineColor = value;
+                    break;
+                case 'ow':
+                    this._style.outlineWidth = value + 'px';
+                    break;
                 case 'br':
                     this._style.borderRadius = value + 'px';
                     break;
@@ -83,6 +89,8 @@ class StyleReader {
                     this._url = value;
                     break;
                 case 'text':
+                    break;
+                case 'mask':
                     break;
                 // если соответствие не найден, то это пользовательский класс
                 default:

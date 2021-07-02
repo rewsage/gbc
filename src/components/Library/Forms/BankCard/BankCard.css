@@ -1,0 +1,60 @@
+.bankCard {
+    width: 474px;
+
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    letter-spacing: 1px;
+    background: #EFF2EE;
+    color: #333333;
+    border: 0 #F4FD3E solid;
+
+    padding-bottom: 15px;
+}
+
+.bankCard__bankName {
+    padding: 30px 40px;
+    margin: 0;
+}
+
+.bankCard__number {
+    width: 85%;
+    height: 42px;
+    font-size: 20px;
+    display: block;
+
+    margin: 10px auto;
+}
+
+.bankCard__lower {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+
+    margin: 40px auto;
+}
+
+.bankCard__period {
+    width: 33%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bankCard__splitter {
+    font-size: 25px;
+}
+
+.bankCard__month, .bankCard__year {
+    width: 55px;
+    height: 42px;
+
+    font-size: 20px;
+}
+
+.bankCard__code {
+    width: 75px;
+    height: 42px;
+
+    font-size: 20px;
+}
+

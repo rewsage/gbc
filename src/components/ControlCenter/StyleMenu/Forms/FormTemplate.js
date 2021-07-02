@@ -47,6 +47,27 @@ function FormTemplate(props) {
                               getStyles={getStyles}
                               componentStyle={componentStyle}/>
             break;
+        // ширина обводки (outline width)
+        case 'ow':
+            form = <NumberForm label={"Outline Width"}
+                               styleType={'ow'}
+                               getStyles={getStyles}
+                               componentStyle={componentStyle}/>
+            break;
+        // цвет обводки (outline color)
+        case 'oc':
+            form = <ColorForm label={"Outline Color"}
+                              styleType={'oc'}
+                              getStyles={getStyles}
+                              componentStyle={componentStyle}/>
+            break;
+        // цвет текста при наведении на компонент
+        case 'clh':
+            form = <ColorForm label={"Color on hover"}
+                              styleType={'clh'}
+                              getStyles={getStyles}
+                              componentStyle={componentStyle}/>
+            break;
         // толщина шрифта (font-weight)
         case 'fw':
             const fontWeight = ["Light", "Regular", "Bold"];
@@ -81,7 +102,7 @@ function FormTemplate(props) {
             break;
         // выбор кнокпи компонента
         case 'btn':
-            const buttons = ["Classic", "Waves"];
+            const buttons = ["Classic", "Waves", "Outline"];
             form = <DropdownForm label={"Button"}
                                  elements={buttons}
                                  styleType={'btn'}
@@ -101,6 +122,13 @@ function FormTemplate(props) {
         case 'text':
             form = <TextForm label={"Text"}
                              styleType={'text'}
+                             getStyles={getStyles}
+                             componentStyle={componentStyle}/>
+            break;
+        // поля для ввода маски для формы
+        case 'mask':
+            form = <TextForm label={"Mask"}
+                             styleType={'mask'}
                              getStyles={getStyles}
                              componentStyle={componentStyle}/>
             break;

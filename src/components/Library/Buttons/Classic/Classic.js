@@ -10,7 +10,7 @@ class Classic extends Component {
         const styleReader = new StyleReader(componentStyle);
 
         return (
-            <button className={styleReader.userClassName + "classic-btn"}
+            <button className={this.props.className + " classic-btn"}
                     style={styleReader.style}
                     onClick={ e => this.handleClick(e) }>
                 {text}
