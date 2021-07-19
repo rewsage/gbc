@@ -143,7 +143,7 @@ function propsBuilder(componentStyle, replaceParams, additionalProps) {
     if (additionalProps !== undefined) {
         for (let prop of additionalProps) {
             let propValue = componentStyle[prop];
-            if (propValue !== '') {
+            if (propValue !== undefined) {
                 additionalText += ` ${prop}="${propValue}"`;
             }
         }

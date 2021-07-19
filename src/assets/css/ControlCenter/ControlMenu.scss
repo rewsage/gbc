@@ -19,3 +19,16 @@
 .control-menu__inner_export {
   width: max-content;
 }
+
+.control-menu__instruction {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.control-menu__instruction__text {
+  background: #282c34;
+  margin-right: 10px;
+  padding: 5px 15px;
+  color: #ffffff;
+  border-radius: 5px;
+}

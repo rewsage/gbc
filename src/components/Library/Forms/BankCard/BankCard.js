@@ -7,7 +7,7 @@ import CardInfo from "card-info";
 
 class BankCard extends Component {
     state = {
-        bankName: 'Lenix Bank',
+        bankName: '',
         bankLogo: '',
         brandLogo: '',
         background: '',
@@ -19,10 +19,13 @@ class BankCard extends Component {
         const {componentsState} = this.props;
         const componentStyle = componentsState && componentsState["BankCard"];
         const styleReader = new StyleReader(componentStyle);
+        const defaultText = this.props.children || 'Lenix Bank'
+        let CardStyle = styleReader.style;
+        CardStyle['background'] = this.state.background || CardStyle['background'];
 
         return (
-            <div className={"bankCard"} style={styleReader.style}>
-                <h2 className={"bankCard__bankName"}>{this.state.bankName}</h2>
+            <div className={"bankCard"} style={CardStyle}>
+                <h2 className={"bankCard__bankName"} style={{'color': this.state.textColor}}>{this.state.bankName || defaultText}</h2>
                 <Data componentsState={componentsState}
                       className={"bankCard__number"}
                       id={"card-number"}
@@ -90,6 +93,14 @@ class BankCard extends Component {
                     codeName: cardInfo.codeName,
                 });
             }
+        } else {
+            this.setState({
+                bankName: '',
+                bankLogo: '',
+                brandLogo: '',
+                background: '',
+                textColor: '',
+                codeName: 'CVV'})
         }
     }
 }

@@ -3,6 +3,7 @@ import '../../assets/css/ControlCenter/ControlCenter.scss';
 import Tabs from "./Tabs/Tabs.js";
 import StyleMenu from "./StyleMenu/StyleMenu";
 import ExportMenu from "./ExportMenu/ExportMenu";
+import InfoMenu from "./InfoMenu/InfoMenu"
 
 // ControlCenter отвечает за отображаение меню стилей (StyleMenu) и экспорта (ExportMenu)
 class ControlCenter extends Component {
@@ -35,13 +36,16 @@ class ControlCenter extends Component {
                                           componentsState={componentsState}/>
                 break;
             }
+            case ('Info'):
+                currentMenu = <InfoMenu />
         }
 
         // рендерим панель вкладок (Tabs) и выбранное на панели меню
         return(
             <div className="control-center">
                 <Tabs currentTabName={this.currentTabName()}
-                      switchTab={this.switchTab}/>
+                      switchTab={this.switchTab}
+                      componentName={componentName}/>
                 {currentMenu}
             </div>
         )

@@ -5,6 +5,7 @@ class StyleReader {
         this._style = {};
         this._currentButton = 'Classic';
         this._url = '';
+        this._colorOnHover = '';
         this._decomposeClassName()
     }
 
@@ -42,6 +43,9 @@ class StyleReader {
                     break;
                 case 'cl':
                     this._style.color = value;
+                    break;
+                case 'clh':
+                    this._colorOnHover = value;
                     break;
                 case 'bc':
                     this._style.borderColor = value;

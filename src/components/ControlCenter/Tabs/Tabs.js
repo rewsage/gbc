@@ -8,11 +8,16 @@ class Tabs extends Component {
 
     render() {
         // получает в виде пропсов метод-колбэк, позволяющий переключить вкладку, и название текущей вкладки
-        const { switchTab, currentTabName } = this.props;
+        const { switchTab, currentTabName, componentName } = this.props;
         const themeContext = this.context.theme;
 
         // список доступных вкладок
-        const btnNames = ["Style", "Export"];
+        let btnNames;
+        if (componentName === "Outline") {
+            btnNames = ["Style", "Export", "Info"];
+        } else {
+            btnNames = ["Style", "Export"];
+        }
 
         // на основе списка вкладок создается массив компонентов, являющихся отдельными вкладками (TabItem)
         const tabItems = btnNames.map((name, index) => {

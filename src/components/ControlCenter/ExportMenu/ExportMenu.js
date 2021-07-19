@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../../assets/css/ControlCenter/ControlMenu.scss'
+import '../../../assets/css/ControlCenter/ControlMenu.scss';
 import Instruction from "./Instruction";
 
 // ExportMenu отвечает за вывод всей инструкции по использованию компонента

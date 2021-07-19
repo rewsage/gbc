@@ -35,7 +35,7 @@ class Instruction extends React.Component {
         }
 
         return (
-            <div className={"instruction"}>
+            <div className="instruction">
                 <DisplayingText text={text}/>
                 <CopyButton text={text}/>
             </div>
