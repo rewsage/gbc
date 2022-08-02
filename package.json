@@ -2,6 +2,7 @@
   "name": "gbc",
   "version": "0.1.0",
   "private": true,
+  "description": "web application for configuring components",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-brands-svg-icons": "^5.15.2",
